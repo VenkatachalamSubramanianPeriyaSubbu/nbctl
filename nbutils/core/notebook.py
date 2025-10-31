@@ -64,3 +64,39 @@ class Notebook:
                     if line.startswith('import') or line.startswith('from'):
                         imports.append(line)
         return imports
+    
+    def get_code_metrics(self) -> Dict[str, Any]:
+        """Get code metrics from the notebook"""
+        metrics = {
+            'total_lines': 0,
+            'code_cells': 0,
+            'empty_cells': 0,
+            'avg_line_per_cell': 0,
+            'largest_cell': {
+                'cell_number': 0,
+                'line_count': 0,
+            },
+            'smallest_cell': {
+                'cell_number': 0,
+                'line_count': 0,
+            },
+            }
+
+        code_cells = [cell for cell in self.nb.cells if cell.cell_type == 'code']
+        for i, cell in enumerate(code_cells):
+            lines = cell.source.split('\n')
+            metrics['total_lines'] += len(lines)
+            metrics['code_cells'] += 1
+            if not lines:
+                metrics['empty_cells'] += 1
+            else:
+                metrics['avg_line_per_cell'] += len(lines)
+                if len(lines) > metrics['largest_cell']['line_count']:
+                    metrics['largest_cell']['cell_number'] = i + 1
+                    metrics['largest_cell']['line_count'] = len(lines)
+                if len(lines) < metrics['smallest_cell']['line_count']:
+                    metrics['smallest_cell']['cell_number'] = i + 1
+                    metrics['smallest_cell']['line_count'] = len(lines)
+
+        metrics['avg_line_per_cell'] /= metrics['code_cells']
+        return metrics
