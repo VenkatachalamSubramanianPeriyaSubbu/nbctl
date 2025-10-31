@@ -19,9 +19,9 @@ nbutils clean notebook.ipynb
 ```
 
 This removes:
-- ✓ Cell outputs
-- ✓ Execution counts  
-- ✓ Unnecessary metadata
+- Cell outputs
+- Execution counts  
+- Unnecessary metadata
 
 **Result:** Smaller files, cleaner git diffs, no merge conflicts!
 
@@ -45,9 +45,9 @@ nbutils info notebook.ipynb
 ```
 
 This shows:
-- ✓ Total cells (code, markdown, raw)
-- ✓ File size
-- ✓ All import statements used in the notebook
+- Total cells (code, markdown, raw)
+- File size
+- All import statements used in the notebook
 
 **Perfect for:** Understanding dependencies, checking notebook complexity, auditing libraries used.
 
