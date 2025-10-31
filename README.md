@@ -52,6 +52,20 @@ This shows:
 
 **Perfect for:** Understanding dependencies, checking notebook complexity, auditing libraries used.
 
+### Export to multiple formats
+
+```bash
+nbutils export notebook.ipynb --format html,pdf,py
+```
+
+This exports to:
+- HTML documents
+- PDF files (requires LaTeX)
+- Python scripts
+- Markdown, LaTeX, reStructuredText, and more!
+
+**Perfect for:** Sharing notebooks, creating documentation, converting to production code.
+
 ## Commands
 
 ### `nbutils clean`
@@ -115,11 +129,48 @@ nbutils info notebook.ipynb --code-metrics
 nbutils info notebook.ipynb --imports
 ```
 
+### `nbutils export`
+Export notebooks to multiple formats at once using nbconvert.
+
+**Usage:**
+```bash
+nbutils export notebook.ipynb --format FORMATS [OPTIONS]
+```
+
+**Options:**
+- `--format, -f FORMATS` - Output formats (comma-separated, required)
+- `--output-dir, -o PATH` - Output directory (default: same as notebook)
+- `--no-input` - Exclude input cells from output
+- `--no-prompt` - Exclude input/output prompts
+
+**Supported Formats:**
+- `html` - HTML document
+- `pdf` - PDF document (requires LaTeX or webpdf)
+- `markdown` or `md` - Markdown file
+- `python` or `py` - Python script
+- `latex` or `tex` - LaTeX document
+- `rst` - reStructuredText
+- `slides` - Reveal.js slides (HTML)
+
+**Examples:**
+```bash
+# Export to multiple formats
+nbutils export notebook.ipynb -f html,pdf,py
+
+# Export to specific directory
+nbutils export notebook.ipynb -f html --output-dir exports/
+
+# Export without input cells (output only)
+nbutils export notebook.ipynb -f html --no-input
+
+# Export presentation slides
+nbutils export notebook.ipynb -f slides
+```
+
 ## Coming Soon
 
 - **`nbutils diff`** - Smart notebook comparison
 - **`nbutils merge`** - Intelligent 3-way merge
-- **`nbutils export`** - Multi-format export
 - And many more!
 
 ## Development
@@ -162,6 +213,7 @@ Jupyter notebooks are amazing for data science and research, but they have pain 
 
 - [x] Basic clean command
 - [x] Info command (statistics, code metrics, and imports)
+- [x] Export command (convert to HTML, PDF, Markdown, Python, etc.)
 - [ ] Diff and merge tools
 - [ ] Quality tools (lint, test, format)
 - [ ] Productivity tools (split, templates)
