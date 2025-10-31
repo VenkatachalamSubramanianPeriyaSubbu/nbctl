@@ -69,34 +69,56 @@ class Notebook:
         """Get code metrics from the notebook"""
         metrics = {
             'total_lines': 0,
-            'code_cells': 0,
+            'code_cells_count': 0,
             'empty_cells': 0,
-            'avg_line_per_cell': 0,
+            'avg_lines_per_cell': 0.0,
             'largest_cell': {
-                'cell_number': 0,
-                'line_count': 0,
+                'index': None,
+                'lines': 0,
             },
             'smallest_cell': {
-                'cell_number': 0,
-                'line_count': 0,
+                'index': None,
+                'lines': float('inf'),
             },
-            }
+        }
 
         code_cells = [cell for cell in self.nb.cells if cell.cell_type == 'code']
-        for i, cell in enumerate(code_cells):
-            lines = cell.source.split('\n')
-            metrics['total_lines'] += len(lines)
-            metrics['code_cells'] += 1
-            if not lines:
+        
+        if not code_cells:
+            return metrics
+        
+        for idx, cell in enumerate(code_cells):
+            metrics['code_cells_count'] += 1
+            
+            # Count lines in this cell
+            lines = cell.source.split('\n') if cell.source else []
+            # Filter out empty lines for accurate count
+            non_empty_lines = [line for line in lines if line.strip()]
+            line_count = len(non_empty_lines)
+            
+            # Track total lines
+            metrics['total_lines'] += line_count
+            
+            # Track empty cells
+            if line_count == 0 or not cell.source.strip():
                 metrics['empty_cells'] += 1
             else:
-                metrics['avg_line_per_cell'] += len(lines)
-                if len(lines) > metrics['largest_cell']['line_count']:
-                    metrics['largest_cell']['cell_number'] = i + 1
-                    metrics['largest_cell']['line_count'] = len(lines)
-                if len(lines) < metrics['smallest_cell']['line_count']:
-                    metrics['smallest_cell']['cell_number'] = i + 1
-                    metrics['smallest_cell']['line_count'] = len(lines)
-
-        metrics['avg_line_per_cell'] /= metrics['code_cells']
+                # Track largest cell (only non-empty)
+                if line_count > metrics['largest_cell']['lines']:
+                    metrics['largest_cell']['lines'] = line_count
+                    metrics['largest_cell']['index'] = idx
+                
+                # Track smallest non-empty cell
+                if line_count < metrics['smallest_cell']['lines']:
+                    metrics['smallest_cell']['lines'] = line_count
+                    metrics['smallest_cell']['index'] = idx
+        
+        # Calculate average
+        if metrics['code_cells_count'] > 0:
+            metrics['avg_lines_per_cell'] = metrics['total_lines'] / metrics['code_cells_count']
+        
+        # Clean up smallest_cell if all cells were empty
+        if metrics['smallest_cell']['lines'] == float('inf'):
+            metrics['smallest_cell'] = {'index': None, 'lines': 0}
+        
         return metrics
