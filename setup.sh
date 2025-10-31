@@ -1,7 +1,7 @@
 #!/bin/bash
 # Setup script for nbutils development
 
-echo "🔧 Setting up nbutils development environment..."
+echo "Setting up nbutils development environment..."
 
 # Create virtual environment
 echo "Creating virtual environment..."
@@ -27,7 +27,7 @@ mkdir -p tests/fixtures
 echo "Running tests..."
 pytest tests/ -v
 
-echo "✅ Setup complete!"
+echo "Setup complete!"
 echo ""
 echo "To activate the environment, run:"
 echo "  source venv/bin/activate"
