@@ -1,0 +1,13 @@
+# Core dependencies
+nbformat>=5.0.0
+click>=8.0.0
+rich>=13.0.0
+
+# Development dependencies
+pytest>=7.0.0
+pytest-cov>=4.0.0
+black>=23.0.0
+mypy>=1.0.0
+
+# Optional but recommended
+ipython>=8.0.0
