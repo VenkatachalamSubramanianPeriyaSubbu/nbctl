@@ -20,11 +20,13 @@ from nbutils.commands.clean import clean
 from nbutils.commands.info import info
 from nbutils.commands.export import export
 from nbutils.commands.lint import lint
+from nbutils.commands.format import format
 
 cli.add_command(clean)
 cli.add_command(info)
 cli.add_command(export)
 cli.add_command(lint)
+cli.add_command(format)
 
 
 if __name__ == "__main__":

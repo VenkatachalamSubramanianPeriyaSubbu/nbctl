@@ -80,6 +80,19 @@ This checks for:
 
 **Perfect for:** Code review, maintaining quality standards, catching issues early.
 
+### Auto-format code
+
+```bash
+nbutils format notebook.ipynb
+```
+
+This formats:
+- All code cells with black
+- Consistent style and spacing
+- Proper line lengths
+
+**Perfect for:** Maintaining code style, team consistency, automated formatting.
+
 ## Commands
 
 ### `nbutils clean`
@@ -207,6 +220,30 @@ nbutils lint notebook.ipynb --max-cell-length 150
 
 ```
 
+### `nbutils format`
+Auto-format code cells using black formatter.
+
+**Usage:**
+```bash
+nbutils format notebook.ipynb [OPTIONS]
+```
+
+**Options:**
+- `--output, -o PATH` - Save to a different file (default: overwrites input)
+- `--line-length INT` - Maximum line length (default: 88)
+
+**Examples:**
+```bash
+# Format in place
+nbutils format notebook.ipynb
+
+# Save to new file
+nbutils format notebook.ipynb --output formatted.ipynb
+
+# Custom line length
+nbutils format notebook.ipynb --line-length 100
+```
+
 ## Coming Soon
 
 - **`nbutils diff`** - Smart notebook comparison
@@ -255,8 +292,9 @@ Jupyter notebooks are amazing for data science and research, but they have pain 
 - [x] Info command (statistics, code metrics, and imports)
 - [x] Export command (convert to HTML, PDF, Markdown, Python, etc.)
 - [x] Lint command (code quality checks)
+- [x] Format command (auto-format with black)
 - [ ] Diff and merge tools
-- [ ] Quality tools (test, format)
+- [ ] Quality tools (test)
 - [ ] Productivity tools (split, templates)
 - [ ] Git integration
 - [ ] Cloud features
