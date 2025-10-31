@@ -26,18 +26,7 @@ console = Console()
 @click.option('--dry-run', is_flag=True,
               help='Show what would be cleaned without making changes')
 def clean(notebook, output, keep_outputs, keep_execution_count, keep_metadata, dry_run):
-    """Clean notebook by removing outputs and metadata
-    
-    This command prepares notebooks for version control by removing:
-    - Cell outputs (unless --keep-outputs is set)
-    - Execution counts (unless --keep-execution-count is set)  
-    - Unnecessary metadata (unless --keep-metadata is set)
-    
-    Example usage:
-        nbutils clean notebook.ipynb
-        nbutils clean notebook.ipynb --output clean.ipynb
-        nbutils clean notebook.ipynb --dry-run
-    """
+    """Clean notebook by removing outputs and metadata"""
     try:
         # Load notebook
         nb_path = Path(notebook)
@@ -151,4 +140,4 @@ def _show_dry_run_results(filename, before_stats, clean_stats):
     console.print(f" - Outputs to remove: {clean_stats['outputs_removed']}")
     console.print(f" - Execution counts to reset: {clean_stats['execution_counts_reset']}")
     if clean_stats['metadata_cleaned']:
-        console.print(f"  • Metadata: would be cleaned")
+        console.print(f" - Metadata: would be cleaned")
