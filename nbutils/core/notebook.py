@@ -2,7 +2,7 @@
 Core notebook handling functionality
 """
 from pathlib import Path
-from typing import Dict, Any
+from typing import Dict, Any, List
 import nbformat
 from nbformat.notebooknode import NotebookNode
 
@@ -54,3 +54,13 @@ class Notebook:
     def cells(self):
         """Get notebook cells"""
         return self.nb.cells
+    
+    def get_imports(self) -> List[str]:
+        """Get imports from the notebook"""
+        imports = []
+        for cell in self.nb.cells:
+            if cell.cell_type == 'code':
+                for line in cell.source.split('\n'):
+                    if line.startswith('import') or line.startswith('from'):
+                        imports.append(line)
+        return imports
