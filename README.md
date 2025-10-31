@@ -47,6 +47,7 @@ nbutils info notebook.ipynb
 This shows:
 - Total cells (code, markdown, raw)
 - File size
+- Code metrics (total lines, average lines per cell, largest/smallest cells, empty cells)
 - All import statements used in the notebook
 
 **Perfect for:** Understanding dependencies, checking notebook complexity, auditing libraries used.
@@ -81,22 +82,37 @@ nbutils clean notebook.ipynb --dry-run
 ```
 
 ### `nbutils info`
-Display statistics and import statements from a notebook.
+Display statistics, code metrics, and import statements from a notebook.
 
 **Usage:**
 ```bash
-nbutils info notebook.ipynb
+nbutils info notebook.ipynb [OPTIONS]
 ```
 
-**Shows:**
+**Options:**
+- `--code-metrics` - Show only code metrics
+- `--imports` - Show only imports
+
+**Shows (by default, shows all):**
 - Cell counts (total, code, markdown, raw)
 - File size
+- Code metrics:
+  - Total lines of code
+  - Average lines per cell
+  - Largest and smallest cells
+  - Empty code cells count
 - All import statements found in code cells
 
 **Examples:**
 ```bash
-# Get notebook info
+# Show all information
 nbutils info notebook.ipynb
+
+# Show only code metrics
+nbutils info notebook.ipynb --code-metrics
+
+# Show only imports
+nbutils info notebook.ipynb --imports
 ```
 
 ## Coming Soon
@@ -145,7 +161,7 @@ Jupyter notebooks are amazing for data science and research, but they have pain 
 ## Roadmap
 
 - [x] Basic clean command
-- [x] Info command (statistics and imports)
+- [x] Info command (statistics, code metrics, and imports)
 - [ ] Diff and merge tools
 - [ ] Quality tools (lint, test, format)
 - [ ] Productivity tools (split, templates)
