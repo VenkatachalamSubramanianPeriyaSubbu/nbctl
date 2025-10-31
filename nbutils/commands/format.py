@@ -12,11 +12,11 @@ console = Console()
 
 @click.command()
 @click.argument('notebook', type=click.Path(exists=True))
-@click.option('--output', '-o', type=click.Path(),
-              help='Output path (default: overwrites input)')
+@click.option('--output-dir', '-o', type=click.Path(),
+              help='Output directory (default: same as notebook)')
 @click.option('--line-length', default=88, type=int,
               help='Maximum line length (default: 88)')
-def format(notebook, output, line_length):
+def format(notebook, output_dir, line_length):
     """Auto-format code cells with black
     
     Formats Python code in notebook cells using black formatter.
@@ -24,7 +24,7 @@ def format(notebook, output, line_length):
     
     Examples:
         nbutils format notebook.ipynb
-        nbutils format notebook.ipynb --output formatted.ipynb
+        nbutils format notebook.ipynb --output-dir formatted/
     """
     try:
         # Import black here for better error message
@@ -38,9 +38,16 @@ def format(notebook, output, line_length):
         nb_path = Path(notebook)
         nb = Notebook(nb_path)
         
-        console.print(f"\n[bold blue]Formatting:[/bold blue] {nb_path.name}\n")
+        # Determine output path
+        if output_dir:
+            output_path = Path(output_dir)
+            output_path.mkdir(parents=True, exist_ok=True)
+            output_file = output_path / nb_path.name
+        else:
+            output_file = nb_path
         
-        # Format all code cells
+        console.print(f"\n[bold blue]Formatting:[/bold blue] {nb_path.name}\n")
+
         formatted_count = 0
         unchanged_count = 0
         error_count = 0
@@ -53,11 +60,9 @@ def format(notebook, output, line_length):
                 continue
             
             try:
-                # Format with black
                 mode = black.Mode(line_length=line_length)
                 formatted_code = black.format_str(cell.source, mode=mode)
                 
-                # Check if changed
                 if formatted_code != cell.source:
                     cell.source = formatted_code
                     formatted_count += 1
@@ -68,17 +73,14 @@ def format(notebook, output, line_length):
                 error_count += 1
                 console.print(f"[yellow]Warning:[/yellow] Could not format cell {idx}: {str(e)}")
         
-        # Display results
         if formatted_count > 0:
-            # Save the notebook
-            output_path = Path(output) if output else nb_path
-            nb.save(output_path)
+            nb.save(output_file)
             
             console.print(f"[green] Formatted {formatted_count} cell(s)[/green]")
             console.print(f"[dim]{unchanged_count} cell(s) unchanged[/dim]")
             if error_count > 0:
                 console.print(f"[yellow]{error_count} cell(s) had errors[/yellow]")
-            console.print(f"\n[bold green] Saved to:[/bold green] {output_path}\n")
+            console.print(f"\n[bold green] Saved to:[/bold green] {output_file}\n")
         else:
             console.print("[bold green] All cells already formatted![/bold green]\n")
         

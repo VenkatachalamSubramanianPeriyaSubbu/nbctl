@@ -229,7 +229,7 @@ nbutils format notebook.ipynb [OPTIONS]
 ```
 
 **Options:**
-- `--output, -o PATH` - Save to a different file (default: overwrites input)
+- `--output-dir, -o PATH` - Output directory (default: same as notebook)
 - `--line-length INT` - Maximum line length (default: 88)
 
 **Examples:**
@@ -237,8 +237,8 @@ nbutils format notebook.ipynb [OPTIONS]
 # Format in place
 nbutils format notebook.ipynb
 
-# Save to new file
-nbutils format notebook.ipynb --output formatted.ipynb
+# Save to different directory
+nbutils format notebook.ipynb --output-dir formatted/
 
 # Custom line length
 nbutils format notebook.ipynb --line-length 100

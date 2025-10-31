@@ -89,17 +89,20 @@ def test_format_notebook(unformatted_notebook):
     assert "x = 1 + 2" in first_cell  # Should have spaces
 
 
-def test_format_with_output(unformatted_notebook, tmp_path):
-    """Test formatting to a different file"""
-    output_file = tmp_path / "formatted.ipynb"
+def test_format_with_output_dir(unformatted_notebook, tmp_path):
+    """Test formatting to a different directory"""
+    output_dir = tmp_path / "formatted"
     
     runner = CliRunner()
     result = runner.invoke(format, [
         str(unformatted_notebook),
-        '--output', str(output_file)
+        '--output-dir', str(output_dir)
     ])
     
     assert result.exit_code == 0
+    
+    # Check output file exists in the directory
+    output_file = output_dir / "unformatted.ipynb"
     assert output_file.exists()
     
     # Original should be unchanged
