@@ -66,6 +66,20 @@ This exports to:
 
 **Perfect for:** Sharing notebooks, creating documentation, converting to production code.
 
+### Check code quality
+
+```bash
+nbutils lint notebook.ipynb
+```
+
+This checks for:
+- Unused imports
+- Cells that are too long
+- Empty code cells
+- Code quality issues
+
+**Perfect for:** Code review, maintaining quality standards, catching issues early.
+
 ## Commands
 
 ### `nbutils clean`
@@ -167,6 +181,32 @@ nbutils export notebook.ipynb -f html --no-input
 nbutils export notebook.ipynb -f slides
 ```
 
+### `nbutils lint`
+Check code quality and identify issues in notebooks.
+
+**Usage:**
+```bash
+nbutils lint notebook.ipynb [OPTIONS]
+```
+
+**Options:**
+- `--max-cell-length INT` - Maximum lines per cell (default: 100)
+
+**Checks Performed:**
+- Unused imports - Detects imported modules that are never used
+- Long cells - Finds cells exceeding the maximum line count
+- Empty cells - Identifies code cells with no content
+
+**Examples:**
+```bash
+# Basic linting
+nbutils lint notebook.ipynb
+
+# Custom max cell length
+nbutils lint notebook.ipynb --max-cell-length 150
+
+```
+
 ## Coming Soon
 
 - **`nbutils diff`** - Smart notebook comparison
@@ -214,8 +254,9 @@ Jupyter notebooks are amazing for data science and research, but they have pain 
 - [x] Basic clean command
 - [x] Info command (statistics, code metrics, and imports)
 - [x] Export command (convert to HTML, PDF, Markdown, Python, etc.)
+- [x] Lint command (code quality checks)
 - [ ] Diff and merge tools
-- [ ] Quality tools (lint, test, format)
+- [ ] Quality tools (test, format)
 - [ ] Productivity tools (split, templates)
 - [ ] Git integration
 - [ ] Cloud features
