@@ -38,17 +38,71 @@ nbutils clean notebook.ipynb --keep-outputs
 nbutils clean notebook.ipynb --dry-run
 ```
 
-## Features
+### Get notebook information
 
-### Currently Available
+```bash
+nbutils info notebook.ipynb
+```
 
-- **`nbutils clean`** - Remove outputs and metadata for version control
+This shows:
+- ✓ Total cells (code, markdown, raw)
+- ✓ File size
+- ✓ All import statements used in the notebook
 
-### Coming Soon
+**Perfect for:** Understanding dependencies, checking notebook complexity, auditing libraries used.
+
+## Commands
+
+### `nbutils clean`
+Remove outputs and metadata from notebooks to prepare them for version control.
+
+**Usage:**
+```bash
+nbutils clean notebook.ipynb [OPTIONS]
+```
+
+**Options:**
+- `--output, -o PATH` - Save to a different file (default: overwrites input)
+- `--keep-outputs` - Keep cell outputs
+- `--keep-execution-count` - Keep execution counts
+- `--keep-metadata` - Keep all metadata
+- `--dry-run` - Show what would be cleaned without making changes
+
+**Examples:**
+```bash
+# Clean in place
+nbutils clean notebook.ipynb
+
+# Save to new file
+nbutils clean notebook.ipynb -o clean.ipynb
+
+# Preview changes
+nbutils clean notebook.ipynb --dry-run
+```
+
+### `nbutils info`
+Display statistics and import statements from a notebook.
+
+**Usage:**
+```bash
+nbutils info notebook.ipynb
+```
+
+**Shows:**
+- Cell counts (total, code, markdown, raw)
+- File size
+- All import statements found in code cells
+
+**Examples:**
+```bash
+# Get notebook info
+nbutils info notebook.ipynb
+```
+
+## Coming Soon
 
 - **`nbutils diff`** - Smart notebook comparison
 - **`nbutils merge`** - Intelligent 3-way merge
-- **`nbutils info`** - Notebook statistics
 - **`nbutils export`** - Multi-format export
 - And many more!
 
@@ -81,16 +135,17 @@ black nbutils/ tests/
 
 Jupyter notebooks are amazing for data science and research, but they have pain points:
 
-- ❌ Don't work well with git (massive diffs, merge conflicts)
-- ❌ Hard to collaborate on
-- ❌ Quality assurance is manual
-- ❌ Converting to production code is painful
+- Don't work well with git (massive diffs, merge conflicts)
+- Hard to collaborate on
+- Quality assurance is manual
+- Converting to production code is painful
 
 **nbutils solves all of these problems in one unified CLI.**
 
 ## Roadmap
 
 - [x] Basic clean command
+- [x] Info command (statistics and imports)
 - [ ] Diff and merge tools
 - [ ] Quality tools (lint, test, format)
 - [ ] Productivity tools (split, templates)
@@ -107,7 +162,7 @@ MIT License - see LICENSE file for details.
 
 ## Author
 
-Built with ❤️ for the Jupyter community
+Built with love for the Jupyter community
 
 ---
 
