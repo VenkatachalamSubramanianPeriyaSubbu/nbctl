@@ -140,7 +140,7 @@ def _show_results(filename, before_stats, clean_stats, before_size, after_size, 
     console.print(table)
     
     # Success message
-    success_msg = f"✓ Cleaned notebook saved to: {output_path}"
+    success_msg = f"Cleaned notebook saved to: {output_path}"
     console.print(Panel(success_msg, style="bold green", expand=False))
 
 
