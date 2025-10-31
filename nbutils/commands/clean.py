@@ -147,8 +147,8 @@ def _show_results(filename, before_stats, clean_stats, before_size, after_size, 
 def _show_dry_run_results(filename, before_stats, clean_stats):
     """Display dry run results"""
     console.print(f"\n[bold]Would clean:[/bold] {filename}")
-    console.print(f"  • Cells to clean: {clean_stats['cells_cleaned']}")
-    console.print(f"  • Outputs to remove: {clean_stats['outputs_removed']}")
-    console.print(f"  • Execution counts to reset: {clean_stats['execution_counts_reset']}")
+    console.print(f" - Cells to clean: {clean_stats['cells_cleaned']}")
+    console.print(f" - Outputs to remove: {clean_stats['outputs_removed']}")
+    console.print(f" - Execution counts to reset: {clean_stats['execution_counts_reset']}")
     if clean_stats['metadata_cleaned']:
         console.print(f"  • Metadata: would be cleaned")
