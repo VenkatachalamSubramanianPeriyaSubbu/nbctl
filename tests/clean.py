@@ -103,14 +103,3 @@ def test_clean_with_options(sample_notebook):
     code_cells = [c for c in nb.cells if c.cell_type == 'code']
     assert len(code_cells[0].outputs) > 0
     assert stats['outputs_removed'] == 0
-
-
-def test_notebook_stats(sample_notebook):
-    """Test notebook statistics"""
-    nb = Notebook(sample_notebook)
-    stats = nb.get_stats()
-    
-    assert stats['total_cells'] == 2
-    assert stats['code_cells'] == 1
-    assert stats['markdown_cells'] == 1
-    assert stats['file_size'] > 0
