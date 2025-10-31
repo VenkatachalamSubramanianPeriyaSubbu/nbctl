@@ -17,10 +17,10 @@ def cli():
 
 # Import commands
 from nbutils.commands.clean import clean
-from nbutils.commands.stat import stat
+from nbutils.commands.info import info
 
 cli.add_command(clean)
-cli.add_command(stat)
+cli.add_command(info)
 
 
 if __name__ == "__main__":
