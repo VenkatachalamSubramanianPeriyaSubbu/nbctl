@@ -45,9 +45,9 @@ def lint(notebook, max_cell_length):
         # Display results
         if issues:
             _show_issues(issues)
-            console.print(f"\n[yellow]⚠[/yellow] Found {len(issues)} issue(s)\n")
+            console.print(f"\n[yellow] [/yellow] Found {len(issues)} issue(s)\n")
         else:
-            console.print("[bold green]✓ All checks passed![/bold green]\n")
+            console.print("[bold green] All checks passed![/bold green]\n")
         
     except click.Abort:
         raise
