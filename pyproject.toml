@@ -25,6 +25,7 @@ dependencies = [
     "click>=8.0.0",
     "rich>=13.0.0",
     "nbconvert>=7.0.0",
+    "nbclient>=0.7.0",
 ]
 
 [project.optional-dependencies]
