@@ -1,11 +1,10 @@
 """
-Tests for the combine and resolve commands
+Tests for the resolve command (3-way merge with conflict detection)
 """
 import pytest
 import nbformat
 from pathlib import Path
 from click.testing import CliRunner
-from nbutils.commands.combine import combine
 from nbutils.commands.resolve import resolve
 from nbutils.core.merger import NotebookMerger, MergeConflict
 
@@ -108,7 +107,7 @@ def simple_base(tmp_path):
     return nb_path
 
 
-# Core merger tests
+# Core merger tests (using nbdime backend)
 
 def test_merger_auto_merge_no_conflicts(base_notebook, ours_notebook, theirs_notebook):
     """Test automatic merge with no conflicts"""
@@ -234,8 +233,8 @@ def test_merge_conflict_class():
 
 # CLI tests
 
-def test_merge_command_basic(runner, base_notebook, ours_notebook, theirs_notebook, tmp_path):
-    """Test basic merge command"""
+def test_resolve_command_basic(runner, base_notebook, ours_notebook, theirs_notebook, tmp_path):
+    """Test basic resolve command"""
     output = tmp_path / "merged.ipynb"
     
     result = runner.invoke(resolve, [
@@ -249,8 +248,8 @@ def test_merge_command_basic(runner, base_notebook, ours_notebook, theirs_notebo
     assert output.exists()
 
 
-def test_merge_strategy_ours_cli(runner, base_notebook, ours_notebook, theirs_notebook, tmp_path):
-    """Test merge with ours strategy via CLI"""
+def test_resolve_strategy_ours_cli(runner, base_notebook, ours_notebook, theirs_notebook, tmp_path):
+    """Test resolve with ours strategy via CLI"""
     output = tmp_path / "merged.ipynb"
     
     result = runner.invoke(resolve, [
@@ -265,8 +264,8 @@ def test_merge_strategy_ours_cli(runner, base_notebook, ours_notebook, theirs_no
     assert output.exists()
 
 
-def test_merge_strategy_theirs_cli(runner, base_notebook, ours_notebook, theirs_notebook, tmp_path):
-    """Test merge with theirs strategy via CLI"""
+def test_resolve_strategy_theirs_cli(runner, base_notebook, ours_notebook, theirs_notebook, tmp_path):
+    """Test resolve with theirs strategy via CLI"""
     output = tmp_path / "merged.ipynb"
     
     result = runner.invoke(resolve, [
@@ -281,8 +280,8 @@ def test_merge_strategy_theirs_cli(runner, base_notebook, ours_notebook, theirs_
     assert output.exists()
 
 
-def test_merge_strategy_cell_append_cli(runner, base_notebook, ours_notebook, theirs_notebook, tmp_path):
-    """Test merge with cell-append strategy via CLI"""
+def test_resolve_strategy_cell_append_cli(runner, base_notebook, ours_notebook, theirs_notebook, tmp_path):
+    """Test resolve with cell-append strategy via CLI"""
     output = tmp_path / "merged.ipynb"
     
     result = runner.invoke(resolve, [
@@ -297,24 +296,21 @@ def test_merge_strategy_cell_append_cli(runner, base_notebook, ours_notebook, th
     assert output.exists()
 
 
-def test_merge_check_conflicts(runner, simple_base, conflicting_ours, conflicting_theirs, tmp_path):
-    """Test merge conflict checking"""
-    output = tmp_path / "merged.ipynb"
-    
+def test_resolve_check_conflicts(runner, simple_base, conflicting_ours, conflicting_theirs):
+    """Test resolve conflict checking"""
     result = runner.invoke(resolve, [
         str(simple_base),
         str(conflicting_ours),
         str(conflicting_theirs),
-        '--output', str(output),
         '--check-conflicts',
     ])
     
     # Should output conflict information
-    assert "conflict" in result.output.lower() or result.exit_code == 0
+    assert "conflict" in result.output.lower()
 
 
-def test_merge_with_report(runner, base_notebook, ours_notebook, theirs_notebook, tmp_path):
-    """Test merge with detailed report"""
+def test_resolve_with_report(runner, base_notebook, ours_notebook, theirs_notebook, tmp_path):
+    """Test resolve with detailed report"""
     output = tmp_path / "merged.ipynb"
     
     result = runner.invoke(resolve, [
@@ -329,27 +325,21 @@ def test_merge_with_report(runner, base_notebook, ours_notebook, theirs_notebook
     assert "Report" in result.output or "Merge" in result.output
 
 
-# Backup test removed - backup functionality no longer exists
-# def test_merge_creates_backup(runner, base_notebook, ours_notebook, theirs_notebook, tmp_path):
-
-
-# Backup test removed - backup functionality no longer exists
-# def test_merge_no_backup(runner, base_notebook, ours_notebook, theirs_notebook, tmp_path):
-
-
-def test_merge_missing_output_flag(runner, base_notebook, ours_notebook, theirs_notebook):
-    """Test merge without required output flag"""
+def test_resolve_missing_output_flag(runner, base_notebook, ours_notebook, theirs_notebook):
+    """Test resolve without required output flag (should work with --check-conflicts)"""
     result = runner.invoke(resolve, [
         str(base_notebook),
         str(ours_notebook),
-        str(theirs_notebook)
+        str(theirs_notebook),
+        '--check-conflicts'
     ])
     
-    assert result.exit_code != 0
+    # Should succeed with --check-conflicts
+    assert result.exit_code == 0
 
 
-def test_merge_nonexistent_file(runner, base_notebook, ours_notebook, tmp_path):
-    """Test merge with nonexistent file"""
+def test_resolve_nonexistent_file(runner, base_notebook, ours_notebook, tmp_path):
+    """Test resolve with nonexistent file"""
     output = tmp_path / "merged.ipynb"
     
     result = runner.invoke(resolve, [
@@ -362,8 +352,8 @@ def test_merge_nonexistent_file(runner, base_notebook, ours_notebook, tmp_path):
     assert result.exit_code != 0
 
 
-def test_merge_identical_notebooks(runner, tmp_path):
-    """Test merging identical notebooks"""
+def test_resolve_identical_notebooks(runner, tmp_path):
+    """Test resolving identical notebooks"""
     nb = nbformat.v4.new_notebook()
     nb.cells.append(nbformat.v4.new_code_cell("x = 1"))
     
@@ -383,4 +373,19 @@ def test_merge_identical_notebooks(runner, tmp_path):
     
     assert result.exit_code == 0
     assert output.exists()
+
+
+def test_resolve_requires_three_notebooks(runner, base_notebook, ours_notebook, tmp_path):
+    """Test that resolve requires all three notebooks"""
+    output = tmp_path / "merged.ipynb"
+    
+    # Try with only two notebooks
+    result = runner.invoke(resolve, [
+        str(base_notebook),
+        str(ours_notebook),
+        '--output', str(output),
+    ])
+    
+    assert result.exit_code != 0
+
 
