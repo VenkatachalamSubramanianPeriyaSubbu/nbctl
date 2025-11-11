@@ -23,7 +23,7 @@ from nbutils.commands.lint import lint
 from nbutils.commands.format import format
 from nbutils.commands.git_setup import git_setup
 from nbutils.commands.diff import diff
-from nbutils.commands.merge import merge
+from nbutils.commands.combine import combine
 from nbutils.commands.resolve import resolve
 
 cli.add_command(clean)
@@ -33,7 +33,7 @@ cli.add_command(lint)
 cli.add_command(format)
 cli.add_command(git_setup)
 cli.add_command(diff)
-cli.add_command(merge)
+cli.add_command(combine)
 cli.add_command(resolve)
 
 if __name__ == "__main__":
