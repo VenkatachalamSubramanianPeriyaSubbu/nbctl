@@ -22,9 +22,9 @@ def notebook_with_secrets(tmp_path):
     nb.cells.append(nbformat.v4.new_code_cell('''
 import requests
 
-# Hardcoded API key
-api_key = "sk_live_1234567890abcdef"
-password = "mysecretpassword"
+# Hardcoded API key (DUMMY FOR TESTING)
+api_key = "FAKE_KEY_FOR_TESTING_ONLY_1234567890"
+password = "dummy_password_for_tests"
 '''))
     
     nb_path = tmp_path / "secrets.ipynb"
@@ -192,7 +192,7 @@ def notebook_with_mixed_issues(tmp_path):
     
     # Cell with secrets
     nb.cells.append(nbformat.v4.new_code_cell('''
-api_key = "sk_live_abcdef123456"
+api_key = "DUMMY_API_KEY_FOR_TEST_ONLY_123456"
 '''))
     
     # Cell with pickle
@@ -347,7 +347,7 @@ def test_security_multiple_issues_same_cell(runner, tmp_path):
     
     nb.cells.append(nbformat.v4.new_code_cell('''
 # Multiple issues in one cell
-api_key = "sk_test_123456789"
+api_key = "FAKE_TEST_KEY_123456789"
 import pickle
 data = pickle.load(open('data.pkl', 'rb'))
 os.system('rm -rf /')
@@ -416,7 +416,7 @@ def test_security_code_snippets_truncated(runner, tmp_path):
     nb = nbformat.v4.new_notebook()
     
     nb.cells.append(nbformat.v4.new_code_cell('''
-api_key = "sk_live_very_long_key_that_should_be_truncated_in_the_output_because_its_too_long_1234567890"
+api_key = "DUMMY_VERY_LONG_KEY_FOR_TESTING_TRUNCATION_BEHAVIOR_IN_OUTPUT_FORMAT_1234567890"
 '''))
     
     nb_path = tmp_path / "long.ipynb"
