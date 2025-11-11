@@ -19,10 +19,8 @@ console = Console()
               help='Output file for merged notebook')
 @click.option('--strategy', type=click.Choice(['auto', 'ours', 'theirs', 'cell-append']),
               default='auto', help='Merge strategy')
-@click.option('--backup/--no-backup', default=True,
-              help='Create backup of output file if it exists')
 @click.option('--report', is_flag=True, help='Show detailed merge report')
-def merge(notebook1, notebook2, output, strategy, backup, report):
+def merge(notebook1, notebook2, output, strategy, report):
     """Combine two notebooks into one
     
     Simple 2-way merge that combines two notebooks.
@@ -52,15 +50,6 @@ def merge(notebook1, notebook2, output, strategy, backup, report):
         base_path = nb1_path
         ours_path = nb1_path
         theirs_path = nb2_path
-        
-        # Create backup if output exists
-        if backup and output_path and output_path.exists():
-            import datetime
-            timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-            backup_path = output_path.with_suffix(f".backup.{timestamp}.ipynb")
-            import shutil
-            shutil.copy2(output_path, backup_path)
-            console.print(f"[dim]Created backup: {backup_path}[/dim]")
         
         # Create merger
         merger = NotebookMerger(base_path, ours_path, theirs_path)

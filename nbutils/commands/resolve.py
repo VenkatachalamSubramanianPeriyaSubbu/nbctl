@@ -22,10 +22,8 @@ console = Console()
               default='auto', help='Merge strategy')
 @click.option('--check-conflicts', is_flag=True, 
               help='Only check for conflicts, do not create merged file')
-@click.option('--backup/--no-backup', default=True,
-              help='Create backup of output file if it exists')
 @click.option('--report', is_flag=True, help='Show detailed merge report')
-def resolve(base, ours, theirs, output, strategy, check_conflicts, backup, report):
+def resolve(base, ours, theirs, output, strategy, check_conflicts, report):
     """Resolve conflicts using 3-way merge
     
     Performs intelligent 3-way merge with conflict detection.
@@ -68,15 +66,6 @@ def resolve(base, ours, theirs, output, strategy, check_conflicts, backup, repor
         
         if not check_conflicts:
             console.print("[dim]Performing 3-way merge with conflict detection...[/dim]")
-        
-        # Create backup if output exists
-        if backup and output_path and output_path.exists():
-            import datetime
-            timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-            backup_path = output_path.with_suffix(f".backup.{timestamp}.ipynb")
-            import shutil
-            shutil.copy2(output_path, backup_path)
-            console.print(f"[dim]Created backup: {backup_path}[/dim]")
         
         # Create merger
         merger = NotebookMerger(base_path, ours_path, theirs_path)
