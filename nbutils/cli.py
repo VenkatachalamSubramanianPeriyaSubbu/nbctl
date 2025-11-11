@@ -25,6 +25,7 @@ from nbutils.commands.git_setup import git_setup
 from nbutils.commands.diff import diff
 from nbutils.commands.combine import combine
 from nbutils.commands.resolve import resolve
+from nbutils.commands.security import security
 
 cli.add_command(clean)
 cli.add_command(info)
@@ -35,6 +36,7 @@ cli.add_command(git_setup)
 cli.add_command(diff)
 cli.add_command(combine)
 cli.add_command(resolve)
+cli.add_command(security)
 
 if __name__ == "__main__":
     cli()
