@@ -15,6 +15,7 @@ A comprehensive, production-ready CLI toolkit for Jupyter notebooks that solves 
 - **Export** - Convert to HTML, PDF, Markdown, Python, etc.
 - **Extract** - Extract outputs (images, graphs, data) from notebooks
 - **ML-Split** - Split ML notebooks into production Python pipelines
+- **Run** - Execute notebooks from command line
 - **Lint** - Check code quality and best practices
 - **Format** - Auto-format with black
 - **Git Setup** - Configure git for notebooks
@@ -332,6 +333,73 @@ context = data_preprocessing.run(context) # Gets 'df' from step 1
 context = feature_engineering.run(context) # Gets 'df' from step 2
 # ... and so on
 ```
+
+---
+
+### `nbutils run`
+
+Execute Jupyter notebooks from the command line.
+
+```bash
+nbutils run notebook1.ipynb notebook2.ipynb [OPTIONS]
+```
+
+**Features:**
+- Execute notebooks in specified or alphabetical order
+- No timeout by default (perfect for long ML training)
+- Save executed notebooks with all outputs
+- Detailed execution summary
+- Error handling and reporting
+
+**Options:**
+- `--order` - Run notebooks in alphabetical order
+- `--timeout, -t INT` - Timeout per cell in seconds (default: None)
+- `--allow-errors` - Continue execution even if cells fail
+- `--save-output, -o PATH` - Directory to save executed notebooks
+- `--kernel, -k TEXT` - Kernel name to use (default: python3)
+
+**Examples:**
+```bash
+# Run single notebook
+nbutils run analysis.ipynb
+
+# Run multiple notebooks in specified order
+nbutils run 01_load.ipynb 02_process.ipynb 03_analyze.ipynb
+
+# Run all notebooks alphabetically
+nbutils run *.ipynb --order
+
+# Save executed notebooks to directory
+nbutils run *.ipynb --save-output executed/
+
+# Continue on errors
+nbutils run notebook.ipynb --allow-errors
+
+# Set timeout for safety (e.g., prevent infinite loops)
+nbutils run notebook.ipynb --timeout 600
+```
+
+**Execution Summary:**
+```
+Execution Summary
+
+┏━━━━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━┓
+┃ Notebook        ┃ Status  ┃ Time  ┃
+┡━━━━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━┩
+│ 01_load.ipynb   │ Success │ 2.3s  │
+│ 02_process.ipynb│ Success │ 5.1s  │
+│ 03_analyze.ipynb│ Success │ 3.7s  │
+└─────────────────┴─────────┴───────┘
+
+Total: 3 notebooks | Successful: 3 | Total time: 11.1s
+```
+
+**Use Cases:**
+- Execute ML training notebooks overnight
+- Run data pipelines in sequence
+- Automate report generation
+- Batch process multiple notebooks
+- CI/CD notebook testing
 
 ---
 
