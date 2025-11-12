@@ -1,0 +1,18 @@
+/* Add custom styling for external links in navigation */
+.md-nav__link[target="_blank"] {
+    color: var(--md-typeset-a-color);
+}
+
+.md-nav__link[target="_blank"]:hover {
+    color: var(--md-accent-fg-color);
+}
+
+/* Ensure external link icon is visible */
+.md-nav__link svg {
+    opacity: 0.7;
+}
+
+.md-nav__link:hover svg {
+    opacity: 1;
+}
+
