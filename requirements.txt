@@ -12,5 +12,5 @@ pytest-cov>=4.0.0
 black>=23.0.0
 mypy>=1.0.0
 
-# Optional but recommended
+# Others
 ipython>=8.0.0
