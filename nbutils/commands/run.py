@@ -55,24 +55,20 @@ def run(notebooks, order, timeout, allow_errors, save_output, kernel):
         # Set timeout only if needed (e.g. prevent infinite loops)
         nbutils run notebook.ipynb --timeout 600
     """
-    # Convert to Path objects
     notebook_paths = [Path(nb) for nb in notebooks]
     
-    # Sort alphabetically if requested
     if order:
         notebook_paths = sorted(notebook_paths, key=lambda p: p.name.lower())
         console.print(f"[cyan]Running {len(notebook_paths)} notebooks in alphabetical order[/cyan]\n")
     else:
         console.print(f"[cyan]Running {len(notebook_paths)} notebooks in specified order[/cyan]\n")
     
-    # Setup output directory if specified
     output_dir = None
     if save_output:
         output_dir = Path(save_output)
         output_dir.mkdir(parents=True, exist_ok=True)
         console.print(f"[blue]Output directory:[/blue] {output_dir.absolute()}\n")
     
-    # Execute notebooks
     results = []
     total_start_time = time.time()
     
@@ -88,14 +84,12 @@ def run(notebooks, order, timeout, allow_errors, save_output, kernel):
         
         results.append(result)
         
-        # Save executed notebook if output directory specified
         if output_dir and result['success']:
             output_path = output_dir / nb_path.name
             with open(output_path, 'w', encoding='utf-8') as f:
                 nbformat.write(result['nb'], f)
             console.print(f"  [green]Saved to:[/green] {output_path}")
         elif not output_dir and result['success']:
-            # Overwrite original
             with open(nb_path, 'w', encoding='utf-8') as f:
                 nbformat.write(result['nb'], f)
             console.print(f"  [green]Updated:[/green] {nb_path}")
@@ -104,10 +98,8 @@ def run(notebooks, order, timeout, allow_errors, save_output, kernel):
     
     total_time = time.time() - total_start_time
     
-    # Display summary
     _display_summary(results, notebook_paths, total_time)
     
-    # Exit with error code if any notebook failed
     if not all(r['success'] for r in results):
         raise SystemExit(1)
 
@@ -117,18 +109,15 @@ def _execute_notebook(nb_path, timeout, allow_errors, kernel_name):
     start_time = time.time()
     
     try:
-        # Load notebook
         with open(nb_path, 'r', encoding='utf-8') as f:
             nb = nbformat.read(f, as_version=4)
         
-        # Create executor
         ep = ExecutePreprocessor(
             timeout=timeout,
             kernel_name=kernel_name,
             allow_errors=allow_errors
         )
         
-        # Execute notebook
         with Progress(
             SpinnerColumn(),
             TextColumn("[progress.description]{task.description}"),
@@ -142,7 +131,6 @@ def _execute_notebook(nb_path, timeout, allow_errors, kernel_name):
                 total=100
             )
             
-            # Execute the entire notebook
             executed_nb, resources = ep.preprocess(
                 nb,
                 {'metadata': {'path': str(nb_path.parent)}}
@@ -151,8 +139,6 @@ def _execute_notebook(nb_path, timeout, allow_errors, kernel_name):
             progress.update(task, completed=100)
             
             cell_outputs = []
-            
-            # Collect cell execution status
             for idx, cell in enumerate(executed_nb.cells):
                 if cell.cell_type == 'code':
                     cell_outputs.append({'cell': idx, 'success': True})
@@ -172,7 +158,7 @@ def _execute_notebook(nb_path, timeout, allow_errors, kernel_name):
     except CellExecutionError as e:
         execution_time = time.time() - start_time
         console.print(f"  [red]Failed:[/red] Cell execution error")
-        console.print(f"    [dim]{str(e)[:200]}...[/dim]")  # Show first 200 chars of error
+        console.print(f"    [dim]{str(e)[:200]}...[/dim]")
         
         return {
             'path': nb_path,
