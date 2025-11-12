@@ -20,6 +20,7 @@ from nbutils.commands.clean import clean
 from nbutils.commands.info import info
 from nbutils.commands.export import export
 from nbutils.commands.extract import extract
+from nbutils.commands.ml_split import ml_split
 from nbutils.commands.lint import lint
 from nbutils.commands.format import format
 from nbutils.commands.git_setup import git_setup
@@ -32,6 +33,7 @@ cli.add_command(clean)
 cli.add_command(info)
 cli.add_command(export)
 cli.add_command(extract)
+cli.add_command(ml_split)
 cli.add_command(lint)
 cli.add_command(format)
 cli.add_command(git_setup)
