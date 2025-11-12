@@ -74,8 +74,8 @@ ML_SECTION_PATTERNS = {
 @click.option('--output', '-o', type=click.Path(),
               default='ml_pipeline',
               help='Output directory (default: ml_pipeline/)')
-@click.option('--create-main', is_flag=True, default=True,
-              help='Create main.py to run the pipeline (default: True)')
+@click.option('--create-main/--no-create-main', default=True,
+              help='Create main.py to run the pipeline')
 def ml_split(notebook, output, create_main):
     """Split ML notebook into structured Python pipeline files
     
