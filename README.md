@@ -5,7 +5,7 @@
 A comprehensive, production-ready CLI toolkit for Jupyter notebooks that solves all major pain points: version control, collaboration, code quality, security, and workflow automation.
 
 [![Tests](https://img.shields.io/badge/tests-131%20passing-brightgreen)]()
-[![Python](https://img.shields.io/badge/python-3.10%2B-blue)]()
+[![Python](https://img.shields.io/badge/python-3.8%2B-blue)]()
 [![License](https://img.shields.io/badge/license-MIT-blue)]()
 
 ## Features
