@@ -1,0 +1,128 @@
+site_name: nbutils
+site_description: The Swiss Army Knife for Jupyter Notebooks - A comprehensive CLI toolkit for notebook management
+site_url: https://yourusername.github.io/nbutils
+
+repo_name: nbutils
+repo_url: https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbutils
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  
+  font:
+    text: Roboto
+    code: Roboto Mono
+  
+  icon:
+    repo: fontawesome/brands/github
+  
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - navigation.indexes
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.code.annotate
+    - toc.follow
+  
+  custom_dir: docs/overrides
+
+plugins:
+  - search
+  - tags
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+      linenums: true
+      linenums_style: pymdownx-inline
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.details
+  - admonition
+  - attr_list
+  - md_in_html
+  - def_list
+  - toc:
+      permalink: true
+      toc_depth: 3
+
+extra:
+  version:
+    provider: mike
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbutils
+    - icon: fontawesome/brands/python
+      link: https://pypi.org/project/nbutils
+  
+extra_css:
+  - stylesheets/extra.css
+
+# Navigation structure
+nav:
+  - Getting Started:
+    - Welcome: getting-started/welcome.md
+    - Help: getting-started/help.md
+    - Installation: getting-started/installation.md
+    - Version Policy: getting-started/version-policy.md
+  
+  - CLI Documentation:
+    - clean: cli/clean.md
+    - info: cli/info.md
+    - export: cli/export.md
+    - extract: cli/extract.md
+    - ml-split: cli/ml-split.md
+    - run: cli/run.md
+    - lint: cli/lint.md
+    - format: cli/format.md
+    - git-setup: cli/git-setup.md
+    - diff: cli/diff.md
+    - combine: cli/combine.md
+    - resolve: cli/resolve.md
+    - security: cli/security.md
+  
+  - Examples:
+    - clean: examples/clean.md
+    - info: examples/info.md
+    - export: examples/export.md
+    - extract: examples/extract.md
+    - ml-split: examples/ml-split.md
+    - run: examples/run.md
+    - lint: examples/lint.md
+    - format: examples/format.md
+    - git-setup: examples/git-setup.md
+    - diff: examples/diff.md
+    - combine: examples/combine.md
+    - resolve: examples/resolve.md
+    - security: examples/security.md
+  
+  - About the Author: about.md
+
+copyright: Copyright &copy; 2025 Venkatachalam Subramanian Periya Subbu
