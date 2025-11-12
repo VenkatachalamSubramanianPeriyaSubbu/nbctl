@@ -4,7 +4,6 @@
 
 A comprehensive, production-ready CLI toolkit for Jupyter notebooks that solves all major pain points: version control, collaboration, code quality, security, and workflow automation.
 
-[![Tests](https://img.shields.io/badge/tests-131%20passing-brightgreen)]()
 [![Python](https://img.shields.io/badge/python-3.8%2B-blue)]()
 [![License](https://img.shields.io/badge/license-MIT-blue)]()
 
@@ -737,26 +736,6 @@ mypy nbutils/
 
 ---
 
-## Test Coverage
-
-```
-131 tests passing
- Clean command (5 tests)
- Combine command (10 tests)
- Diff command (18 tests)
- Export command (7 tests)
- Extract command (12 tests)
- Format command (6 tests)
- Git setup command (14 tests)
- Info command (6 tests)
- Lint command (6 tests)
- ML-Split command (8 tests)
- Resolve command (20 tests)
- Security command (19 tests)
-```
-
----
-
 ## Why nbutils?
 
 Jupyter notebooks are powerful but have challenges:
@@ -823,7 +802,6 @@ Built with for the Jupyter community by [Venkatachalam Subramanian Periya Subbu]
 
 **Version:** 0.1.0
 **Status:** Production-ready with comprehensive test coverage
-**Tests:** 131 passing
 **New:** Extract outputs & ML pipeline splitting
 
 ---
