@@ -6,6 +6,13 @@ A comprehensive, production-ready CLI toolkit for Jupyter notebooks that solves 
 
 [![Python](https://img.shields.io/badge/python-3.8%2B-blue)]()
 [![License](https://img.shields.io/badge/license-MIT-blue)]()
+[![PyPI](https://img.shields.io/pypi/v/nbctl)](https://pypi.org/project/nbctl/)
+
+## Links
+
+- **PyPI:** https://pypi.org/project/nbctl/
+- **Documentation:** https://venkatachalamsubramanianperiyasubbu.github.io/nbutils/
+- **GitHub:** https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbctl
 
 ## Features
 
