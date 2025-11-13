@@ -807,7 +807,7 @@ Built with for the Jupyter community by [Venkatachalam Subramanian Periya Subbu]
 
 ## Status
 
-**Version:** 0.1.0
+**Version:** 0.1.2
 **Status:** Production-ready with comprehensive test coverage
 **New:** Extract outputs & ML pipeline splitting
 
