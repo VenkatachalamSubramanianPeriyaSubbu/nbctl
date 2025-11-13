@@ -11,7 +11,7 @@ A comprehensive, production-ready CLI toolkit for Jupyter notebooks that solves 
 ## Links
 
 - **PyPI:** https://pypi.org/project/nbctl/
-- **Documentation:** https://venkatachalamsubramanianperiyasubbu.github.io/nbutils/
+- **Documentation:** https://venkatachalamsubramanianperiyasubbu.github.io/nbctl/
 - **GitHub:** https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbctl
 
 ## Features
