@@ -1,4 +1,4 @@
-# nbutils
+# nbctl
 
 **The Swiss Army Knife for Jupyter Notebooks**
 
@@ -26,13 +26,13 @@ A comprehensive, production-ready CLI toolkit for Jupyter notebooks that solves 
 ## Installation
 
 ```bash
-pip install -e .
+pip install nbctl
 ```
 
 Or install from source:
 
 ```bash
-git clone https://github.com/yourusername/nbutils.git
+git clone https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbutils.git
 cd nbutils
 pip install -e .
 ```
@@ -42,7 +42,7 @@ pip install -e .
 ### Clean notebooks for git
 
 ```bash
-nbutils clean notebook.ipynb
+nbctl clean notebook.ipynb
 ```
 
 **Removes:** Outputs, execution counts, metadata
@@ -51,7 +51,7 @@ nbutils clean notebook.ipynb
 ### Get notebook insights
 
 ```bash
-nbutils info notebook.ipynb
+nbctl info notebook.ipynb
 ```
 
 **Shows:** Statistics, code metrics, dependencies, imports
@@ -59,7 +59,7 @@ nbutils info notebook.ipynb
 ### Scan for security issues
 
 ```bash
-nbutils security notebook.ipynb
+nbctl security notebook.ipynb
 ```
 
 **Detects:** Hardcoded secrets, SQL injection, unsafe pickle, and more
@@ -67,7 +67,7 @@ nbutils security notebook.ipynb
 ### Extract outputs from notebooks
 
 ```bash
-nbutils extract notebook.ipynb
+nbctl extract notebook.ipynb
 ```
 
 **Extracts:** Images (PNG, JPEG, SVG), data (JSON, CSV, DataFrames)
@@ -76,7 +76,7 @@ nbutils extract notebook.ipynb
 ### Split ML notebook into Python pipeline
 
 ```bash
-nbutils ml-split ml_notebook.ipynb
+nbctl ml-split ml_notebook.ipynb
 cd ml_pipeline && python main.py
 ```
 
@@ -85,7 +85,7 @@ cd ml_pipeline && python main.py
 ### Compare notebooks
 
 ```bash
-nbutils diff notebook1.ipynb notebook2.ipynb
+nbctl diff notebook1.ipynb notebook2.ipynb
 ```
 
 **Compares:** Only source code (ignores outputs/metadata)
@@ -93,7 +93,7 @@ nbutils diff notebook1.ipynb notebook2.ipynb
 ### Resolve merge conflicts
 
 ```bash
-nbutils resolve base.ipynb ours.ipynb theirs.ipynb -o merged.ipynb
+nbctl resolve base.ipynb ours.ipynb theirs.ipynb -o merged.ipynb
 ```
 
 **Uses:** nbdime's intelligent 3-way merge with conflict detection
