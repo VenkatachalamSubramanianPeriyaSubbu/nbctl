@@ -4,7 +4,7 @@ Understanding nbctl versioning, compatibility, and update policies.
 
 ## Current Version
 
-**nbctl 0.1.2** - Initial release
+**nbctl 0.1.3** - Initial release
 
 - **Status:** Stable
 - **Python Support:** 3.8, 3.9, 3.10, 3.11, 3.12+
@@ -19,7 +19,7 @@ nbctl follows [Semantic Versioning 2.0.0](https://semver.org/) (SemVer):
 ### Version Format: MAJOR.MINOR.PATCH
 
 ```
-0.1.2
+0.1.3
 │ │ │
 │ │ └─ PATCH: Bug fixes, minor improvements
 │ └─── MINOR: New features, backward compatible
@@ -369,7 +369,7 @@ When major versions are released, migration guides are provided:
 
 ## Version History
 
-### v0.1.2 (Current) - November 2025
+### v0.1.3 (Current) - November 2025
 **Initial Release**
 
 Features:

@@ -59,7 +59,7 @@ If it's a new bug, [open an issue](https://github.com/VenkatachalamSubramanianPe
 
 **Example:**
 ```markdown
-**nbctl version:** 0.1.2
+**nbctl version:** 0.1.3
 **Python version:** 3.9.7
 **OS:** macOS 12.3
 

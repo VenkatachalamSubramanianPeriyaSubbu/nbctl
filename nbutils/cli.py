@@ -9,7 +9,7 @@ console = Console()
 
 
 @click.group()
-@click.version_option(version="0.1.2")
+@click.version_option(version="0.1.3")
 def cli():
     """nbctl - The Swiss Army Knife for Jupyter Notebooks"""
     pass
