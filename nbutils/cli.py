@@ -1,5 +1,5 @@
 """
-nbutils - A comprehensive, modern CLI toolkit that solves all major Jupyter notebook pain points in one unified interface.
+nbctl - A comprehensive, modern CLI toolkit that solves all major Jupyter notebook pain points in one unified interface.
 Main CLI entry point
 """
 import click
@@ -9,9 +9,9 @@ console = Console()
 
 
 @click.group()
-@click.version_option(version="0.1.0")
+@click.version_option(version="0.1.2")
 def cli():
-    """nbutils"""
+    """nbctl - The Swiss Army Knife for Jupyter Notebooks"""
     pass
 
 

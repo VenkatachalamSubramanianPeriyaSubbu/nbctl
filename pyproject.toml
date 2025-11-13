@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "nbctl"
-version = "0.1.0"
+version = "0.1.2"
 description = "A comprehensive, modern CLI toolkit that solves all major Jupyter notebook pain points in one unified interface."
 authors = [{name = "Venkatachalam Subramanian Periya Subbu", email = "venkatachalam.sps@gmail.com"}]
 readme = "README.md"
