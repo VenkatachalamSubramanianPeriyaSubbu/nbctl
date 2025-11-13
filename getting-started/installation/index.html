@@ -2426,8 +2426,8 @@
 <h3 id="2-install-from-source-development">2. Install from Source (Development)<a class="headerlink" href="#2-install-from-source-development" title="Permanent link">&para;</a></h3>
 <p>For contributors or users who want the latest development version:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><a href="#__codelineno-3-1"><span class="linenos" data-linenos="1 "></span></a><span class="c1"># Clone the repository</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a><a href="#__codelineno-3-2"><span class="linenos" data-linenos="2 "></span></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbutils.git
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a><a href="#__codelineno-3-3"><span class="linenos" data-linenos="3 "></span></a><span class="nb">cd</span><span class="w"> </span>nbutils
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a><a href="#__codelineno-3-2"><span class="linenos" data-linenos="2 "></span></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbctl.git
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a><a href="#__codelineno-3-3"><span class="linenos" data-linenos="3 "></span></a><span class="nb">cd</span><span class="w"> </span>nbctl
 </span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4"></a><a href="#__codelineno-3-4"><span class="linenos" data-linenos="4 "></span></a>
 </span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5"></a><a href="#__codelineno-3-5"><span class="linenos" data-linenos="5 "></span></a><span class="c1"># Install in editable mode</span>
 </span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6"></a><a href="#__codelineno-3-6"><span class="linenos" data-linenos="6 "></span></a>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
@@ -2443,15 +2443,15 @@
 <h3 id="3-install-in-virtual-environment-recommended">3. Install in Virtual Environment (Recommended)<a class="headerlink" href="#3-install-in-virtual-environment-recommended" title="Permanent link">&para;</a></h3>
 <p>Using a virtual environment keeps your system Python clean:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a><a href="#__codelineno-4-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="c1"># Create virtual environment</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2"></a><a href="#__codelineno-4-2"><span class="linenos" data-linenos=" 2 "></span></a>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>nbutils-env
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2"></a><a href="#__codelineno-4-2"><span class="linenos" data-linenos=" 2 "></span></a>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>nbctl-env
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3"></a><a href="#__codelineno-4-3"><span class="linenos" data-linenos=" 3 "></span></a>
 </span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4"></a><a href="#__codelineno-4-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="c1"># Activate on macOS/Linux</span>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5"></a><a href="#__codelineno-4-5"><span class="linenos" data-linenos=" 5 "></span></a><span class="nb">source</span><span class="w"> </span>nbutils-env/bin/activate
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5"></a><a href="#__codelineno-4-5"><span class="linenos" data-linenos=" 5 "></span></a><span class="nb">source</span><span class="w"> </span>nbctl-env/bin/activate
 </span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6"></a><a href="#__codelineno-4-6"><span class="linenos" data-linenos=" 6 "></span></a>
 </span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7"></a><a href="#__codelineno-4-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="c1"># Activate on Windows</span>
-</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8"></a><a href="#__codelineno-4-8"><span class="linenos" data-linenos=" 8 "></span></a>nbutils-env<span class="se">\S</span>cripts<span class="se">\a</span>ctivate
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8"></a><a href="#__codelineno-4-8"><span class="linenos" data-linenos=" 8 "></span></a>nbctl-env<span class="se">\S</span>cripts<span class="se">\a</span>ctivate
 </span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9"></a><a href="#__codelineno-4-9"><span class="linenos" data-linenos=" 9 "></span></a>
-</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10"></a><a href="#__codelineno-4-10"><span class="linenos" data-linenos="10 "></span></a><span class="c1"># Install nbutils</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10"></a><a href="#__codelineno-4-10"><span class="linenos" data-linenos="10 "></span></a><span class="c1"># Install nbctl</span>
 </span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11"></a><a href="#__codelineno-4-11"><span class="linenos" data-linenos="11 "></span></a>pip<span class="w"> </span>install<span class="w"> </span>nbctl
 </span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12"></a><a href="#__codelineno-4-12"><span class="linenos" data-linenos="12 "></span></a>
 </span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13"></a><a href="#__codelineno-4-13"><span class="linenos" data-linenos="13 "></span></a><span class="c1"># Deactivate when done</span>
@@ -2460,7 +2460,7 @@
 <hr />
 <h3 id="4-install-with-pip-user-flag">4. Install with pip User Flag<a class="headerlink" href="#4-install-with-pip-user-flag" title="Permanent link">&para;</a></h3>
 <p>If you don't have admin privileges:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a><a href="#__codelineno-5-1"><span class="linenos" data-linenos="1 "></span></a>pip<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>nbutils
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a><a href="#__codelineno-5-1"><span class="linenos" data-linenos="1 "></span></a>pip<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>nbctl
 </span></code></pre></div>
 <p>The command will be installed in your user directory.</p>
 <hr />
@@ -2511,8 +2511,8 @@
 <p>This configures:
 - <code>.gitattributes</code> for notebook handling
 - <code>.gitignore</code> for Python projects
-- Custom diff driver using nbutils
-- Custom merge driver using nbutils</p>
+- Custom diff driver using nbctl
+- Custom merge driver using nbctl</p>
 <hr />
 <h3 id="verify-everything-works">Verify Everything Works<a class="headerlink" href="#verify-everything-works" title="Permanent link">&para;</a></h3>
 <p>Test nbctl with a sample notebook:</p>
@@ -2532,20 +2532,20 @@
 <h2 id="upgrading">Upgrading<a class="headerlink" href="#upgrading" title="Permanent link">&para;</a></h2>
 <h3 id="upgrade-to-latest-version">Upgrade to Latest Version<a class="headerlink" href="#upgrade-to-latest-version" title="Permanent link">&para;</a></h3>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1"></a><a href="#__codelineno-12-1"><span class="linenos" data-linenos="1 "></span></a><span class="c1"># Upgrade from PyPI</span>
-</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2"></a><a href="#__codelineno-12-2"><span class="linenos" data-linenos="2 "></span></a>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>nbutils
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2"></a><a href="#__codelineno-12-2"><span class="linenos" data-linenos="2 "></span></a>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>nbctl
 </span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3"></a><a href="#__codelineno-12-3"><span class="linenos" data-linenos="3 "></span></a>
 </span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4"></a><a href="#__codelineno-12-4"><span class="linenos" data-linenos="4 "></span></a><span class="c1"># Check new version</span>
 </span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5"></a><a href="#__codelineno-12-5"><span class="linenos" data-linenos="5 "></span></a>nbctl<span class="w"> </span>--version
 </span></code></pre></div>
 <h3 id="upgrade-from-development-branch">Upgrade from Development Branch<a class="headerlink" href="#upgrade-from-development-branch" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1"></a><a href="#__codelineno-13-1"><span class="linenos" data-linenos="1 "></span></a><span class="nb">cd</span><span class="w"> </span>nbutils
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1"></a><a href="#__codelineno-13-1"><span class="linenos" data-linenos="1 "></span></a><span class="nb">cd</span><span class="w"> </span>nbctl
 </span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2"></a><a href="#__codelineno-13-2"><span class="linenos" data-linenos="2 "></span></a>git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>main
 </span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3"></a><a href="#__codelineno-13-3"><span class="linenos" data-linenos="3 "></span></a>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
 </span></code></pre></div>
 <hr />
 <h2 id="uninstalling">Uninstalling<a class="headerlink" href="#uninstalling" title="Permanent link">&para;</a></h2>
-<p>If you need to uninstall nbutils:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1"></a><a href="#__codelineno-14-1"><span class="linenos" data-linenos="1 "></span></a>pip<span class="w"> </span>uninstall<span class="w"> </span>nbutils
+<p>If you need to uninstall nbctl:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1"></a><a href="#__codelineno-14-1"><span class="linenos" data-linenos="1 "></span></a>pip<span class="w"> </span>uninstall<span class="w"> </span>nbctl
 </span></code></pre></div>
 <p>To also remove dependencies (if not used by other packages):</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1"></a><a href="#__codelineno-15-1"><span class="linenos" data-linenos="1 "></span></a>pip<span class="w"> </span>uninstall<span class="w"> </span>nbctl<span class="w"> </span>nbformat<span class="w"> </span>click<span class="w"> </span>rich<span class="w"> </span>nbconvert<span class="w"> </span>nbclient<span class="w"> </span>nbdime
@@ -2553,12 +2553,12 @@
 <hr />
 <h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
 <h3 id="command-not-found">Command Not Found<a class="headerlink" href="#command-not-found" title="Permanent link">&para;</a></h3>
-<p><strong>Problem:</strong> <code>nbutils: command not found</code> after installation</p>
+<p><strong>Problem:</strong> <code>nbctl: command not found</code> after installation</p>
 <p><strong>Solutions:</strong></p>
 <ol>
 <li>
 <p><strong>Check if installed:</strong>
-   <div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1"></a><a href="#__codelineno-16-1"><span class="linenos" data-linenos="1 "></span></a>pip<span class="w"> </span>list<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>nbutils
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1"></a><a href="#__codelineno-16-1"><span class="linenos" data-linenos="1 "></span></a>pip<span class="w"> </span>list<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>nbctl
 </span></code></pre></div></p>
 </li>
 <li>
@@ -2569,7 +2569,7 @@
 </li>
 <li>
 <p><strong>Run with python -m:</strong>
-   <div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1"></a><a href="#__codelineno-18-1"><span class="linenos" data-linenos="1 "></span></a>python<span class="w"> </span>-m<span class="w"> </span>nbutils.cli<span class="w"> </span>--help
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1"></a><a href="#__codelineno-18-1"><span class="linenos" data-linenos="1 "></span></a>python<span class="w"> </span>-m<span class="w"> </span>nbctl.cli<span class="w"> </span>--help
 </span></code></pre></div></p>
 </li>
 <li>
@@ -2593,7 +2593,7 @@
 </li>
 <li>
 <p><strong>Use --user flag:</strong>
-   <div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1"></a><a href="#__codelineno-21-1"><span class="linenos" data-linenos="1 "></span></a>pip<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>nbutils
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1"></a><a href="#__codelineno-21-1"><span class="linenos" data-linenos="1 "></span></a>pip<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>nbctl
 </span></code></pre></div></p>
 </li>
 <li>
@@ -2604,12 +2604,12 @@
 </ol>
 <hr />
 <h3 id="import-errors">Import Errors<a class="headerlink" href="#import-errors" title="Permanent link">&para;</a></h3>
-<p><strong>Problem:</strong> <code>ModuleNotFoundError</code> when running nbutils</p>
+<p><strong>Problem:</strong> <code>ModuleNotFoundError</code> when running nbctl</p>
 <p><strong>Solutions:</strong></p>
 <ol>
 <li>
 <p><strong>Reinstall dependencies:</strong>
-   <div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1"></a><a href="#__codelineno-23-1"><span class="linenos" data-linenos="1 "></span></a>pip<span class="w"> </span>install<span class="w"> </span>--force-reinstall<span class="w"> </span>nbutils
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1"></a><a href="#__codelineno-23-1"><span class="linenos" data-linenos="1 "></span></a>pip<span class="w"> </span>install<span class="w"> </span>--force-reinstall<span class="w"> </span>nbctl
 </span></code></pre></div></p>
 </li>
 <li>
@@ -2620,7 +2620,7 @@
 <li>
 <p><strong>Use explicit Python:</strong>
    <div class="language-bash highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1"></a><a href="#__codelineno-25-1"><span class="linenos" data-linenos="1 "></span></a>python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>nbctl
-</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2"></a><a href="#__codelineno-25-2"><span class="linenos" data-linenos="2 "></span></a>python3<span class="w"> </span>-m<span class="w"> </span>nbutils.cli<span class="w"> </span>--help
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2"></a><a href="#__codelineno-25-2"><span class="linenos" data-linenos="2 "></span></a>python3<span class="w"> </span>-m<span class="w"> </span>nbctl.cli<span class="w"> </span>--help
 </span></code></pre></div></p>
 </li>
 </ol>
@@ -2642,8 +2642,8 @@
 </li>
 <li>
 <p><strong>Install from source:</strong>
-   <div class="language-bash highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1"></a><a href="#__codelineno-28-1"><span class="linenos" data-linenos="1 "></span></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbutils.git
-</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2"></a><a href="#__codelineno-28-2"><span class="linenos" data-linenos="2 "></span></a><span class="nb">cd</span><span class="w"> </span>nbutils
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1"></a><a href="#__codelineno-28-1"><span class="linenos" data-linenos="1 "></span></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbctl.git
+</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2"></a><a href="#__codelineno-28-2"><span class="linenos" data-linenos="2 "></span></a><span class="nb">cd</span><span class="w"> </span>nbctl
 </span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3"></a><a href="#__codelineno-28-3"><span class="linenos" data-linenos="3 "></span></a>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
 </span></code></pre></div></p>
 </li>
@@ -2659,8 +2659,8 @@
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1"></a><a href="#__codelineno-29-1"><span class="linenos" data-linenos="1 "></span></a><span class="c1"># Install Python via Homebrew</span>
 </span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2"></a><a href="#__codelineno-29-2"><span class="linenos" data-linenos="2 "></span></a>brew<span class="w"> </span>install<span class="w"> </span>python3
 </span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3"></a><a href="#__codelineno-29-3"><span class="linenos" data-linenos="3 "></span></a>
-</span><span id="__span-29-4"><a id="__codelineno-29-4" name="__codelineno-29-4"></a><a href="#__codelineno-29-4"><span class="linenos" data-linenos="4 "></span></a><span class="c1"># Install nbutils</span>
-</span><span id="__span-29-5"><a id="__codelineno-29-5" name="__codelineno-29-5"></a><a href="#__codelineno-29-5"><span class="linenos" data-linenos="5 "></span></a>pip3<span class="w"> </span>install<span class="w"> </span>nbutils
+</span><span id="__span-29-4"><a id="__codelineno-29-4" name="__codelineno-29-4"></a><a href="#__codelineno-29-4"><span class="linenos" data-linenos="4 "></span></a><span class="c1"># Install nbctl</span>
+</span><span id="__span-29-5"><a id="__codelineno-29-5" name="__codelineno-29-5"></a><a href="#__codelineno-29-5"><span class="linenos" data-linenos="5 "></span></a>pip3<span class="w"> </span>install<span class="w"> </span>nbctl
 </span></code></pre></div>
 <hr />
 <h3 id="linux">Linux<a class="headerlink" href="#linux" title="Permanent link">&para;</a></h3>
@@ -2669,13 +2669,13 @@
 <p><strong>Ubuntu/Debian:</strong>
   <div class="language-bash highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1"></a><a href="#__codelineno-30-1"><span class="linenos" data-linenos="1 "></span></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>update
 </span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2"></a><a href="#__codelineno-30-2"><span class="linenos" data-linenos="2 "></span></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>python3-pip
-</span><span id="__span-30-3"><a id="__codelineno-30-3" name="__codelineno-30-3"></a><a href="#__codelineno-30-3"><span class="linenos" data-linenos="3 "></span></a>pip3<span class="w"> </span>install<span class="w"> </span>nbutils
+</span><span id="__span-30-3"><a id="__codelineno-30-3" name="__codelineno-30-3"></a><a href="#__codelineno-30-3"><span class="linenos" data-linenos="3 "></span></a>pip3<span class="w"> </span>install<span class="w"> </span>nbctl
 </span></code></pre></div></p>
 </li>
 <li>
 <p><strong>Fedora/CentOS:</strong>
   <div class="language-bash highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1"></a><a href="#__codelineno-31-1"><span class="linenos" data-linenos="1 "></span></a>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>python3-pip
-</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2"></a><a href="#__codelineno-31-2"><span class="linenos" data-linenos="2 "></span></a>pip3<span class="w"> </span>install<span class="w"> </span>nbutils
+</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2"></a><a href="#__codelineno-31-2"><span class="linenos" data-linenos="2 "></span></a>pip3<span class="w"> </span>install<span class="w"> </span>nbctl
 </span></code></pre></div></p>
 </li>
 <li>
@@ -2692,19 +2692,19 @@
 <li><strong>Add Python to PATH</strong> during installation</li>
 <li><strong>Use Command Prompt or PowerShell</strong></li>
 </ul>
-<div class="language-powershell highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1"></a><a href="#__codelineno-33-1"><span class="linenos" data-linenos="1 "></span></a><span class="c"># Install nbutils</span>
+<div class="language-powershell highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1"></a><a href="#__codelineno-33-1"><span class="linenos" data-linenos="1 "></span></a><span class="c"># Install nbctl</span>
 </span><span id="__span-33-2"><a id="__codelineno-33-2" name="__codelineno-33-2"></a><a href="#__codelineno-33-2"><span class="linenos" data-linenos="2 "></span></a><span class="n">pip</span> <span class="n">install</span> <span class="n">nbctl</span>
 </span><span id="__span-33-3"><a id="__codelineno-33-3" name="__codelineno-33-3"></a><a href="#__codelineno-33-3"><span class="linenos" data-linenos="3 "></span></a>
 </span><span id="__span-33-4"><a id="__codelineno-33-4" name="__codelineno-33-4"></a><a href="#__codelineno-33-4"><span class="linenos" data-linenos="4 "></span></a><span class="c"># If command not found, try:</span>
 </span><span id="__span-33-5"><a id="__codelineno-33-5" name="__codelineno-33-5"></a><a href="#__codelineno-33-5"><span class="linenos" data-linenos="5 "></span></a><span class="n">python</span> <span class="n">-m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">nbctl</span>
-</span><span id="__span-33-6"><a id="__codelineno-33-6" name="__codelineno-33-6"></a><a href="#__codelineno-33-6"><span class="linenos" data-linenos="6 "></span></a><span class="n">python</span> <span class="n">-m</span> <span class="n">nbutils</span><span class="p">.</span><span class="nb">cli </span><span class="p">-</span><span class="n">-help</span>
+</span><span id="__span-33-6"><a id="__codelineno-33-6" name="__codelineno-33-6"></a><a href="#__codelineno-33-6"><span class="linenos" data-linenos="6 "></span></a><span class="n">python</span> <span class="n">-m</span> <span class="n">nbctl</span><span class="p">.</span><span class="nb">cli </span><span class="p">-</span><span class="n">-help</span>
 </span></code></pre></div>
 <hr />
 <h2 id="docker-installation-advanced">Docker Installation (Advanced)<a class="headerlink" href="#docker-installation-advanced" title="Permanent link">&para;</a></h2>
 <p>For containerized environments:</p>
 <div class="language-dockerfile highlight"><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1"></a><a href="#__codelineno-34-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="k">FROM</span><span class="w"> </span><span class="s">python:3.9-slim</span>
 </span><span id="__span-34-2"><a id="__codelineno-34-2" name="__codelineno-34-2"></a><a href="#__codelineno-34-2"><span class="linenos" data-linenos=" 2 "></span></a>
-</span><span id="__span-34-3"><a id="__codelineno-34-3" name="__codelineno-34-3"></a><a href="#__codelineno-34-3"><span class="linenos" data-linenos=" 3 "></span></a><span class="c"># Install nbutils</span>
+</span><span id="__span-34-3"><a id="__codelineno-34-3" name="__codelineno-34-3"></a><a href="#__codelineno-34-3"><span class="linenos" data-linenos=" 3 "></span></a><span class="c"># Install nbctl</span>
 </span><span id="__span-34-4"><a id="__codelineno-34-4" name="__codelineno-34-4"></a><a href="#__codelineno-34-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="k">RUN</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>nbctl
 </span><span id="__span-34-5"><a id="__codelineno-34-5" name="__codelineno-34-5"></a><a href="#__codelineno-34-5"><span class="linenos" data-linenos=" 5 "></span></a>
 </span><span id="__span-34-6"><a id="__codelineno-34-6" name="__codelineno-34-6"></a><a href="#__codelineno-34-6"><span class="linenos" data-linenos=" 6 "></span></a><span class="c"># Verify installation</span>
@@ -2714,7 +2714,7 @@
 </span><span id="__span-34-10"><a id="__codelineno-34-10" name="__codelineno-34-10"></a><a href="#__codelineno-34-10"><span class="linenos" data-linenos="10 "></span></a><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/notebooks</span>
 </span><span id="__span-34-11"><a id="__codelineno-34-11" name="__codelineno-34-11"></a><a href="#__codelineno-34-11"><span class="linenos" data-linenos="11 "></span></a>
 </span><span id="__span-34-12"><a id="__codelineno-34-12" name="__codelineno-34-12"></a><a href="#__codelineno-34-12"><span class="linenos" data-linenos="12 "></span></a><span class="c"># Default command</span>
-</span><span id="__span-34-13"><a id="__codelineno-34-13" name="__codelineno-34-13"></a><a href="#__codelineno-34-13"><span class="linenos" data-linenos="13 "></span></a><span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;nbutils&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--help&quot;</span><span class="p">]</span>
+</span><span id="__span-34-13"><a id="__codelineno-34-13" name="__codelineno-34-13"></a><a href="#__codelineno-34-13"><span class="linenos" data-linenos="13 "></span></a><span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;nbctl&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--help&quot;</span><span class="p">]</span>
 </span></code></pre></div>
 <p>Build and run:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1"></a><a href="#__codelineno-35-1"><span class="linenos" data-linenos="1 "></span></a>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>nbctl<span class="w"> </span>.
@@ -2734,11 +2734,11 @@
 <p>Need help with installation?</p>
 <ul>
 <li>Check the <a href="../help/">Help Guide</a></li>
-<li><a href="https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbutils/issues">Open an issue</a></li>
-<li>Search <a href="https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbutils/issues?q=is%3Aissue">existing issues</a></li>
+<li><a href="https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbctl/issues">Open an issue</a></li>
+<li>Search <a href="https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbctl/issues?q=is%3Aissue">existing issues</a></li>
 </ul>
 <hr />
-<p><strong>Installation complete! Ready to use nbutils? Check out the <a href="../../examples/clean/">examples</a>!</strong></p>
+<p><strong>Installation complete! Ready to use nbctl? Check out the <a href="../../examples/clean/">examples</a>!</strong></p>
 
 
 

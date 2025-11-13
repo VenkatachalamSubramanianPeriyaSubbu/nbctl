@@ -2550,10 +2550,10 @@
 <h2 id="git-integration_1">Git Integration<a class="headerlink" href="#git-integration_1" title="Permanent link">&para;</a></h2>
 <p>When used as git diff driver (via <code>git-setup</code>):</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1"></a><a href="#__codelineno-14-1"><span class="linenos" data-linenos="1 "></span></a><span class="c1"># In .gitattributes</span>
-</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2"></a><a href="#__codelineno-14-2"><span class="linenos" data-linenos="2 "></span></a>*.ipynb<span class="w"> </span><span class="nv">diff</span><span class="o">=</span>nbutils
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2"></a><a href="#__codelineno-14-2"><span class="linenos" data-linenos="2 "></span></a>*.ipynb<span class="w"> </span><span class="nv">diff</span><span class="o">=</span>nbctl
 </span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3"></a><a href="#__codelineno-14-3"><span class="linenos" data-linenos="3 "></span></a>
 </span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4"></a><a href="#__codelineno-14-4"><span class="linenos" data-linenos="4 "></span></a><span class="c1"># In .git/config</span>
-</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5"></a><a href="#__codelineno-14-5"><span class="linenos" data-linenos="5 "></span></a><span class="o">[</span>diff<span class="w"> </span><span class="s2">&quot;nbutils&quot;</span><span class="o">]</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5"></a><a href="#__codelineno-14-5"><span class="linenos" data-linenos="5 "></span></a><span class="o">[</span>diff<span class="w"> </span><span class="s2">&quot;nbctl&quot;</span><span class="o">]</span>
 </span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6"></a><a href="#__codelineno-14-6"><span class="linenos" data-linenos="6 "></span></a><span class="w">    </span><span class="nb">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>nbctl<span class="w"> </span>diff
 </span></code></pre></div>
 <p>Then <code>git diff notebook.ipynb</code> uses nbctl automatically!</p>
@@ -2567,7 +2567,7 @@
 <h2 id="see-also">See Also<a class="headerlink" href="#see-also" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="../../examples/diff/">Examples</a> - Practical usage examples</li>
-<li><a href="../../getting-started/welcome/">Getting Started</a> - Introduction to nbutils</li>
+<li><a href="../../getting-started/welcome/">Getting Started</a> - Introduction to nbctl</li>
 </ul>
 
 

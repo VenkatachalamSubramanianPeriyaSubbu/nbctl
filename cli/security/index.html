@@ -2969,8 +2969,8 @@
 </span><span id="__span-32-6"><a id="__codelineno-32-6" name="__codelineno-32-6"></a><a href="#__codelineno-32-6"><span class="linenos" data-linenos=" 6 "></span></a><span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
 </span><span id="__span-32-7"><a id="__codelineno-32-7" name="__codelineno-32-7"></a><a href="#__codelineno-32-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
 </span><span id="__span-32-8"><a id="__codelineno-32-8" name="__codelineno-32-8"></a><a href="#__codelineno-32-8"><span class="linenos" data-linenos=" 8 "></span></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v2</span>
-</span><span id="__span-32-9"><a id="__codelineno-32-9" name="__codelineno-32-9"></a><a href="#__codelineno-32-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install nbutils</span>
-</span><span id="__span-32-10"><a id="__codelineno-32-10" name="__codelineno-32-10"></a><a href="#__codelineno-32-10"><span class="linenos" data-linenos="10 "></span></a><span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install nbutils</span>
+</span><span id="__span-32-9"><a id="__codelineno-32-9" name="__codelineno-32-9"></a><a href="#__codelineno-32-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install nbctl</span>
+</span><span id="__span-32-10"><a id="__codelineno-32-10" name="__codelineno-32-10"></a><a href="#__codelineno-32-10"><span class="linenos" data-linenos="10 "></span></a><span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install nbctl</span>
 </span><span id="__span-32-11"><a id="__codelineno-32-11" name="__codelineno-32-11"></a><a href="#__codelineno-32-11"><span class="linenos" data-linenos="11 "></span></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Scan notebooks</span>
 </span><span id="__span-32-12"><a id="__codelineno-32-12" name="__codelineno-32-12"></a><a href="#__codelineno-32-12"><span class="linenos" data-linenos="12 "></span></a><span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 </span><span id="__span-32-13"><a id="__codelineno-32-13" name="__codelineno-32-13"></a><a href="#__codelineno-32-13"><span class="linenos" data-linenos="13 "></span></a><span class="w">          </span><span class="no">for nb in *.ipynb; do</span>
@@ -3032,7 +3032,7 @@
 <li><a href="../../examples/security/">Examples</a> - Practical usage examples</li>
 <li><a href="https://owasp.org/www-project-top-ten/">OWASP Top 10</a> - Web security risks</li>
 <li><a href="https://cwe.mitre.org/">CWE</a> - Common Weakness Enumeration</li>
-<li><a href="../../getting-started/welcome/">Getting Started</a> - Introduction to nbutils</li>
+<li><a href="../../getting-started/welcome/">Getting Started</a> - Introduction to nbctl</li>
 </ul>
 
 

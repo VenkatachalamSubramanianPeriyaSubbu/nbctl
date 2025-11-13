@@ -2502,8 +2502,8 @@
 <h2 id="what-it-configures">What It Configures<a class="headerlink" href="#what-it-configures" title="Permanent link">&para;</a></h2>
 <h3 id="1-gitattributes-file">1. <code>.gitattributes</code> File<a class="headerlink" href="#1-gitattributes-file" title="Permanent link">&para;</a></h3>
 <p>Created/updated with notebook-specific rules:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><a href="#__codelineno-1-1"><span class="linenos" data-linenos="1 "></span></a>*.ipynb diff=nbutils
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a><a href="#__codelineno-1-2"><span class="linenos" data-linenos="2 "></span></a>*.ipynb merge=nbutils
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><a href="#__codelineno-1-1"><span class="linenos" data-linenos="1 "></span></a>*.ipynb diff=nbctl
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a><a href="#__codelineno-1-2"><span class="linenos" data-linenos="2 "></span></a>*.ipynb merge=nbctl
 </span></code></pre></div>
 <p>This tells git to use nbctl for diffing and merging notebooks.</p>
 <hr />
@@ -2556,7 +2556,7 @@
 <hr />
 <h3 id="3-git-diff-driver">3. Git Diff Driver<a class="headerlink" href="#3-git-diff-driver" title="Permanent link">&para;</a></h3>
 <p>Registers nbctl as the diff driver for notebooks:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><a href="#__codelineno-3-1"><span class="linenos" data-linenos="1 "></span></a>git<span class="w"> </span>config<span class="w"> </span>diff.nbutils.command<span class="w"> </span><span class="s1">&#39;nbctl diff&#39;</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><a href="#__codelineno-3-1"><span class="linenos" data-linenos="1 "></span></a>git<span class="w"> </span>config<span class="w"> </span>diff.nbctl.command<span class="w"> </span><span class="s1">&#39;nbctl diff&#39;</span>
 </span></code></pre></div>
 <p><strong>Result:</strong> When you run <code>git diff notebook.ipynb</code>, git uses nbctl diff which:
 - Ignores outputs and metadata
@@ -2565,7 +2565,7 @@
 <hr />
 <h3 id="4-git-merge-driver">4. Git Merge Driver<a class="headerlink" href="#4-git-merge-driver" title="Permanent link">&para;</a></h3>
 <p>Registers nbctl as the merge driver for notebooks:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a><a href="#__codelineno-4-1"><span class="linenos" data-linenos="1 "></span></a>git<span class="w"> </span>config<span class="w"> </span>merge.nbutils.driver<span class="w"> </span><span class="s1">&#39;nbctl resolve %O %A %B -o %A&#39;</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a><a href="#__codelineno-4-1"><span class="linenos" data-linenos="1 "></span></a>git<span class="w"> </span>config<span class="w"> </span>merge.nbctl.driver<span class="w"> </span><span class="s1">&#39;nbctl resolve %O %A %B -o %A&#39;</span>
 </span></code></pre></div>
 <p><strong>Result:</strong> When notebooks have merge conflicts, git uses nbctl resolve which:
 - Intelligently merges notebooks
@@ -2694,7 +2694,7 @@
 </span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2"></a><a href="#__codelineno-11-2"><span class="linenos" data-linenos="2 "></span></a>vim<span class="w"> </span>.gitattributes
 </span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3"></a><a href="#__codelineno-11-3"><span class="linenos" data-linenos="3 "></span></a>
 </span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4"></a><a href="#__codelineno-11-4"><span class="linenos" data-linenos="4 "></span></a><span class="c1"># Add custom rules</span>
-</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5"></a><a href="#__codelineno-11-5"><span class="linenos" data-linenos="5 "></span></a>*.ipynb<span class="w"> </span><span class="nv">diff</span><span class="o">=</span>nbctl<span class="w"> </span><span class="nv">merge</span><span class="o">=</span>nbutils
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5"></a><a href="#__codelineno-11-5"><span class="linenos" data-linenos="5 "></span></a>*.ipynb<span class="w"> </span><span class="nv">diff</span><span class="o">=</span>nbctl<span class="w"> </span><span class="nv">merge</span><span class="o">=</span>nbctl
 </span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6"></a><a href="#__codelineno-11-6"><span class="linenos" data-linenos="6 "></span></a>*.csv<span class="w"> </span><span class="nv">diff</span><span class="o">=</span>csv
 </span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7"></a><a href="#__codelineno-11-7"><span class="linenos" data-linenos="7 "></span></a>*.json<span class="w"> </span><span class="nv">diff</span><span class="o">=</span>json
 </span></code></pre></div>
@@ -2703,19 +2703,19 @@
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1"></a><a href="#__codelineno-12-1"><span class="linenos" data-linenos="1 "></span></a>cat<span class="w"> </span>.gitattributes
 </span></code></pre></div>
 <p>Expected content:
-<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1"></a><a href="#__codelineno-13-1"><span class="linenos" data-linenos="1 "></span></a>*.ipynb diff=nbutils
-</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2"></a><a href="#__codelineno-13-2"><span class="linenos" data-linenos="2 "></span></a>*.ipynb merge=nbutils
+<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1"></a><a href="#__codelineno-13-1"><span class="linenos" data-linenos="1 "></span></a>*.ipynb diff=nbctl
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2"></a><a href="#__codelineno-13-2"><span class="linenos" data-linenos="2 "></span></a>*.ipynb merge=nbctl
 </span></code></pre></div></p>
 <h3 id="check-gitignore">Check .gitignore<a class="headerlink" href="#check-gitignore" title="Permanent link">&para;</a></h3>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1"></a><a href="#__codelineno-14-1"><span class="linenos" data-linenos="1 "></span></a>cat<span class="w"> </span>.gitignore
 </span></code></pre></div>
 <p>Should include Python and Jupyter patterns.</p>
 <h3 id="check-git-config">Check Git Config<a class="headerlink" href="#check-git-config" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1"></a><a href="#__codelineno-15-1"><span class="linenos" data-linenos="1 "></span></a>git<span class="w"> </span>config<span class="w"> </span>--list<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>nbutils
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1"></a><a href="#__codelineno-15-1"><span class="linenos" data-linenos="1 "></span></a>git<span class="w"> </span>config<span class="w"> </span>--list<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>nbctl
 </span></code></pre></div>
 <p>Expected output:
-<div class="language-text highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1"></a><a href="#__codelineno-16-1"><span class="linenos" data-linenos="1 "></span></a>diff.nbutils.command=nbctl diff
-</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2"></a><a href="#__codelineno-16-2"><span class="linenos" data-linenos="2 "></span></a>merge.nbutils.driver=nbctl resolve %O %A %B -o %A
+<div class="language-text highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1"></a><a href="#__codelineno-16-1"><span class="linenos" data-linenos="1 "></span></a>diff.nbctl.command=nbctl diff
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2"></a><a href="#__codelineno-16-2"><span class="linenos" data-linenos="2 "></span></a>merge.nbctl.driver=nbctl resolve %O %A %B -o %A
 </span></code></pre></div></p>
 <h2 id="team-setup">Team Setup<a class="headerlink" href="#team-setup" title="Permanent link">&para;</a></h2>
 <h3 id="for-repository-owner">For Repository Owner<a class="headerlink" href="#for-repository-owner" title="Permanent link">&para;</a></h3>
@@ -2740,7 +2740,7 @@
 <p><strong>Problem:</strong> <code>git diff</code> shows JSON instead of clean diff</p>
 <p><strong>Solution:</strong>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1"></a><a href="#__codelineno-19-1"><span class="linenos" data-linenos="1 "></span></a><span class="c1"># Verify diff driver is configured</span>
-</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2"></a><a href="#__codelineno-19-2"><span class="linenos" data-linenos="2 "></span></a>git<span class="w"> </span>config<span class="w"> </span>--list<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>diff.nbutils
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2"></a><a href="#__codelineno-19-2"><span class="linenos" data-linenos="2 "></span></a>git<span class="w"> </span>config<span class="w"> </span>--list<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>diff.nbctl
 </span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3"></a><a href="#__codelineno-19-3"><span class="linenos" data-linenos="3 "></span></a>
 </span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4"></a><a href="#__codelineno-19-4"><span class="linenos" data-linenos="4 "></span></a><span class="c1"># Re-run setup</span>
 </span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5"></a><a href="#__codelineno-19-5"><span class="linenos" data-linenos="5 "></span></a>nbctl<span class="w"> </span>git-setup
@@ -2752,7 +2752,7 @@
 <p><strong>Problem:</strong> Notebook merge conflicts appear as JSON</p>
 <p><strong>Solution:</strong>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1"></a><a href="#__codelineno-20-1"><span class="linenos" data-linenos="1 "></span></a><span class="c1"># Verify merge driver is configured</span>
-</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2"></a><a href="#__codelineno-20-2"><span class="linenos" data-linenos="2 "></span></a>git<span class="w"> </span>config<span class="w"> </span>--list<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>merge.nbutils
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2"></a><a href="#__codelineno-20-2"><span class="linenos" data-linenos="2 "></span></a>git<span class="w"> </span>config<span class="w"> </span>--list<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>merge.nbctl
 </span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3"></a><a href="#__codelineno-20-3"><span class="linenos" data-linenos="3 "></span></a>
 </span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4"></a><a href="#__codelineno-20-4"><span class="linenos" data-linenos="4 "></span></a><span class="c1"># Re-run setup</span>
 </span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5"></a><a href="#__codelineno-20-5"><span class="linenos" data-linenos="5 "></span></a>nbctl<span class="w"> </span>git-setup
@@ -2791,7 +2791,7 @@
 <h2 id="see-also">See Also<a class="headerlink" href="#see-also" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="../../examples/git-setup/">Examples</a> - Practical usage examples</li>
-<li><a href="../../getting-started/welcome/">Getting Started</a> - Introduction to nbutils</li>
+<li><a href="../../getting-started/welcome/">Getting Started</a> - Introduction to nbctl</li>
 </ul>
 
 

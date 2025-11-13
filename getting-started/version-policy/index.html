@@ -2757,16 +2757,16 @@
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a><a href="#__codelineno-2-2"><span class="linenos" data-linenos="2 "></span></a>nbctl<span class="w"> </span>--version
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a><a href="#__codelineno-2-3"><span class="linenos" data-linenos="3 "></span></a>
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a><a href="#__codelineno-2-4"><span class="linenos" data-linenos="4 "></span></a><span class="c1"># Update to latest version</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5"></a><a href="#__codelineno-2-5"><span class="linenos" data-linenos="5 "></span></a>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>nbutils
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5"></a><a href="#__codelineno-2-5"><span class="linenos" data-linenos="5 "></span></a>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>nbctl
 </span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6"></a><a href="#__codelineno-2-6"><span class="linenos" data-linenos="6 "></span></a>
 </span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7"></a><a href="#__codelineno-2-7"><span class="linenos" data-linenos="7 "></span></a><span class="c1"># Update to specific version</span>
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8"></a><a href="#__codelineno-2-8"><span class="linenos" data-linenos="8 "></span></a>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">nbutils</span><span class="o">==</span><span class="m">0</span>.2.0
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8"></a><a href="#__codelineno-2-8"><span class="linenos" data-linenos="8 "></span></a>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">nbctl</span><span class="o">==</span><span class="m">0</span>.2.0
 </span></code></pre></div>
 <hr />
 <h3 id="update-guidelines">Update Guidelines<a class="headerlink" href="#update-guidelines" title="Permanent link">&para;</a></h3>
 <h4 id="patch-updates-00x">PATCH Updates (0.0.X)<a class="headerlink" href="#patch-updates-00x" title="Permanent link">&para;</a></h4>
 <p><strong>Update immediately</strong> - Bug fixes and improvements</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><a href="#__codelineno-3-1"><span class="linenos" data-linenos="1 "></span></a>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>nbutils
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><a href="#__codelineno-3-1"><span class="linenos" data-linenos="1 "></span></a>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>nbctl
 </span></code></pre></div>
 <p><strong>Risk:</strong> Minimal<br />
 <strong>Testing:</strong> Not required<br />
@@ -2775,7 +2775,7 @@
 <h4 id="minor-updates-0x0">MINOR Updates (0.X.0)<a class="headerlink" href="#minor-updates-0x0" title="Permanent link">&para;</a></h4>
 <p><strong>Update regularly</strong> - New features, backward compatible</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a><a href="#__codelineno-4-1"><span class="linenos" data-linenos="1 "></span></a><span class="c1"># Review release notes first</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2"></a><a href="#__codelineno-4-2"><span class="linenos" data-linenos="2 "></span></a>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>nbutils
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2"></a><a href="#__codelineno-4-2"><span class="linenos" data-linenos="2 "></span></a>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>nbctl
 </span></code></pre></div>
 <p><strong>Risk:</strong> Low<br />
 <strong>Testing:</strong> Basic smoke testing recommended<br />
@@ -2785,7 +2785,7 @@
 <p><strong>Review carefully</strong> - May have breaking changes</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a><a href="#__codelineno-5-1"><span class="linenos" data-linenos="1 "></span></a><span class="c1"># Read upgrade guide first</span>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2"></a><a href="#__codelineno-5-2"><span class="linenos" data-linenos="2 "></span></a><span class="c1"># Test in non-production environment</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3"></a><a href="#__codelineno-5-3"><span class="linenos" data-linenos="3 "></span></a>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>nbutils
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3"></a><a href="#__codelineno-5-3"><span class="linenos" data-linenos="3 "></span></a>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>nbctl
 </span></code></pre></div>
 <p><strong>Risk:</strong> Medium<br />
 <strong>Testing:</strong> Full regression testing recommended<br />
@@ -2840,7 +2840,7 @@
 <li>Features may change</li>
 <li>Not for production use</li>
 </ul>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a><a href="#__codelineno-6-1"><span class="linenos" data-linenos="1 "></span></a>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">nbutils</span><span class="o">==</span><span class="m">0</span>.2.0-alpha.1
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a><a href="#__codelineno-6-1"><span class="linenos" data-linenos="1 "></span></a>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">nbctl</span><span class="o">==</span><span class="m">0</span>.2.0-alpha.1
 </span></code></pre></div>
 <hr />
 <h3 id="beta-releases-xyz-betan">Beta Releases (X.Y.Z-beta.N)<a class="headerlink" href="#beta-releases-xyz-betan" title="Permanent link">&para;</a></h3>
@@ -2849,7 +2849,7 @@
 <li>Testing phase</li>
 <li>Use with caution</li>
 </ul>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a><a href="#__codelineno-7-1"><span class="linenos" data-linenos="1 "></span></a>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">nbutils</span><span class="o">==</span><span class="m">0</span>.2.0-beta.1
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a><a href="#__codelineno-7-1"><span class="linenos" data-linenos="1 "></span></a>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">nbctl</span><span class="o">==</span><span class="m">0</span>.2.0-beta.1
 </span></code></pre></div>
 <hr />
 <h3 id="release-candidates-xyz-rcn">Release Candidates (X.Y.Z-rc.N)<a class="headerlink" href="#release-candidates-xyz-rcn" title="Permanent link">&para;</a></h3>
@@ -2858,7 +2858,7 @@
 <li>Near production quality</li>
 <li>Safe for testing environments</li>
 </ul>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a><a href="#__codelineno-8-1"><span class="linenos" data-linenos="1 "></span></a>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">nbutils</span><span class="o">==</span><span class="m">0</span>.2.0-rc.1
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a><a href="#__codelineno-8-1"><span class="linenos" data-linenos="1 "></span></a>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">nbctl</span><span class="o">==</span><span class="m">0</span>.2.0-rc.1
 </span></code></pre></div>
 <hr />
 <h2 id="checking-for-updates">Checking for Updates<a class="headerlink" href="#checking-for-updates" title="Permanent link">&para;</a></h2>
@@ -2867,21 +2867,21 @@
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2"></a><a href="#__codelineno-9-2"><span class="linenos" data-linenos="2 "></span></a>nbctl<span class="w"> </span>--version
 </span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3"></a><a href="#__codelineno-9-3"><span class="linenos" data-linenos="3 "></span></a>
 </span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4"></a><a href="#__codelineno-9-4"><span class="linenos" data-linenos="4 "></span></a><span class="c1"># Compare with PyPI</span>
-</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5"></a><a href="#__codelineno-9-5"><span class="linenos" data-linenos="5 "></span></a>pip<span class="w"> </span>index<span class="w"> </span>versions<span class="w"> </span>nbutils
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5"></a><a href="#__codelineno-9-5"><span class="linenos" data-linenos="5 "></span></a>pip<span class="w"> </span>index<span class="w"> </span>versions<span class="w"> </span>nbctl
 </span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6"></a><a href="#__codelineno-9-6"><span class="linenos" data-linenos="6 "></span></a>
 </span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7"></a><a href="#__codelineno-9-7"><span class="linenos" data-linenos="7 "></span></a><span class="c1"># Show outdated packages</span>
-</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8"></a><a href="#__codelineno-9-8"><span class="linenos" data-linenos="8 "></span></a>pip<span class="w"> </span>list<span class="w"> </span>--outdated<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>nbutils
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8"></a><a href="#__codelineno-9-8"><span class="linenos" data-linenos="8 "></span></a>pip<span class="w"> </span>list<span class="w"> </span>--outdated<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>nbctl
 </span></code></pre></div>
 <h3 id="programmatically">Programmatically<a class="headerlink" href="#programmatically" title="Permanent link">&para;</a></h3>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a><a href="#__codelineno-10-1"><span class="linenos" data-linenos="1 "></span></a><span class="kn">import</span><span class="w"> </span><span class="nn">nbutils</span>
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2"></a><a href="#__codelineno-10-2"><span class="linenos" data-linenos="2 "></span></a><span class="nb">print</span><span class="p">(</span><span class="n">nbutils</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a><a href="#__codelineno-10-1"><span class="linenos" data-linenos="1 "></span></a><span class="kn">import</span><span class="w"> </span><span class="nn">nbctl</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2"></a><a href="#__codelineno-10-2"><span class="linenos" data-linenos="2 "></span></a><span class="nb">print</span><span class="p">(</span><span class="n">nbctl</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
 </span></code></pre></div>
 <hr />
 <h2 id="release-notes">Release Notes<a class="headerlink" href="#release-notes" title="Permanent link">&para;</a></h2>
 <h3 id="where-to-find">Where to Find<a class="headerlink" href="#where-to-find" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>GitHub Releases:</strong> <a href="https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbutils/releases">github.com/VenkatachalamSubramanianPeriyaSubbu/nbutils/releases</a></li>
-<li><strong>PyPI:</strong> <a href="https://pypi.org/project/nbutils/#history">pypi.org/project/nbutils/#history</a></li>
+<li><strong>GitHub Releases:</strong> <a href="https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbctl/releases">github.com/VenkatachalamSubramanianPeriyaSubbu/nbctl/releases</a></li>
+<li><strong>PyPI:</strong> <a href="https://pypi.org/project/nbctl/#history">pypi.org/project/nbctl/#history</a></li>
 <li><strong>CHANGELOG:</strong> <code>CHANGELOG.md</code> in repository</li>
 </ul>
 <h3 id="whats-included">What's Included<a class="headerlink" href="#whats-included" title="Permanent link">&para;</a></h3>
@@ -2897,15 +2897,15 @@
 <h3 id="for-production">For Production<a class="headerlink" href="#for-production" title="Permanent link">&para;</a></h3>
 <p>Pin to specific version in <code>requirements.txt</code>:</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1"></a><a href="#__codelineno-11-1"><span class="linenos" data-linenos="1 "></span></a># Pin exact version
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2"></a><a href="#__codelineno-11-2"><span class="linenos" data-linenos="2 "></span></a>nbutils==0.1.0
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2"></a><a href="#__codelineno-11-2"><span class="linenos" data-linenos="2 "></span></a>nbctl==0.1.0
 </span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3"></a><a href="#__codelineno-11-3"><span class="linenos" data-linenos="3 "></span></a>
 </span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4"></a><a href="#__codelineno-11-4"><span class="linenos" data-linenos="4 "></span></a># Or allow patch updates
-</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5"></a><a href="#__codelineno-11-5"><span class="linenos" data-linenos="5 "></span></a>nbutils&gt;=0.1.0,&lt;0.2.0
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5"></a><a href="#__codelineno-11-5"><span class="linenos" data-linenos="5 "></span></a>nbctl&gt;=0.1.0,&lt;0.2.0
 </span></code></pre></div>
 <h3 id="for-development">For Development<a class="headerlink" href="#for-development" title="Permanent link">&para;</a></h3>
 <p>Allow minor updates in <code>requirements.txt</code>:</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1"></a><a href="#__codelineno-12-1"><span class="linenos" data-linenos="1 "></span></a># Allow minor and patch updates
-</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2"></a><a href="#__codelineno-12-2"><span class="linenos" data-linenos="2 "></span></a>nbutils&gt;=0.1.0,&lt;1.0.0
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2"></a><a href="#__codelineno-12-2"><span class="linenos" data-linenos="2 "></span></a>nbctl&gt;=0.1.0,&lt;1.0.0
 </span></code></pre></div>
 <hr />
 <h2 id="migration-guides">Migration Guides<a class="headerlink" href="#migration-guides" title="Permanent link">&para;</a></h2>
@@ -2932,8 +2932,8 @@
 <hr />
 <h2 id="questions">Questions?<a class="headerlink" href="#questions" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>About versions:</strong> Check <a href="https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbutils/releases">GitHub Releases</a></li>
-<li><strong>About compatibility:</strong> <a href="https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbutils/issues">Open an issue</a></li>
+<li><strong>About versions:</strong> Check <a href="https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbctl/releases">GitHub Releases</a></li>
+<li><strong>About compatibility:</strong> <a href="https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbctl/issues">Open an issue</a></li>
 <li><strong>About updates:</strong> See <a href="../installation/">Installation Guide</a></li>
 </ul>
 <hr />
