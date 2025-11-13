@@ -1,8 +1,8 @@
-site_name: nbutils
+site_name: nbctl
 site_description: The Swiss Army Knife for Jupyter Notebooks - A comprehensive CLI toolkit for notebook management
 site_url: https://venkatachalamsubramanianperiyasubbu.github.io/nbutils/
 
-repo_name: nbutils
+repo_name: nbctl
 repo_url: https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbutils
 edit_uri: edit/main/docs/
 
@@ -80,7 +80,7 @@ extra:
     - icon: fontawesome/brands/github
       link: https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbutils
     - icon: fontawesome/brands/python
-      link: https://pypi.org/project/nbutils
+      link: https://pypi.org/project/nbctl
   
 extra_css:
   - stylesheets/extra.css

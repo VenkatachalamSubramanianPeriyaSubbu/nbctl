@@ -1,4 +1,4 @@
-# nbutils ml-split
+# nbctl ml-split
 
 Split ML notebooks into production-ready Python pipeline modules.
 
@@ -16,7 +16,7 @@ Use this command to:
 ## Usage
 
 ```bash
-nbutils ml-split NOTEBOOK [OPTIONS]
+nbctl ml-split NOTEBOOK [OPTIONS]
 ```
 
 ## Arguments

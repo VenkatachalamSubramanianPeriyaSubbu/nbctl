@@ -1,4 +1,4 @@
-# nbutils run
+# nbctl run
 
 Execute Jupyter notebooks from the command line.
 
@@ -17,7 +17,7 @@ Use this command to:
 ## Usage
 
 ```bash
-nbutils run NOTEBOOK [NOTEBOOK...] [OPTIONS]
+nbctl run NOTEBOOK [NOTEBOOK...] [OPTIONS]
 ```
 
 ## Arguments
@@ -46,7 +46,7 @@ nbutils run NOTEBOOK [NOTEBOOK...] [OPTIONS]
 
 ### With `--order`
 - Notebooks run in alphabetical order regardless of command-line order
-- Useful with wildcards: `nbutils run *.ipynb --order`
+- Useful with wildcards: `nbctl run *.ipynb --order`
 
 ### With `--timeout`
 - Each cell must complete within the specified seconds
@@ -128,8 +128,8 @@ Available kernels depend on your Jupyter installation:
 jupyter kernelspec list
 
 # Use specific kernel
-nbutils run notebook.ipynb --kernel python3
-nbutils run notebook.ipynb --kernel ir  # R kernel
+nbctl run notebook.ipynb --kernel python3
+nbctl run notebook.ipynb --kernel ir  # R kernel
 ```
 
 Common kernel names:
@@ -147,7 +147,7 @@ Common kernel names:
 
 ### With Timeout
 ```bash
-nbutils run notebook.ipynb --timeout 600  # 10 minutes per cell
+nbctl run notebook.ipynb --timeout 600  # 10 minutes per cell
 ```
 - Each cell must complete within specified seconds
 - TimeoutError raised if cell exceeds limit
@@ -171,7 +171,7 @@ nbutils run notebook.ipynb --timeout 600  # 10 minutes per cell
 
 ### With `--save-output`
 ```bash
-nbutils run analysis.ipynb --save-output ./executed/
+nbctl run analysis.ipynb --save-output ./executed/
 ```
 - Executed notebooks saved with all outputs
 - Original notebooks unchanged
@@ -187,26 +187,26 @@ executed/
 
 ### Specified Order
 ```bash
-nbutils run 01_load.ipynb 02_process.ipynb 03_analyze.ipynb
+nbctl run 01_load.ipynb 02_process.ipynb 03_analyze.ipynb
 ```
 Runs in the order: 01 → 02 → 03
 
 ### Alphabetical Order
 ```bash
-nbutils run *.ipynb --order
+nbctl run *.ipynb --order
 ```
 Runs in alphabetical order automatically
 
 ### With Wildcards
 ```bash
 # All notebooks in directory
-nbutils run *.ipynb
+nbctl run *.ipynb
 
 # Specific pattern
-nbutils run analysis_*.ipynb
+nbctl run analysis_*.ipynb
 
 # Multiple patterns (shell expansion)
-nbutils run data_*.ipynb model_*.ipynb
+nbctl run data_*.ipynb model_*.ipynb
 ```
 
 ## Notes
@@ -223,25 +223,25 @@ nbutils run data_*.ipynb model_*.ipynb
 ### CI/CD Pipeline Testing
 ```bash
 # Quick test with timeout
-nbutils run tests/*.ipynb --timeout 120 --allow-errors
+nbctl run tests/*.ipynb --timeout 120 --allow-errors
 ```
 
 ### ML Training Pipeline
 ```bash
 # No timeout for long training
-nbutils run 01_preprocess.ipynb 02_train.ipynb 03_evaluate.ipynb
+nbctl run 01_preprocess.ipynb 02_train.ipynb 03_evaluate.ipynb
 ```
 
 ### Report Generation
 ```bash
 # Generate reports with outputs
-nbutils run reports/*.ipynb --save-output ./generated_reports/
+nbctl run reports/*.ipynb --save-output ./generated_reports/
 ```
 
 ### Batch Processing
 ```bash
 # Process all analysis notebooks
-nbutils run analysis_*.ipynb --order
+nbctl run analysis_*.ipynb --order
 ```
 
 ## Performance Considerations
@@ -255,13 +255,13 @@ nbutils run analysis_*.ipynb --order
 
 ### Stop on First Error (Default)
 ```bash
-nbutils run nb1.ipynb nb2.ipynb nb3.ipynb
+nbctl run nb1.ipynb nb2.ipynb nb3.ipynb
 # If nb2 fails, nb3 is not executed
 ```
 
 ### Continue on Errors
 ```bash
-nbutils run nb1.ipynb nb2.ipynb nb3.ipynb --allow-errors
+nbctl run nb1.ipynb nb2.ipynb nb3.ipynb --allow-errors
 # All notebooks attempted even if some fail
 # Exit code reflects failures
 ```

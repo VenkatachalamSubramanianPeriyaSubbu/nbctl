@@ -1,4 +1,4 @@
-# nbutils export
+# nbctl export
 
 Convert notebooks to multiple formats simultaneously.
 
@@ -16,7 +16,7 @@ Use this command to:
 ## Usage
 
 ```bash
-nbutils export NOTEBOOK --format FORMATS [OPTIONS]
+nbctl export NOTEBOOK --format FORMATS [OPTIONS]
 ```
 
 ## Arguments

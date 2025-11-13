@@ -1,4 +1,4 @@
-# nbutils git-setup
+# nbctl git-setup
 
 Configure git for optimal notebook workflows.
 
@@ -18,7 +18,7 @@ Use this command to:
 ## Usage
 
 ```bash
-nbutils git-setup
+nbctl git-setup
 ```
 
 ## Arguments
@@ -40,7 +40,7 @@ Created/updated with notebook-specific rules:
 *.ipynb merge=nbutils
 ```
 
-This tells git to use nbutils for diffing and merging notebooks.
+This tells git to use nbctl for diffing and merging notebooks.
 
 ---
 
@@ -98,13 +98,13 @@ Thumbs.db
 
 ### 3. Git Diff Driver
 
-Registers nbutils as the diff driver for notebooks:
+Registers nbctl as the diff driver for notebooks:
 
 ```bash
-git config diff.nbutils.command 'nbutils diff'
+git config diff.nbutils.command 'nbctl diff'
 ```
 
-**Result:** When you run `git diff notebook.ipynb`, git uses nbutils diff which:
+**Result:** When you run `git diff notebook.ipynb`, git uses nbctl diff which:
 - Ignores outputs and metadata
 - Shows only source code changes
 - Provides clean, readable diffs
@@ -113,13 +113,13 @@ git config diff.nbutils.command 'nbutils diff'
 
 ### 4. Git Merge Driver
 
-Registers nbutils as the merge driver for notebooks:
+Registers nbctl as the merge driver for notebooks:
 
 ```bash
-git config merge.nbutils.driver 'nbutils resolve %O %A %B -o %A'
+git config merge.nbutils.driver 'nbctl resolve %O %A %B -o %A'
 ```
 
-**Result:** When notebooks have merge conflicts, git uses nbutils resolve which:
+**Result:** When notebooks have merge conflicts, git uses nbctl resolve which:
 - Intelligently merges notebooks
 - Detects real conflicts
 - Provides clear conflict markers
@@ -137,8 +137,8 @@ Created/Updated:
   - .gitignore (Python project patterns)
 
 Configured:
-  - Custom diff driver: nbutils diff
-  - Custom merge driver: nbutils resolve
+  - Custom diff driver: nbctl diff
+  - Custom merge driver: nbctl resolve
 
 Your repository is now configured for optimal notebook workflows!
 
@@ -172,7 +172,7 @@ This command must be run inside a git repository.
 
 To initialize:
   git init
-  nbutils git-setup
+  nbctl git-setup
 ```
 
 ## Exit Codes
@@ -198,7 +198,7 @@ The command configures:
 - `.gitignore` - Shared with team (if created)
 - Git config - Local to your repository
 
-**Note:** Team members should also run `nbutils git-setup` to enable custom drivers.
+**Note:** Team members should also run `nbctl git-setup` to enable custom drivers.
 
 ## After Setup Workflow
 
@@ -208,7 +208,7 @@ The command configures:
 # 1. Make changes to notebook
 # (edit in Jupyter)
 
-# 2. Check what changed (uses nbutils diff)
+# 2. Check what changed (uses nbctl diff)
 git diff notebook.ipynb
 # Shows only source code changes!
 
@@ -216,7 +216,7 @@ git diff notebook.ipynb
 git add notebook.ipynb
 git commit -m "Add data analysis"
 
-# 4. Pull changes (uses nbutils resolve for conflicts)
+# 4. Pull changes (uses nbctl resolve for conflicts)
 git pull
 # Notebooks merge intelligently!
 ```
@@ -225,9 +225,9 @@ git pull
 
 ```bash
 # Before committing
-nbutils clean notebook.ipynb    # Remove outputs
-nbutils format notebook.ipynb   # Format code
-nbutils lint notebook.ipynb     # Check quality
+nbctl clean notebook.ipynb    # Remove outputs
+nbctl format notebook.ipynb   # Format code
+nbctl lint notebook.ipynb     # Check quality
 
 git add notebook.ipynb
 git commit -m "Add analysis"
@@ -258,7 +258,7 @@ Add custom rules for other file types:
 vim .gitattributes
 
 # Add custom rules
-*.ipynb diff=nbutils merge=nbutils
+*.ipynb diff=nbctl merge=nbutils
 *.csv diff=csv
 *.json diff=json
 ```
@@ -293,8 +293,8 @@ git config --list | grep nbutils
 
 Expected output:
 ```
-diff.nbutils.command=nbutils diff
-merge.nbutils.driver=nbutils resolve %O %A %B -o %A
+diff.nbutils.command=nbctl diff
+merge.nbutils.driver=nbctl resolve %O %A %B -o %A
 ```
 
 ## Team Setup
@@ -303,7 +303,7 @@ merge.nbutils.driver=nbutils resolve %O %A %B -o %A
 
 ```bash
 # 1. Run git-setup
-nbutils git-setup
+nbctl git-setup
 
 # 2. Commit configuration
 git add .gitattributes .gitignore
@@ -318,7 +318,7 @@ git push
 git pull
 
 # 2. Run git-setup to enable custom drivers
-nbutils git-setup
+nbctl git-setup
 ```
 
 **Note:** `.gitattributes` and `.gitignore` are shared, but git config (drivers) are local.
@@ -335,7 +335,7 @@ nbutils git-setup
 git config --list | grep diff.nbutils
 
 # Re-run setup
-nbutils git-setup
+nbctl git-setup
 
 # Test
 git diff notebook.ipynb
@@ -351,10 +351,10 @@ git diff notebook.ipynb
 git config --list | grep merge.nbutils
 
 # Re-run setup
-nbutils git-setup
+nbctl git-setup
 
 # Manual resolution
-nbutils resolve base.ipynb ours.ipynb theirs.ipynb -o merged.ipynb
+nbctl resolve base.ipynb ours.ipynb theirs.ipynb -o merged.ipynb
 ```
 
 ### Configuration Not Applied

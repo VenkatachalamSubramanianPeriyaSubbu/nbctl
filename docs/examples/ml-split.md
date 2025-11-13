@@ -1,13 +1,13 @@
 # ML-Split Command Examples
 
-Practical examples for using `nbutils ml-split` to create production ML pipelines.
+Practical examples for using `nbctl ml-split` to create production ML pipelines.
 
 ## Basic Usage
 
 ### Split ML Notebook
 
 ```bash
-nbutils ml-split ml_model.ipynb
+nbctl ml-split ml_model.ipynb
 ```
 
 **Result:**
@@ -26,7 +26,7 @@ ml_pipeline/
 ### Custom Output Directory
 
 ```bash
-nbutils ml-split ml_model.ipynb --output src/ml/
+nbctl ml-split ml_model.ipynb --output src/ml/
 ```
 
 ### Run Generated Pipeline
@@ -108,7 +108,7 @@ print("Pipeline completed successfully!")
 # (work on ml_experiment.ipynb)
 
 # 2. Split into pipeline
-nbutils ml-split ml_experiment.ipynb --output ml_pipeline/
+nbctl ml-split ml_experiment.ipynb --output ml_pipeline/
 
 # 3. Set up Python package
 cd ml_pipeline/
@@ -133,7 +133,7 @@ Split multiple experiments:
 
 for nb in experiments/*.ipynb; do
     name=$(basename "$nb" .ipynb)
-    nbutils ml-split "$nb" --output "pipelines/$name/"
+    nbctl ml-split "$nb" --output "pipelines/$name/"
 done
 
 echo "All notebooks split into pipelines"
@@ -143,7 +143,7 @@ echo "All notebooks split into pipelines"
 
 ```bash
 # Split to specific directory structure
-nbutils ml-split ml_model.ipynb --output src/models/classifier/
+nbctl ml-split ml_model.ipynb --output src/models/classifier/
 
 # Result:
 # src/models/classifier/
@@ -156,7 +156,7 @@ nbutils ml-split ml_model.ipynb --output src/models/classifier/
 
 ```bash
 # Split notebook
-nbutils ml-split ml_model.ipynb
+nbctl ml-split ml_model.ipynb
 
 # Test pipeline
 cd ml_pipeline
@@ -206,7 +206,7 @@ Notebook structure:
 Split and run:
 
 ```bash
-nbutils ml-split image_classifier.ipynb --output image_pipeline/
+nbctl ml-split image_classifier.ipynb --output image_pipeline/
 cd image_pipeline/
 python main.py
 ```
@@ -289,7 +289,7 @@ jobs:
       
       - name: Generate pipeline
         run: |
-          nbutils ml-split notebooks/ml_model.ipynb --output ml_pipeline/
+          nbctl ml-split notebooks/ml_model.ipynb --output ml_pipeline/
       
       - name: Test pipeline
         run: |
@@ -400,20 +400,20 @@ Use clear section headers:
 
 ```bash
 # Run notebook to verify it works
-nbutils run ml_model.ipynb
+nbctl run ml_model.ipynb
 
 # Then split
-nbutils ml-split ml_model.ipynb
+nbctl ml-split ml_model.ipynb
 ```
 
 ### 3. Version Your Pipeline
 
 ```bash
 # Version 1
-nbutils ml-split ml_model.ipynb --output ml_pipeline_v1/
+nbctl ml-split ml_model.ipynb --output ml_pipeline_v1/
 
 # Version 2 (after improvements)
-nbutils ml-split ml_model.ipynb --output ml_pipeline_v2/
+nbctl ml-split ml_model.ipynb --output ml_pipeline_v2/
 ```
 
 ### 4. Document Generated Code
@@ -447,7 +447,7 @@ If no markdown headers:
 # etc.
 
 # Then split again
-nbutils ml-split ml_model.ipynb
+nbctl ml-split ml_model.ipynb
 ```
 
 ### Module Import Errors

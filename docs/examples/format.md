@@ -7,19 +7,19 @@ Practical examples for auto-formatting notebooks with black.
 ### Format Notebook
 
 ```bash
-nbutils format notebook.ipynb
+nbctl format notebook.ipynb
 ```
 
 ### Custom Line Length
 
 ```bash
-nbutils format notebook.ipynb --line-length 100
+nbctl format notebook.ipynb --line-length 100
 ```
 
 ### Save to Different Location
 
 ```bash
-nbutils format notebook.ipynb --output-dir ./formatted/
+nbctl format notebook.ipynb --output-dir ./formatted/
 ```
 
 ## Workflow Examples
@@ -32,7 +32,7 @@ nbutils format notebook.ipynb --output-dir ./formatted/
 
 for nb in $(git diff --cached --name-only | grep '\.ipynb$'); do
     echo "Formatting $nb..."
-    nbutils format "$nb"
+    nbctl format "$nb"
     git add "$nb"
 done
 
@@ -44,7 +44,7 @@ echo "All notebooks formatted"
 ```bash
 # Format all notebooks in project
 for nb in **/*.ipynb; do
-    nbutils format "$nb"
+    nbctl format "$nb"
 done
 ```
 
@@ -52,7 +52,7 @@ done
 
 ```bash
 # 1. Format
-nbutils format notebook.ipynb
+nbctl format notebook.ipynb
 
 # 2. Review changes
 git diff notebook.ipynb
@@ -72,7 +72,7 @@ git commit -m "Format notebook with black"
 
 # Format with team line length
 for nb in *.ipynb; do
-    nbutils format "$nb" --line-length 88
+    nbctl format "$nb" --line-length 88
 done
 ```
 
@@ -94,7 +94,7 @@ jobs:
       - name: Check formatting
         run: |
           for nb in *.ipynb; do
-            nbutils format "$nb" --output-dir temp/
+            nbctl format "$nb" --output-dir temp/
             if ! diff "$nb" "temp/$nb"; then
               echo "$nb needs formatting"
               exit 1
@@ -117,7 +117,7 @@ backup="${nb}.backup"
 cp "$nb" "$backup"
 
 # Format
-if nbutils format "$nb"; then
+if nbctl format "$nb"; then
     echo "Formatted successfully"
     rm "$backup"
 else
@@ -132,7 +132,7 @@ fi
 ```bash
 # Format only if changed recently
 if [ "notebook.ipynb" -nt "notebook.ipynb.formatted" ]; then
-    nbutils format notebook.ipynb
+    nbctl format notebook.ipynb
     touch notebook.ipynb.formatted
 fi
 ```
@@ -146,13 +146,13 @@ fi
 nb="$1"
 
 echo "Formatting $nb..."
-nbutils format "$nb"
+nbctl format "$nb"
 
 echo "Linting $nb..."
-nbutils lint "$nb"
+nbctl lint "$nb"
 
 echo "Cleaning $nb..."
-nbutils clean "$nb"
+nbctl clean "$nb"
 
 echo "Quality pipeline complete"
 ```
@@ -168,7 +168,7 @@ echo "Quality pipeline complete"
 # Auto-format notebooks on commit
 
 for nb in $(git diff --cached --name-only | grep '\.ipynb$'); do
-    nbutils format "$nb" --line-length 88
+    nbctl format "$nb" --line-length 88
     git add "$nb"
 done
 ```
@@ -188,7 +188,7 @@ jobs:
         run: |
           pip install nbutils
           for nb in *.ipynb; do
-            nbutils format "$nb"
+            nbctl format "$nb"
           done
       - name: Commit changes
         run: |
@@ -206,7 +206,7 @@ jobs:
 ```bash
 # Weekly formatting
 for nb in *.ipynb; do
-    nbutils format "$nb"
+    nbctl format "$nb"
 done
 git commit -am "Weekly formatting"
 ```
@@ -215,7 +215,7 @@ git commit -am "Weekly formatting"
 
 ```bash
 # Preview what would change
-nbutils format notebook.ipynb --output-dir temp/
+nbctl format notebook.ipynb --output-dir temp/
 diff notebook.ipynb temp/notebook.ipynb
 ```
 
@@ -225,7 +225,7 @@ diff notebook.ipynb temp/notebook.ipynb
 # Use same line length across team
 # Add to .gitattributes or document
 echo "Line length: 88" > .formatting-config
-nbutils format *.ipynb --line-length 88
+nbctl format *.ipynb --line-length 88
 ```
 
 ## Related Examples

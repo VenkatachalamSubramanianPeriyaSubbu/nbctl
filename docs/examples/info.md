@@ -1,6 +1,6 @@
 # Info Command Examples
 
-Practical examples for using `nbutils info` to analyze notebooks.
+Practical examples for using `nbctl info` to analyze notebooks.
 
 ## Basic Usage
 
@@ -9,7 +9,7 @@ Practical examples for using `nbutils info` to analyze notebooks.
 Display complete notebook information:
 
 ```bash
-nbutils info analysis.ipynb
+nbctl info analysis.ipynb
 ```
 
 **Output:**
@@ -41,7 +41,7 @@ Dependencies:
 ### Show Only Code Metrics
 
 ```bash
-nbutils info analysis.ipynb --code-metrics
+nbctl info analysis.ipynb --code-metrics
 ```
 
 ---
@@ -49,7 +49,7 @@ nbutils info analysis.ipynb --code-metrics
 ### Show Only Imports
 
 ```bash
-nbutils info analysis.ipynb --imports
+nbctl info analysis.ipynb --imports
 ```
 
 ---
@@ -61,7 +61,7 @@ nbutils info analysis.ipynb --imports
 Check if notebook should be split into modules:
 
 ```bash
-nbutils info large_notebook.ipynb --code-metrics
+nbctl info large_notebook.ipynb --code-metrics
 ```
 
 If complexity is "Very High", consider using `ml-split`.
@@ -73,7 +73,7 @@ If complexity is "Very High", consider using `ml-split`.
 List all notebook dependencies:
 
 ```bash
-nbutils info notebook.ipynb --imports > dependencies.txt
+nbctl info notebook.ipynb --imports > dependencies.txt
 ```
 
 ---
@@ -85,7 +85,7 @@ Analyze all notebooks in a directory:
 ```bash
 for nb in *.ipynb; do
     echo "=== $nb ==="
-    nbutils info "$nb" --code-metrics
+    nbctl info "$nb" --code-metrics
     echo
 done
 ```
@@ -99,7 +99,7 @@ Compare statistics of multiple notebooks:
 ```bash
 echo "Notebook,Cells,Code Lines,Complexity"
 for nb in *.ipynb; do
-    info=$(nbutils info "$nb" --code-metrics)
+    info=$(nbctl info "$nb" --code-metrics)
     # Parse and format as CSV
     echo "$nb,$info"
 done > notebook-stats.csv
@@ -113,7 +113,7 @@ Find notebooks with many cells:
 
 ```bash
 for nb in *.ipynb; do
-    cells=$(nbutils info "$nb" | grep "Total cells" | awk '{print $3}')
+    cells=$(nbctl info "$nb" | grep "Total cells" | awk '{print $3}')
     if [ "$cells" -gt 50 ]; then
         echo "$nb has $cells cells (consider splitting)"
     fi
@@ -132,8 +132,8 @@ Monitor notebook size over time:
 
 nb="$1"
 date=$(date +%Y-%m-%d)
-cells=$(nbutils info "$nb" | grep "Total cells" | awk '{print $3}')
-lines=$(nbutils info "$nb" | grep "lines of code" | awk '{print $5}')
+cells=$(nbctl info "$nb" | grep "Total cells" | awk '{print $3}')
+lines=$(nbctl info "$nb" | grep "lines of code" | awk '{print $5}')
 
 echo "$date,$cells,$lines" >> notebook-growth.csv
 ```
@@ -151,7 +151,7 @@ echo "$date,$cells,$lines" >> notebook-growth.csv
 max_cells=100
 
 for nb in *.ipynb; do
-    cells=$(nbutils info "$nb" | grep "Total cells" | awk '{print $3}')
+    cells=$(nbctl info "$nb" | grep "Total cells" | awk '{print $3}')
     if [ "$cells" -gt "$max_cells" ]; then
         echo "ERROR: $nb has $cells cells (max: $max_cells)"
         exit 1
@@ -173,7 +173,7 @@ echo "<html><body><h1>Notebook Report</h1>" > report.html
 
 for nb in *.ipynb; do
     echo "<h2>$nb</h2><pre>" >> report.html
-    nbutils info "$nb" >> report.html
+    nbctl info "$nb" >> report.html
     echo "</pre>" >> report.html
 done
 
@@ -190,7 +190,7 @@ Check notebooks regularly for growth:
 
 ```bash
 # Weekly check
-nbutils info *.ipynb --code-metrics
+nbctl info *.ipynb --code-metrics
 ```
 
 ### 2. Before Refactoring
@@ -198,7 +198,7 @@ nbutils info *.ipynb --code-metrics
 Always analyze before splitting:
 
 ```bash
-nbutils info notebook.ipynb
+nbctl info notebook.ipynb
 # If Very High complexity, refactor
 ```
 
@@ -207,7 +207,7 @@ nbutils info notebook.ipynb
 Export dependencies for documentation:
 
 ```bash
-nbutils info notebook.ipynb --imports > DEPENDENCIES.md
+nbctl info notebook.ipynb --imports > DEPENDENCIES.md
 ```
 
 ---

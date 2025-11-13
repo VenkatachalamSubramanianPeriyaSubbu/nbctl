@@ -1,4 +1,4 @@
-# nbutils security
+# nbctl security
 
 Scan notebooks for security vulnerabilities and secrets.
 
@@ -18,7 +18,7 @@ Use this command to:
 ## Usage
 
 ```bash
-nbutils security NOTEBOOK [OPTIONS]
+nbctl security NOTEBOOK [OPTIONS]
 ```
 
 ## Arguments
@@ -149,7 +149,7 @@ hash = hashlib.sha1(data)
 ### Default Output (All Issues)
 
 ```bash
-nbutils security notebook.ipynb
+nbctl security notebook.ipynb
 ```
 
 Output:
@@ -204,7 +204,7 @@ Summary:
 ### Filtered by Severity
 
 ```bash
-nbutils security notebook.ipynb --severity high
+nbctl security notebook.ipynb --severity high
 ```
 
 Output:
@@ -226,7 +226,7 @@ Summary: 3 HIGH severity issues found
 ### Verbose Output
 
 ```bash
-nbutils security notebook.ipynb --verbose
+nbctl security notebook.ipynb --verbose
 ```
 
 Includes detailed recommendations:
@@ -272,7 +272,7 @@ References:
 ### JSON Output
 
 ```bash
-nbutils security notebook.ipynb --json
+nbctl security notebook.ipynb --json
 ```
 
 Output:
@@ -476,13 +476,13 @@ hash = hashlib.sha256(data)
 
 ```bash
 # Fail if any issues found
-nbutils security notebook.ipynb || exit 1
+nbctl security notebook.ipynb || exit 1
 
 # Fail only on HIGH severity
-nbutils security notebook.ipynb --severity high || exit 1
+nbctl security notebook.ipynb --severity high || exit 1
 
 # Generate report for CI
-nbutils security notebook.ipynb --json > security-report.json
+nbctl security notebook.ipynb --json > security-report.json
 ```
 
 ---
@@ -503,7 +503,7 @@ jobs:
       - name: Scan notebooks
         run: |
           for nb in *.ipynb; do
-            nbutils security "$nb" --severity high || exit 1
+            nbctl security "$nb" --severity high || exit 1
           done
 ```
 
@@ -522,7 +522,7 @@ jobs:
 
 ```bash
 # Pre-commit workflow
-nbutils security notebook.ipynb --severity high
+nbctl security notebook.ipynb --severity high
 git add notebook.ipynb
 git commit
 ```
@@ -532,7 +532,7 @@ git commit
 ```bash
 # Scan all notebooks regularly
 for nb in *.ipynb; do
-    nbutils security "$nb"
+    nbctl security "$nb"
 done
 ```
 
@@ -540,14 +540,14 @@ done
 
 ```bash
 # In CI pipeline
-nbutils security *.ipynb --json > security-report.json
+nbctl security *.ipynb --json > security-report.json
 ```
 
 ### 4. Fix High Severity First
 
 ```bash
 # Focus on critical issues
-nbutils security notebook.ipynb --severity high --verbose
+nbctl security notebook.ipynb --severity high --verbose
 ```
 
 ## Limitations

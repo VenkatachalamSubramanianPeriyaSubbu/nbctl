@@ -7,13 +7,13 @@ Practical examples for checking notebook code quality.
 ### Lint Single Notebook
 
 ```bash
-nbutils lint notebook.ipynb
+nbctl lint notebook.ipynb
 ```
 
 ### Custom Cell Length
 
 ```bash
-nbutils lint notebook.ipynb --max-cell-length 150
+nbctl lint notebook.ipynb --max-cell-length 150
 ```
 
 ## Workflow Examples
@@ -26,7 +26,7 @@ nbutils lint notebook.ipynb --max-cell-length 150
 
 for nb in $(git diff --cached --name-only | grep '\.ipynb$'); do
     echo "Linting $nb..."
-    if ! nbutils lint "$nb"; then
+    if ! nbctl lint "$nb"; then
         echo "Linting failed for $nb"
         echo "Fix issues and try again"
         exit 1
@@ -41,7 +41,7 @@ echo "All notebooks pass linting"
 ```bash
 # Check all notebooks with strict standards
 for nb in *.ipynb; do
-    nbutils lint "$nb" --max-cell-length 75
+    nbctl lint "$nb" --max-cell-length 75
 done
 ```
 
@@ -50,13 +50,13 @@ done
 ```bash
 #!/bin/bash
 # 1. Lint to find issues
-nbutils lint notebook.ipynb
+nbctl lint notebook.ipynb
 
 # 2. Format to fix style
-nbutils format notebook.ipynb
+nbctl format notebook.ipynb
 
 # 3. Lint again to verify
-nbutils lint notebook.ipynb
+nbctl lint notebook.ipynb
 ```
 
 ## CI/CD Examples
@@ -79,7 +79,7 @@ jobs:
       - name: Lint notebooks
         run: |
           for nb in *.ipynb; do
-            nbutils lint "$nb" || exit 1
+            nbctl lint "$nb" || exit 1
           done
 ```
 
@@ -92,7 +92,7 @@ jobs:
 # Lint notebooks on commit
 
 for nb in $(git diff --cached --name-only | grep '\.ipynb$'); do
-    nbutils lint "$nb" --max-cell-length 100 || exit 1
+    nbctl lint "$nb" --max-cell-length 100 || exit 1
 done
 ```
 
@@ -108,7 +108,7 @@ echo "<html><body><h1>Lint Report</h1>" > lint-report.html
 
 for nb in *.ipynb; do
     echo "<h2>$nb</h2><pre>" >> lint-report.html
-    nbutils lint "$nb" >> lint-report.html 2>&1
+    nbctl lint "$nb" >> lint-report.html 2>&1
     echo "</pre>" >> lint-report.html
 done
 
@@ -119,13 +119,13 @@ echo "</body></html>" >> lint-report.html
 
 ```bash
 # Teaching/Tutorial notebooks (strict)
-nbutils lint tutorial.ipynb --max-cell-length 30
+nbctl lint tutorial.ipynb --max-cell-length 30
 
 # Analysis notebooks (moderate)
-nbutils lint analysis.ipynb --max-cell-length 75
+nbctl lint analysis.ipynb --max-cell-length 75
 
 # Research notebooks (lenient)
-nbutils lint research.ipynb --max-cell-length 150
+nbctl lint research.ipynb --max-cell-length 150
 ```
 
 ### Track Lint Issues Over Time
@@ -135,7 +135,7 @@ nbutils lint research.ipynb --max-cell-length 150
 # Track lint issues in CSV
 
 date=$(date +%Y-%m-%d)
-issues=$(nbutils lint notebook.ipynb | grep -c "Issue" || echo "0")
+issues=$(nbctl lint notebook.ipynb | grep -c "Issue" || echo "0")
 echo "$date,$issues" >> lint-history.csv
 ```
 
@@ -145,7 +145,7 @@ echo "$date,$issues" >> lint-history.csv
 
 ```bash
 # Lint to see all issues
-nbutils lint notebook.ipynb
+nbctl lint notebook.ipynb
 
 # Fix one type at a time:
 # - Remove unused imports
@@ -157,10 +157,10 @@ nbutils lint notebook.ipynb
 
 ```bash
 # Format fixes style issues
-nbutils format notebook.ipynb
+nbctl format notebook.ipynb
 
 # Lint catches structural issues
-nbutils lint notebook.ipynb
+nbctl lint notebook.ipynb
 ```
 
 ### 3. Team Standards Document
@@ -173,7 +173,7 @@ Create `NOTEBOOK_STANDARDS.md`:
 ## Linting
 All notebooks must pass:
 \`\`\`bash
-nbutils lint notebook.ipynb --max-cell-length 75
+nbctl lint notebook.ipynb --max-cell-length 75
 \`\`\`
 
 ## Before Committing

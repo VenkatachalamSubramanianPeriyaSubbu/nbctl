@@ -1,4 +1,4 @@
-# nbutils clean
+# nbctl clean
 
 Remove outputs and metadata from notebooks for version control.
 
@@ -11,7 +11,7 @@ This command is essential for reducing git diff size by 90-95%, making code revi
 ## Usage
 
 ```bash
-nbutils clean NOTEBOOK [OPTIONS]
+nbctl clean NOTEBOOK [OPTIONS]
 ```
 
 ## Arguments
@@ -70,22 +70,22 @@ Would clean: notebook.ipynb
 
 Basic usage:
 ```bash
-nbutils clean notebook.ipynb
+nbctl clean notebook.ipynb
 ```
 
 Preview changes first:
 ```bash
-nbutils clean notebook.ipynb --dry-run
+nbctl clean notebook.ipynb --dry-run
 ```
 
 Save to new file:
 ```bash
-nbutils clean original.ipynb -o cleaned.ipynb
+nbctl clean original.ipynb -o cleaned.ipynb
 ```
 
 Keep outputs but clean metadata:
 ```bash
-nbutils clean notebook.ipynb --keep-outputs
+nbctl clean notebook.ipynb --keep-outputs
 ```
 
 ## Notes
@@ -102,10 +102,10 @@ nbutils clean notebook.ipynb --keep-outputs
 # 1. Make changes to notebook in Jupyter
 
 # 2. Preview what will be cleaned
-nbutils clean notebook.ipynb --dry-run
+nbctl clean notebook.ipynb --dry-run
 
 # 3. Clean the notebook
-nbutils clean notebook.ipynb
+nbctl clean notebook.ipynb
 
 # 4. Check the git diff (much smaller now!)
 git diff notebook.ipynb

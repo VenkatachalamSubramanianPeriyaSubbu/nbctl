@@ -7,19 +7,19 @@ Practical examples for merging notebooks with conflict detection.
 ### 3-Way Merge
 
 ```bash
-nbutils resolve base.ipynb ours.ipynb theirs.ipynb -o merged.ipynb
+nbctl resolve base.ipynb ours.ipynb theirs.ipynb -o merged.ipynb
 ```
 
 ### Check Conflicts Only
 
 ```bash
-nbutils resolve base.ipynb ours.ipynb theirs.ipynb --check-conflicts
+nbctl resolve base.ipynb ours.ipynb theirs.ipynb --check-conflicts
 ```
 
 ### With Report
 
 ```bash
-nbutils resolve base.ipynb ours.ipynb theirs.ipynb -o merged.ipynb --report
+nbctl resolve base.ipynb ours.ipynb theirs.ipynb -o merged.ipynb --report
 ```
 
 ## Merge Strategies
@@ -27,25 +27,25 @@ nbutils resolve base.ipynb ours.ipynb theirs.ipynb -o merged.ipynb --report
 ### Auto Merge (Default)
 
 ```bash
-nbutils resolve base.ipynb ours.ipynb theirs.ipynb -o merged.ipynb --strategy auto
+nbctl resolve base.ipynb ours.ipynb theirs.ipynb -o merged.ipynb --strategy auto
 ```
 
 ### Prefer Ours
 
 ```bash
-nbutils resolve base.ipynb ours.ipynb theirs.ipynb -o merged.ipynb --strategy ours
+nbctl resolve base.ipynb ours.ipynb theirs.ipynb -o merged.ipynb --strategy ours
 ```
 
 ### Prefer Theirs
 
 ```bash
-nbutils resolve base.ipynb ours.ipynb theirs.ipynb -o merged.ipynb --strategy theirs
+nbctl resolve base.ipynb ours.ipynb theirs.ipynb -o merged.ipynb --strategy theirs
 ```
 
 ### Cell Append
 
 ```bash
-nbutils resolve base.ipynb ours.ipynb theirs.ipynb -o merged.ipynb --strategy cell-append
+nbctl resolve base.ipynb ours.ipynb theirs.ipynb -o merged.ipynb --strategy cell-append
 ```
 
 ## Git Integration
@@ -64,7 +64,7 @@ git show :2:$nb > ours_$nb      # Your version
 git show :3:$nb > theirs_$nb    # Their version
 
 # Resolve
-nbutils resolve base_$nb ours_$nb theirs_$nb -o $nb --report
+nbctl resolve base_$nb ours_$nb theirs_$nb -o $nb --report
 
 # Check result
 if [ $? -eq 0 ]; then
@@ -83,7 +83,7 @@ rm base_$nb ours_$nb theirs_$nb
 After `git-setup`, this happens automatically:
 
 ```bash
-# Git uses nbutils resolve automatically
+# Git uses nbctl resolve automatically
 git merge feature-branch
 
 # If conflicts in notebooks, they're resolved intelligently
@@ -101,7 +101,7 @@ BASE=$1
 OURS=$2
 THEIRS=$3
 
-nbutils resolve "$BASE" "$OURS" "$THEIRS" -o "$OURS" --strategy auto
+nbctl resolve "$BASE" "$OURS" "$THEIRS" -o "$OURS" --strategy auto
 
 exit $?
 ```
@@ -128,7 +128,7 @@ if git status | grep -q "both modified.*$nb"; then
     git show :3:$nb > theirs.ipynb
     
     # Resolve
-    nbutils resolve base.ipynb ours.ipynb theirs.ipynb -o $nb --report
+    nbctl resolve base.ipynb ours.ipynb theirs.ipynb -o $nb --report
     
     # Review and complete
     git add $nb
@@ -149,10 +149,10 @@ alice="alice_version.ipynb"
 bob="bob_version.ipynb"
 
 # Merge Alice's changes
-nbutils resolve $base $base $alice -o step1.ipynb --strategy auto
+nbctl resolve $base $base $alice -o step1.ipynb --strategy auto
 
 # Merge Bob's changes
-nbutils resolve $base step1.ipynb $bob -o final.ipynb --strategy auto
+nbctl resolve $base step1.ipynb $bob -o final.ipynb --strategy auto
 
 rm step1.ipynb
 echo "Merged all contributions"
@@ -165,12 +165,12 @@ echo "Merged all contributions"
 # Check for conflicts before merging
 
 # Check conflicts
-if nbutils resolve base.ipynb ours.ipynb theirs.ipynb --check-conflicts; then
+if nbctl resolve base.ipynb ours.ipynb theirs.ipynb --check-conflicts; then
     echo "No conflicts, proceeding with merge"
-    nbutils resolve base.ipynb ours.ipynb theirs.ipynb -o merged.ipynb
+    nbctl resolve base.ipynb ours.ipynb theirs.ipynb -o merged.ipynb
 else
     echo "Conflicts detected, review required"
-    nbutils resolve base.ipynb ours.ipynb theirs.ipynb --check-conflicts
+    nbctl resolve base.ipynb ours.ipynb theirs.ipynb --check-conflicts
     exit 1
 fi
 ```
@@ -190,7 +190,7 @@ for nb in $(git diff --name-only --diff-filter=U | grep '\.ipynb$'); do
     git show :2:$nb > ours_$nb
     git show :3:$nb > theirs_$nb
     
-    if nbutils resolve base_$nb ours_$nb theirs_$nb -o $nb; then
+    if nbctl resolve base_$nb ours_$nb theirs_$nb -o $nb; then
         git add $nb
         echo "Resolved $nb"
     else
@@ -213,9 +213,9 @@ theirs="theirs.ipynb"
 output="merged.ipynb"
 
 # Check conflicts
-if nbutils resolve $base $ours $theirs --check-conflicts; then
+if nbctl resolve $base $ours $theirs --check-conflicts; then
     # No conflicts, use auto
-    nbutils resolve $base $ours $theirs -o $output --strategy auto
+    nbctl resolve $base $ours $theirs -o $output --strategy auto
 else
     # Has conflicts, ask user
     echo "Conflicts detected. Choose strategy:"
@@ -232,7 +232,7 @@ else
         *) strategy="auto" ;;
     esac
     
-    nbutils resolve $base $ours $theirs -o $output --strategy $strategy --report
+    nbctl resolve $base $ours $theirs -o $output --strategy $strategy --report
 fi
 ```
 
@@ -243,10 +243,10 @@ fi
 # Merge and validate result
 
 # Merge
-nbutils resolve base.ipynb ours.ipynb theirs.ipynb -o merged.ipynb
+nbctl resolve base.ipynb ours.ipynb theirs.ipynb -o merged.ipynb
 
 # Validate by running
-if nbutils run merged.ipynb --timeout 300; then
+if nbctl run merged.ipynb --timeout 300; then
     echo "Merge successful and notebook runs"
     git add merged.ipynb
     git commit -m "Merge notebooks (validated)"
@@ -281,7 +281,7 @@ jobs:
             git show origin/main:$nb > base_$nb 2>/dev/null || continue
             git show HEAD:$nb > ours_$nb
             
-            if ! nbutils resolve base_$nb base_$nb ours_$nb --check-conflicts; then
+            if ! nbctl resolve base_$nb base_$nb ours_$nb --check-conflicts; then
               echo "⚠ Conflicts in $nb"
               exit 1
             fi
@@ -296,11 +296,11 @@ jobs:
 
 ```bash
 # Check for conflicts before merging
-nbutils resolve base.ipynb ours.ipynb theirs.ipynb --check-conflicts
+nbctl resolve base.ipynb ours.ipynb theirs.ipynb --check-conflicts
 
 # If clean, proceed
 if [ $? -eq 0 ]; then
-    nbutils resolve base.ipynb ours.ipynb theirs.ipynb -o merged.ipynb
+    nbctl resolve base.ipynb ours.ipynb theirs.ipynb -o merged.ipynb
 fi
 ```
 
@@ -308,18 +308,18 @@ fi
 
 ```bash
 # Get detailed merge information
-nbutils resolve base.ipynb ours.ipynb theirs.ipynb -o merged.ipynb --report
+nbctl resolve base.ipynb ours.ipynb theirs.ipynb -o merged.ipynb --report
 ```
 
 ### 3. Validate After Merge
 
 ```bash
 # Merge
-nbutils resolve base.ipynb ours.ipynb theirs.ipynb -o merged.ipynb
+nbctl resolve base.ipynb ours.ipynb theirs.ipynb -o merged.ipynb
 
 # Validate
-nbutils lint merged.ipynb
-nbutils run merged.ipynb --timeout 300
+nbctl lint merged.ipynb
+nbctl run merged.ipynb --timeout 300
 ```
 
 ### 4. Keep Conflict Markers

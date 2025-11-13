@@ -7,13 +7,13 @@ Practical examples for concatenating notebooks.
 ### Append Two Notebooks
 
 ```bash
-nbutils combine notebook1.ipynb notebook2.ipynb -o combined.ipynb
+nbctl combine notebook1.ipynb notebook2.ipynb -o combined.ipynb
 ```
 
 ### With Report
 
 ```bash
-nbutils combine notebook1.ipynb notebook2.ipynb -o combined.ipynb --report
+nbctl combine notebook1.ipynb notebook2.ipynb -o combined.ipynb --report
 ```
 
 ## Strategy Examples
@@ -22,21 +22,21 @@ nbutils combine notebook1.ipynb notebook2.ipynb -o combined.ipynb --report
 
 ```bash
 # Concatenate all cells
-nbutils combine intro.ipynb analysis.ipynb -o full.ipynb --strategy append
+nbctl combine intro.ipynb analysis.ipynb -o full.ipynb --strategy append
 ```
 
 ### Keep First Only
 
 ```bash
 # Copy first notebook (ignore second)
-nbutils combine keep.ipynb ignore.ipynb -o output.ipynb --strategy first
+nbctl combine keep.ipynb ignore.ipynb -o output.ipynb --strategy first
 ```
 
 ### Keep Second Only
 
 ```bash
 # Copy second notebook (ignore first)
-nbutils combine ignore.ipynb keep.ipynb -o output.ipynb --strategy second
+nbctl combine ignore.ipynb keep.ipynb -o output.ipynb --strategy second
 ```
 
 ## Workflow Examples
@@ -47,17 +47,17 @@ nbutils combine ignore.ipynb keep.ipynb -o output.ipynb --strategy second
 #!/bin/bash
 # Combine multiple analysis steps
 
-nbutils combine \
+nbctl combine \
     01_introduction.ipynb \
     02_data_loading.ipynb \
     -o temp1.ipynb
 
-nbutils combine \
+nbctl combine \
     temp1.ipynb \
     03_analysis.ipynb \
     -o temp2.ipynb
 
-nbutils combine \
+nbctl combine \
     temp2.ipynb \
     04_conclusions.ipynb \
     -o complete_analysis.ipynb
@@ -83,7 +83,7 @@ cp "${lessons[0]}" "$output"
 
 for ((i=1; i<${#lessons[@]}; i++)); do
     temp=$(mktemp)
-    nbutils combine "$output" "${lessons[$i]}" -o "$temp"
+    nbctl combine "$output" "${lessons[$i]}" -o "$temp"
     mv "$temp" "$output"
 done
 
@@ -106,7 +106,7 @@ cp report_header.ipynb "$output"
 for day in mon tue wed thu fri; do
     if [ -f "analysis_${day}.ipynb" ]; then
         temp=$(mktemp)
-        nbutils combine "$output" "analysis_${day}.ipynb" -o "$temp"
+        nbctl combine "$output" "analysis_${day}.ipynb" -o "$temp"
         mv "$temp" "$output"
     fi
 done
@@ -139,10 +139,10 @@ cat > separator.ipynb << EOF
 EOF
 
 # Combine with separators
-nbutils combine part1.ipynb separator.ipynb -o temp1.ipynb
-nbutils combine temp1.ipynb part2.ipynb -o temp2.ipynb
-nbutils combine temp2.ipynb separator.ipynb -o temp3.ipynb
-nbutils combine temp3.ipynb part3.ipynb -o complete.ipynb
+nbctl combine part1.ipynb separator.ipynb -o temp1.ipynb
+nbctl combine temp1.ipynb part2.ipynb -o temp2.ipynb
+nbctl combine temp2.ipynb separator.ipynb -o temp3.ipynb
+nbctl combine temp3.ipynb part3.ipynb -o complete.ipynb
 
 rm temp*.ipynb separator.ipynb
 ```
@@ -174,7 +174,7 @@ for nb in "${notebooks[@]}"; do
         first=false
     else
         temp=$(mktemp)
-        nbutils combine "$output" "$nb" -o "$temp"
+        nbctl combine "$output" "$nb" -o "$temp"
         mv "$temp" "$output"
     fi
 done
@@ -192,7 +192,7 @@ versions=("v1" "v2" "v3")
 
 for ver in "${versions[@]}"; do
     output="analysis_${ver}_complete.ipynb"
-    nbutils combine \
+    nbctl combine \
         "analysis_${ver}_part1.ipynb" \
         "analysis_${ver}_part2.ipynb" \
         -o "$output" \
@@ -217,7 +217,7 @@ for nb in *.ipynb | sort; do
         first=false
     else
         temp=$(mktemp)
-        nbutils combine "$output" "$nb" -o "$temp"
+        nbctl combine "$output" "$nb" -o "$temp"
         mv "$temp" "$output"
     fi
 done
@@ -230,10 +230,10 @@ done
 # Combine notebooks matching pattern
 
 # Combine all analysis notebooks
-nbutils combine analysis_*.ipynb --order -o all_analysis.ipynb
+nbctl combine analysis_*.ipynb --order -o all_analysis.ipynb
 
 # Combine all model notebooks
-nbutils combine model_*.ipynb --order -o all_models.ipynb
+nbctl combine model_*.ipynb --order -o all_models.ipynb
 ```
 
 ## Team Collaboration
@@ -254,7 +254,7 @@ for member in "${members[@]}"; do
     nb="${member}_contribution.ipynb"
     if [ -f "$nb" ]; then
         temp=$(mktemp)
-        nbutils combine "$output" "$nb" -o "$temp" --report
+        nbctl combine "$output" "$nb" -o "$temp" --report
         mv "$temp" "$output"
         echo "Added $member's contribution"
     fi
@@ -269,11 +269,11 @@ echo "Team analysis complete: $output"
 
 ```bash
 # Clean notebooks first
-nbutils clean notebook1.ipynb
-nbutils clean notebook2.ipynb
+nbctl clean notebook1.ipynb
+nbctl clean notebook2.ipynb
 
 # Then combine
-nbutils combine notebook1.ipynb notebook2.ipynb -o combined.ipynb
+nbctl combine notebook1.ipynb notebook2.ipynb -o combined.ipynb
 ```
 
 ### 2. Add Headers
@@ -292,17 +292,17 @@ Add markdown headers to separate sections:
 
 ```bash
 # Combine
-nbutils combine nb1.ipynb nb2.ipynb -o combined.ipynb
+nbctl combine nb1.ipynb nb2.ipynb -o combined.ipynb
 
 # Verify
-nbutils info combined.ipynb
+nbctl info combined.ipynb
 ```
 
 ### 4. Use Reports
 
 ```bash
 # Always use --report for complex combinations
-nbutils combine nb1.ipynb nb2.ipynb -o combined.ipynb --report
+nbctl combine nb1.ipynb nb2.ipynb -o combined.ipynb --report
 ```
 
 ## Related Examples

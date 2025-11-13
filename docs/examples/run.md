@@ -7,25 +7,25 @@ Practical examples for executing notebooks from the command line.
 ### Run Single Notebook
 
 ```bash
-nbutils run analysis.ipynb
+nbctl run analysis.ipynb
 ```
 
 ### Run Multiple Notebooks
 
 ```bash
-nbutils run 01_load.ipynb 02_process.ipynb 03_analyze.ipynb
+nbctl run 01_load.ipynb 02_process.ipynb 03_analyze.ipynb
 ```
 
 ### Run All Notebooks
 
 ```bash
-nbutils run *.ipynb
+nbctl run *.ipynb
 ```
 
 ### Run in Alphabetical Order
 
 ```bash
-nbutils run *.ipynb --order
+nbctl run *.ipynb --order
 ```
 
 ## With Options
@@ -33,25 +33,25 @@ nbutils run *.ipynb --order
 ### Set Timeout
 
 ```bash
-nbutils run notebook.ipynb --timeout 600  # 10 minutes per cell
+nbctl run notebook.ipynb --timeout 600  # 10 minutes per cell
 ```
 
 ### Continue on Errors
 
 ```bash
-nbutils run notebook.ipynb --allow-errors
+nbctl run notebook.ipynb --allow-errors
 ```
 
 ### Save Executed Notebooks
 
 ```bash
-nbutils run notebook.ipynb --save-output ./executed/
+nbctl run notebook.ipynb --save-output ./executed/
 ```
 
 ### Use Different Kernel
 
 ```bash
-nbutils run notebook.ipynb --kernel python3
+nbctl run notebook.ipynb --kernel python3
 ```
 
 ## Workflow Examples
@@ -62,7 +62,7 @@ nbutils run notebook.ipynb --kernel python3
 #!/bin/bash
 # Run ML notebooks in sequence
 
-nbutils run \
+nbctl run \
     01_data_prep.ipynb \
     02_feature_engineering.ipynb \
     03_model_training.ipynb \
@@ -80,11 +80,11 @@ echo "ML pipeline completed"
 # Generate reports overnight
 
 # Run analysis notebooks
-nbutils run reports/*.ipynb --save-output ./generated/
+nbctl run reports/*.ipynb --save-output ./generated/
 
 # Export to HTML
 for nb in generated/*.ipynb; do
-    nbutils export "$nb" -f html --output-dir ./reports/html/
+    nbctl export "$nb" -f html --output-dir ./reports/html/
 done
 
 echo "Reports generated"
@@ -94,7 +94,7 @@ echo "Reports generated"
 
 ```bash
 # Process data files in sequence
-nbutils run \
+nbctl run \
     data_cleaning.ipynb \
     data_validation.ipynb \
     data_export.ipynb \
@@ -123,7 +123,7 @@ jobs:
           pip install -r requirements.txt
       - name: Run test notebooks
         run: |
-          nbutils run tests/*.ipynb --timeout 300
+          nbctl run tests/*.ipynb --timeout 300
 ```
 
 ### GitLab CI
@@ -132,7 +132,7 @@ jobs:
 test-notebooks:
   script:
     - pip install nbutils
-    - nbutils run tests/*.ipynb --allow-errors
+    - nbctl run tests/*.ipynb --allow-errors
   artifacts:
     paths:
       - test-results/
@@ -150,7 +150,7 @@ log_file="execution-$(date +%Y%m%d).log"
 
 for nb in *.ipynb; do
     echo "Running $nb..." | tee -a "$log_file"
-    if nbutils run "$nb" --timeout 600; then
+    if nbctl run "$nb" --timeout 600; then
         echo "Success: $nb" | tee -a "$log_file"
     else
         echo "Failed: $nb" | tee -a "$log_file"
@@ -164,7 +164,7 @@ done
 # Run only if file changed
 if git diff --name-only HEAD~1 | grep -q "analysis.ipynb"; then
     echo "Running updated notebook..."
-    nbutils run analysis.ipynb --save-output ./results/
+    nbctl run analysis.ipynb --save-output ./results/
 fi
 ```
 
@@ -172,7 +172,7 @@ fi
 
 ```bash
 # Run notebooks in parallel (using GNU parallel)
-parallel nbutils run {} ::: *.ipynb
+parallel nbctl run {} ::: *.ipynb
 ```
 
 ### Retry on Failure
@@ -183,7 +183,7 @@ max_retries=3
 nb="flaky_notebook.ipynb"
 
 for i in $(seq 1 $max_retries); do
-    if nbutils run "$nb"; then
+    if nbctl run "$nb"; then
         echo "Success on attempt $i"
         break
     else
@@ -199,31 +199,31 @@ done
 
 ```bash
 # Test with short timeout
-nbutils run notebook.ipynb --timeout 60
+nbctl run notebook.ipynb --timeout 60
 
 # If OK, run with longer timeout
-nbutils run notebook.ipynb --timeout 3600
+nbctl run notebook.ipynb --timeout 3600
 ```
 
 ### 2. Save Outputs for Review
 
 ```bash
 # Always save outputs for debugging
-nbutils run notebook.ipynb --save-output ./executed/
+nbctl run notebook.ipynb --save-output ./executed/
 ```
 
 ### 3. Use Timeouts in CI/CD
 
 ```bash
 # Prevent hanging builds
-nbutils run notebook.ipynb --timeout 300
+nbctl run notebook.ipynb --timeout 300
 ```
 
 ### 4. Handle Long-Running Notebooks
 
 ```bash
 # No timeout for ML training
-nbutils run train_model.ipynb
+nbctl run train_model.ipynb
 ```
 
 ## Related Examples

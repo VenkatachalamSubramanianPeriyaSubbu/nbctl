@@ -1,6 +1,6 @@
 # Clean Command Examples
 
-Practical examples for using `nbutils clean` to prepare notebooks for version control.
+Practical examples for using `nbctl clean` to prepare notebooks for version control.
 
 ## Basic Usage
 
@@ -9,7 +9,7 @@ Practical examples for using `nbutils clean` to prepare notebooks for version co
 Remove outputs and metadata from a notebook:
 
 ```bash linenums="1"
-nbutils clean analysis.ipynb
+nbctl clean analysis.ipynb
 ```
 
 Result: Notebook cleaned, outputs removed, ready for git.
@@ -21,7 +21,7 @@ Result: Notebook cleaned, outputs removed, ready for git.
 See what would be changed without modifying the file:
 
 ```bash linenums="1"
-nbutils clean analysis.ipynb --dry-run
+nbctl clean analysis.ipynb --dry-run
 ```
 
 Output:
@@ -40,7 +40,7 @@ Would clean: analysis.ipynb
 Clean and save to a new file:
 
 ```bash linenums="1"
-nbutils clean original.ipynb -o cleaned.ipynb
+nbctl clean original.ipynb -o cleaned.ipynb
 ```
 
 Result: `original.ipynb` unchanged, `cleaned.ipynb` created.
@@ -54,7 +54,7 @@ Result: `original.ipynb` unchanged, `cleaned.ipynb` created.
 Clean metadata but preserve cell outputs:
 
 ```bash linenums="1"
-nbutils clean notebook.ipynb --keep-outputs
+nbctl clean notebook.ipynb --keep-outputs
 ```
 
 Use case: When outputs are important but metadata is not.
@@ -66,7 +66,7 @@ Use case: When outputs are important but metadata is not.
 Clean outputs but preserve execution order:
 
 ```bash linenums="1"
-nbutils clean notebook.ipynb --keep-execution-count
+nbctl clean notebook.ipynb --keep-execution-count
 ```
 
 Use case: When execution order matters for understanding.
@@ -78,7 +78,7 @@ Use case: When execution order matters for understanding.
 Clean only outputs, preserve everything else:
 
 ```bash linenums="1"
-nbutils clean notebook.ipynb --keep-metadata
+nbctl clean notebook.ipynb --keep-metadata
 ```
 
 ---
@@ -92,7 +92,7 @@ Clean notebook before every commit:
 ```bash linenums="1"
 # 1. Make changes to notebook
 # 2. Clean before committing
-nbutils clean analysis.ipynb
+nbctl clean analysis.ipynb
 
 # 3. Verify changes
 git diff analysis.ipynb
@@ -111,13 +111,13 @@ Clean all notebooks in a directory:
 ```bash linenums="1"
 # Method 1: Loop
 for nb in *.ipynb; do
-    nbutils clean "$nb"
+    nbctl clean "$nb"
 done
 
 # Method 2: With backup
 for nb in *.ipynb; do
     cp "$nb" "$nb.backup"
-    nbutils clean "$nb"
+    nbctl clean "$nb"
 done
 ```
 
@@ -128,7 +128,7 @@ done
 Clean and create a review copy:
 
 ```bash linenums="1"
-nbutils clean analysis.ipynb -o analysis_review.ipynb
+nbctl clean analysis.ipynb -o analysis_review.ipynb
 ```
 
 Share `analysis_review.ipynb` for review (no clutter).
@@ -146,7 +146,7 @@ Create `.git/hooks/pre-commit`:
 # Clean all notebooks before commit
 
 for nb in $(git diff --cached --name-only --diff-filter=ACM | grep '\.ipynb$'); do
-    nbutils clean "$nb"
+    nbctl clean "$nb"
     git add "$nb"
 done
 ```
@@ -164,7 +164,7 @@ Clean only notebooks that changed:
 
 ```bash linenums="1"
 git diff --name-only | grep '\.ipynb$' | while read nb; do
-    nbutils clean "$nb"
+    nbctl clean "$nb"
 done
 ```
 
@@ -178,10 +178,10 @@ Clean and verify the notebook still works:
 
 ```bash linenums="1"
 # 1. Clean
-nbutils clean notebook.ipynb
+nbctl clean notebook.ipynb
 
 # 2. Run to regenerate outputs
-nbutils run notebook.ipynb
+nbctl run notebook.ipynb
 
 # 3. Check for errors
 if [ $? -eq 0 ]; then
@@ -198,8 +198,8 @@ fi
 Clean and format in one workflow:
 
 ```bash linenums="1"
-nbutils clean notebook.ipynb
-nbutils format notebook.ipynb
+nbctl clean notebook.ipynb
+nbctl format notebook.ipynb
 git add notebook.ipynb
 git commit -m "Clean and format notebook"
 ```
@@ -219,7 +219,7 @@ Establish team cleaning standard:
 
 for nb in "$@"; do
     echo "Cleaning $nb..."
-    nbutils clean "$nb" --keep-metadata
+    nbctl clean "$nb" --keep-metadata
 done
 
 echo "All notebooks cleaned"
@@ -239,7 +239,7 @@ Prepare notebooks for review:
 ```bash linenums="1"
 # 1. Clean all notebooks
 for nb in *.ipynb; do
-    nbutils clean "$nb" -o "review/$nb"
+    nbctl clean "$nb" -o "review/$nb"
 done
 
 # 2. Create review package
@@ -277,7 +277,7 @@ jobs:
       - name: Clean notebooks
         run: |
           for nb in *.ipynb; do
-            nbutils clean "$nb"
+            nbctl clean "$nb"
           done
       
       - name: Check for changes
@@ -299,7 +299,7 @@ jobs:
 
 ```bash linenums="1"
 if [ -f notebook.ipynb ]; then
-    nbutils clean notebook.ipynb
+    nbctl clean notebook.ipynb
 else
     echo "Error: notebook.ipynb not found"
     exit 1
@@ -311,7 +311,7 @@ fi
 ### Handle Cleaning Failures
 
 ```bash linenums="1"
-if nbutils clean notebook.ipynb; then
+if nbctl clean notebook.ipynb; then
     echo "Cleaned successfully"
     git add notebook.ipynb
 else
@@ -328,10 +328,10 @@ fi
 
 ```bash linenums="1"
 # Test with dry run
-nbutils clean notebook.ipynb --dry-run
+nbctl clean notebook.ipynb --dry-run
 
 # If OK, clean for real
-nbutils clean notebook.ipynb
+nbctl clean notebook.ipynb
 ```
 
 ### Keep Backups
@@ -339,7 +339,7 @@ nbutils clean notebook.ipynb
 ```bash linenums="1"
 # Create backup before cleaning
 cp notebook.ipynb notebook.ipynb.backup
-nbutils clean notebook.ipynb
+nbctl clean notebook.ipynb
 ```
 
 ### Clean Regularly
@@ -347,7 +347,7 @@ nbutils clean notebook.ipynb
 ```bash linenums="1"
 # Daily cleaning
 for nb in *.ipynb; do
-    nbutils clean "$nb"
+    nbctl clean "$nb"
 done
 git add *.ipynb
 git commit -m "Daily notebook cleanup"

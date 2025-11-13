@@ -1,4 +1,4 @@
-# nbutils lint
+# nbctl lint
 
 Check code quality and identify issues in notebooks.
 
@@ -17,7 +17,7 @@ Use this command to:
 ## Usage
 
 ```bash
-nbutils lint NOTEBOOK [OPTIONS]
+nbctl lint NOTEBOOK [OPTIONS]
 ```
 
 ## Arguments
@@ -151,13 +151,13 @@ Adjust the maximum cell length based on your team's standards:
 
 ```bash
 # Stricter (shorter cells)
-nbutils lint notebook.ipynb --max-cell-length 50
+nbctl lint notebook.ipynb --max-cell-length 50
 
 # More lenient (longer cells)
-nbutils lint notebook.ipynb --max-cell-length 150
+nbctl lint notebook.ipynb --max-cell-length 150
 
 # Very strict
-nbutils lint notebook.ipynb --max-cell-length 30
+nbctl lint notebook.ipynb --max-cell-length 30
 ```
 
 **Recommendations:**
@@ -218,15 +218,15 @@ Use in continuous integration to enforce standards:
 
 ```bash
 # Fail build if issues found
-nbutils lint notebook.ipynb || exit 1
+nbctl lint notebook.ipynb || exit 1
 
 # Lint all notebooks
 for nb in *.ipynb; do
-    nbutils lint "$nb" || exit 1
+    nbctl lint "$nb" || exit 1
 done
 
 # Custom threshold for project
-nbutils lint notebook.ipynb --max-cell-length 75 || exit 1
+nbctl lint notebook.ipynb --max-cell-length 75 || exit 1
 ```
 
 ## Comparison with format

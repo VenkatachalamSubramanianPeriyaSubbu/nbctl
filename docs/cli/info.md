@@ -1,4 +1,4 @@
-# nbutils info
+# nbctl info
 
 Display comprehensive notebook statistics and analysis.
 
@@ -16,7 +16,7 @@ Use this command to:
 ## Usage
 
 ```bash
-nbutils info NOTEBOOK [OPTIONS]
+nbctl info NOTEBOOK [OPTIONS]
 ```
 
 ## Arguments

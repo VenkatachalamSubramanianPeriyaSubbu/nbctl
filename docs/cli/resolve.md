@@ -1,4 +1,4 @@
-# nbutils resolve
+# nbctl resolve
 
 Intelligent 3-way merge with conflict detection (powered by nbdime).
 
@@ -16,7 +16,7 @@ Use this command to:
 ## Usage
 
 ```bash
-nbutils resolve BASE OURS THEIRS --output OUTPUT [OPTIONS]
+nbctl resolve BASE OURS THEIRS --output OUTPUT [OPTIONS]
 ```
 
 ## Arguments
@@ -71,7 +71,7 @@ Intelligent automatic merging:
 - Adds conflict markers for manual resolution
 
 ```bash
-nbutils resolve base.ipynb ours.ipynb theirs.ipynb -o merged.ipynb
+nbctl resolve base.ipynb ours.ipynb theirs.ipynb -o merged.ipynb
 ```
 
 **Use case:** Standard merge resolution, git integration
@@ -85,7 +85,7 @@ Prefer changes from "ours" (local version):
 - Accepts non-conflicting changes from theirs
 
 ```bash
-nbutils resolve base.ipynb ours.ipynb theirs.ipynb -o merged.ipynb --strategy ours
+nbctl resolve base.ipynb ours.ipynb theirs.ipynb -o merged.ipynb --strategy ours
 ```
 
 **Use case:** You know your changes should win
@@ -99,7 +99,7 @@ Prefer changes from "theirs" (remote version):
 - Accepts non-conflicting changes from ours
 
 ```bash
-nbutils resolve base.ipynb ours.ipynb theirs.ipynb -o merged.ipynb --strategy theirs
+nbctl resolve base.ipynb ours.ipynb theirs.ipynb -o merged.ipynb --strategy theirs
 ```
 
 **Use case:** Accept remote changes, your changes less important
@@ -113,7 +113,7 @@ Append conflicting cells instead of choosing:
 - Conflicting cells: both versions included
 
 ```bash
-nbutils resolve base.ipynb ours.ipynb theirs.ipynb -o merged.ipynb --strategy cell-append
+nbctl resolve base.ipynb ours.ipynb theirs.ipynb -o merged.ipynb --strategy cell-append
 ```
 
 **Use case:** Want to see both versions, manual review later
@@ -125,7 +125,7 @@ nbutils resolve base.ipynb ours.ipynb theirs.ipynb -o merged.ipynb --strategy ce
 Check if conflicts exist without creating merged file:
 
 ```bash
-nbutils resolve base.ipynb ours.ipynb theirs.ipynb --check-conflicts
+nbctl resolve base.ipynb ours.ipynb theirs.ipynb --check-conflicts
 ```
 
 Output:
@@ -218,7 +218,7 @@ df = pd.read_csv('new_data.csv')
 Use `--report` for comprehensive merge information:
 
 ```bash
-nbutils resolve base.ipynb ours.ipynb theirs.ipynb -o merged.ipynb --report
+nbctl resolve base.ipynb ours.ipynb theirs.ipynb -o merged.ipynb --report
 ```
 
 Output:
@@ -281,7 +281,7 @@ git show :2:notebook.ipynb > ours.ipynb      # Your version
 git show :3:notebook.ipynb > theirs.ipynb    # Their version
 
 # 2. Resolve with nbutils
-nbutils resolve base.ipynb ours.ipynb theirs.ipynb -o notebook.ipynb
+nbctl resolve base.ipynb ours.ipynb theirs.ipynb -o notebook.ipynb
 
 # 3. If conflicts, manually resolve in notebook.ipynb
 
@@ -298,11 +298,11 @@ With `git-setup`, resolve is used automatically:
 
 ```bash
 # 1. Set up git (once per repo)
-nbutils git-setup
+nbctl git-setup
 
-# 2. During merge, git uses nbutils automatically
+# 2. During merge, git uses nbctl automatically
 git merge feature-branch
-# If conflicts in notebooks, nbutils resolve runs automatically!
+# If conflicts in notebooks, nbctl resolve runs automatically!
 ```
 
 ## Use Cases
@@ -317,7 +317,7 @@ git show :2:notebook.ipynb > ours.ipynb
 git show :3:notebook.ipynb > theirs.ipynb
 
 # Resolve
-nbutils resolve base.ipynb ours.ipynb theirs.ipynb -o notebook.ipynb --report
+nbctl resolve base.ipynb ours.ipynb theirs.ipynb -o notebook.ipynb --report
 ```
 
 ---
@@ -325,7 +325,7 @@ nbutils resolve base.ipynb ours.ipynb theirs.ipynb -o notebook.ipynb --report
 ### Accept All Remote Changes
 
 ```bash
-nbutils resolve base.ipynb ours.ipynb theirs.ipynb -o merged.ipynb --strategy theirs
+nbctl resolve base.ipynb ours.ipynb theirs.ipynb -o merged.ipynb --strategy theirs
 ```
 
 ---
@@ -333,7 +333,7 @@ nbutils resolve base.ipynb ours.ipynb theirs.ipynb -o merged.ipynb --strategy th
 ### Keep Your Changes
 
 ```bash
-nbutils resolve base.ipynb ours.ipynb theirs.ipynb -o merged.ipynb --strategy ours
+nbctl resolve base.ipynb ours.ipynb theirs.ipynb -o merged.ipynb --strategy ours
 ```
 
 ---
@@ -342,10 +342,10 @@ nbutils resolve base.ipynb ours.ipynb theirs.ipynb -o merged.ipynb --strategy ou
 
 ```bash
 # Check if conflicts exist
-nbutils resolve base.ipynb ours.ipynb theirs.ipynb --check-conflicts
+nbctl resolve base.ipynb ours.ipynb theirs.ipynb --check-conflicts
 
 # If no conflicts, proceed with merge
-nbutils resolve base.ipynb ours.ipynb theirs.ipynb -o merged.ipynb
+nbctl resolve base.ipynb ours.ipynb theirs.ipynb -o merged.ipynb
 ```
 
 ## Comparison with combine
@@ -370,29 +370,29 @@ nbutils resolve base.ipynb ours.ipynb theirs.ipynb -o merged.ipynb
 
 ```bash
 # Always check for conflicts first
-nbutils resolve base.ipynb ours.ipynb theirs.ipynb --check-conflicts
+nbctl resolve base.ipynb ours.ipynb theirs.ipynb --check-conflicts
 ```
 
 ### 2. Use Reports
 
 ```bash
 # Get detailed information
-nbutils resolve base.ipynb ours.ipynb theirs.ipynb -o merged.ipynb --report
+nbctl resolve base.ipynb ours.ipynb theirs.ipynb -o merged.ipynb --report
 ```
 
 ### 3. Compare After
 
 ```bash
 # Verify merge result
-nbutils diff base.ipynb merged.ipynb
-nbutils diff ours.ipynb merged.ipynb
+nbctl diff base.ipynb merged.ipynb
+nbctl diff ours.ipynb merged.ipynb
 ```
 
 ### 4. Test Merged Notebook
 
 ```bash
 # Execute to verify it works
-nbutils run merged.ipynb
+nbctl run merged.ipynb
 ```
 
 ## Related Commands

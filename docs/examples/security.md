@@ -7,25 +7,25 @@ Practical examples for scanning notebooks for security vulnerabilities.
 ### Scan Notebook
 
 ```bash
-nbutils security notebook.ipynb
+nbctl security notebook.ipynb
 ```
 
 ### High Severity Only
 
 ```bash
-nbutils security notebook.ipynb --severity high
+nbctl security notebook.ipynb --severity high
 ```
 
 ### With Recommendations
 
 ```bash
-nbutils security notebook.ipynb --verbose
+nbctl security notebook.ipynb --verbose
 ```
 
 ### JSON Output
 
 ```bash
-nbutils security notebook.ipynb --json
+nbctl security notebook.ipynb --json
 ```
 
 ## Severity Filtering
@@ -33,19 +33,19 @@ nbutils security notebook.ipynb --json
 ### All Issues (Default)
 
 ```bash
-nbutils security notebook.ipynb --severity all
+nbctl security notebook.ipynb --severity all
 ```
 
 ### Medium and Above
 
 ```bash
-nbutils security notebook.ipynb --severity medium
+nbctl security notebook.ipynb --severity medium
 ```
 
 ### Low Severity Only
 
 ```bash
-nbutils security notebook.ipynb --severity low
+nbctl security notebook.ipynb --severity low
 ```
 
 ## Workflow Examples
@@ -58,7 +58,7 @@ nbutils security notebook.ipynb --severity low
 
 for nb in $(git diff --cached --name-only | grep '\.ipynb$'); do
     echo "Scanning $nb..."
-    if ! nbutils security "$nb" --severity high; then
+    if ! nbctl security "$nb" --severity high; then
         echo "Security issues found in $nb"
         echo "Fix issues before committing"
         exit 1
@@ -84,7 +84,7 @@ jobs:
       - name: Scan notebooks
         run: |
           for nb in *.ipynb; do
-            nbutils security "$nb" --severity high || exit 1
+            nbctl security "$nb" --severity high || exit 1
           done
 ```
 
@@ -99,7 +99,7 @@ echo "====================" >> security-report.txt
 
 for nb in **/*.ipynb; do
     echo -e "\n$nb:" >> security-report.txt
-    nbutils security "$nb" --severity high >> security-report.txt 2>&1
+    nbctl security "$nb" --severity high >> security-report.txt 2>&1
 done
 
 echo "Security report: security-report.txt"
@@ -122,7 +122,7 @@ echo "=====================" >> "$report"
 for severity in high medium low; do
     echo -e "\n=== $severity SEVERITY ===" >> "$report"
     for nb in *.ipynb; do
-        result=$(nbutils security "$nb" --severity $severity 2>&1)
+        result=$(nbctl security "$nb" --severity $severity 2>&1)
         if [ -n "$result" ]; then
             echo -e "\n$nb:" >> "$report"
             echo "$result" >> "$report"
@@ -148,7 +148,7 @@ for nb in *.ipynb; do
     fi
     first=false
     
-    nbutils security "$nb" --json >> security-db.json
+    nbctl security "$nb" --json >> security-db.json
 done
 
 echo "]" >> security-db.json
@@ -164,9 +164,9 @@ echo "Security database: security-db.json"
 date=$(date +%Y-%m-%d)
 nb="$1"
 
-high=$(nbutils security "$nb" --severity high 2>&1 | grep -c "HIGH" || echo "0")
-medium=$(nbutils security "$nb" --severity medium 2>&1 | grep -c "MEDIUM" || echo "0")
-low=$(nbutils security "$nb" --severity low 2>&1 | grep -c "LOW" || echo "0")
+high=$(nbctl security "$nb" --severity high 2>&1 | grep -c "HIGH" || echo "0")
+medium=$(nbctl security "$nb" --severity medium 2>&1 | grep -c "MEDIUM" || echo "0")
+low=$(nbctl security "$nb" --severity low 2>&1 | grep -c "LOW" || echo "0")
 
 echo "$date,$high,$medium,$low" >> security-history.csv
 ```
@@ -184,7 +184,7 @@ echo "# Security Remediation: $nb" > "$output"
 echo "Generated: $(date)" >> "$output"
 echo >> "$output"
 
-nbutils security "$nb" --verbose >> "$output"
+nbctl security "$nb" --verbose >> "$output"
 
 echo -e "\n## Checklist" >> "$output"
 echo "- [ ] Review all HIGH severity issues" >> "$output"
@@ -213,9 +213,9 @@ failed=false
 for nb in $(git diff --cached --name-only | grep '\.ipynb$'); do
     echo -e "${YELLOW}Scanning $nb...${NC}"
     
-    if ! nbutils security "$nb" --severity high --quiet; then
+    if ! nbctl security "$nb" --severity high --quiet; then
         echo -e "${RED}Security issues found in $nb${NC}"
-        echo -e "${YELLOW}Run: nbutils security $nb --verbose${NC}"
+        echo -e "${YELLOW}Run: nbctl security $nb --verbose${NC}"
         failed=true
     else
         echo -e "${GREEN}$nb passed security scan${NC}"
@@ -238,7 +238,7 @@ security-scan:
     - |
       mkdir -p security-reports
       for nb in *.ipynb; do
-        nbutils security "$nb" --json > "security-reports/${nb%.ipynb}.json"
+        nbctl security "$nb" --json > "security-reports/${nb%.ipynb}.json"
       done
   artifacts:
     reports:
@@ -263,7 +263,7 @@ mkdir -p "$report_dir"
 # Scan all notebooks
 for nb in **/*.ipynb; do
     name=$(echo "$nb" | tr '/' '_')
-    nbutils security "$nb" --verbose > "$report_dir/${name%.ipynb}.txt"
+    nbctl security "$nb" --verbose > "$report_dir/${name%.ipynb}.txt"
 done
 
 # Generate summary
@@ -302,9 +302,9 @@ echo "Notebooks with hardcoded secrets:"
 echo "================================="
 
 for nb in **/*.ipynb; do
-    if nbutils security "$nb" --severity high 2>&1 | grep -q "Hardcoded"; then
+    if nbctl security "$nb" --severity high 2>&1 | grep -q "Hardcoded"; then
         echo "⚠ $nb"
-        nbutils security "$nb" --severity high 2>&1 | grep "Hardcoded"
+        nbctl security "$nb" --severity high 2>&1 | grep "Hardcoded"
     fi
 done
 ```
@@ -316,9 +316,9 @@ done
 # Find notebooks with SQL injection risks
 
 for nb in **/*.ipynb; do
-    if nbutils security "$nb" --severity high 2>&1 | grep -q "SQL"; then
+    if nbctl security "$nb" --severity high 2>&1 | grep -q "SQL"; then
         echo "=== $nb ==="
-        nbutils security "$nb" --verbose 2>&1 | grep -A 10 "SQL"
+        nbctl security "$nb" --verbose 2>&1 | grep -A 10 "SQL"
         echo
     fi
 done
@@ -340,9 +340,9 @@ cat > security-dashboard.html << 'EOF'
 EOF
 
 for nb in *.ipynb; do
-    high=$(nbutils security "$nb" --severity high 2>&1 | grep -c "\[HIGH\]" || echo "0")
-    medium=$(nbutils security "$nb" --severity medium 2>&1 | grep -c "\[MEDIUM\]" || echo "0")
-    low=$(nbutils security "$nb" --severity low 2>&1 | grep -c "\[LOW\]" || echo "0")
+    high=$(nbctl security "$nb" --severity high 2>&1 | grep -c "\[HIGH\]" || echo "0")
+    medium=$(nbctl security "$nb" --severity medium 2>&1 | grep -c "\[MEDIUM\]" || echo "0")
+    low=$(nbctl security "$nb" --severity low 2>&1 | grep -c "\[LOW\]" || echo "0")
     
     echo "<tr><td>$nb</td><td>$high</td><td>$medium</td><td>$low</td></tr>" >> security-dashboard.html
 done
@@ -358,7 +358,7 @@ echo "Dashboard: security-dashboard.html"
 ```bash
 # Daily security check
 for nb in *.ipynb; do
-    nbutils security "$nb" --severity high
+    nbctl security "$nb" --severity high
 done
 ```
 
@@ -366,14 +366,14 @@ done
 
 ```bash
 # Fix critical issues first
-nbutils security notebook.ipynb --severity high --verbose
+nbctl security notebook.ipynb --severity high --verbose
 ```
 
 ### 3. Use in CI/CD
 
 ```bash
 # Block merges with security issues
-nbutils security *.ipynb --severity high || exit 1
+nbctl security *.ipynb --severity high || exit 1
 ```
 
 ### 4. Document Exceptions
@@ -391,7 +391,7 @@ If secrets are found:
 
 ```bash
 # 1. Scan and identify
-nbutils security notebook.ipynb --verbose
+nbctl security notebook.ipynb --verbose
 
 # 2. Remove from notebook
 # 3. Rotate/revoke the exposed secrets

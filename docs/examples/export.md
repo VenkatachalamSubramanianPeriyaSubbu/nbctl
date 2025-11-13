@@ -1,13 +1,13 @@
 # Export Command Examples
 
-Practical examples for using `nbutils export` to convert notebooks.
+Practical examples for using `nbctl export` to convert notebooks.
 
 ## Basic Export
 
 ### Export to HTML
 
 ```bash
-nbutils export analysis.ipynb -f html
+nbctl export analysis.ipynb -f html
 ```
 
 **Result:** `analysis.html` created.
@@ -17,7 +17,7 @@ nbutils export analysis.ipynb -f html
 ### Export to PDF
 
 ```bash
-nbutils export report.ipynb -f pdf
+nbctl export report.ipynb -f pdf
 ```
 
 **Requires:** LaTeX installation.
@@ -27,7 +27,7 @@ nbutils export report.ipynb -f pdf
 ### Export to Python
 
 ```bash
-nbutils export notebook.ipynb -f py
+nbctl export notebook.ipynb -f py
 ```
 
 **Result:** `notebook.py` with markdown as comments.
@@ -37,7 +37,7 @@ nbutils export notebook.ipynb -f py
 ### Export to Markdown
 
 ```bash
-nbutils export notebook.ipynb -f md
+nbctl export notebook.ipynb -f md
 ```
 
 ---
@@ -47,7 +47,7 @@ nbutils export notebook.ipynb -f md
 ### Export to Multiple Formats
 
 ```bash
-nbutils export analysis.ipynb -f html,pdf,py,md
+nbctl export analysis.ipynb -f html,pdf,py,md
 ```
 
 **Creates:**
@@ -63,7 +63,7 @@ nbutils export analysis.ipynb -f html,pdf,py,md
 Export complete report package:
 
 ```bash
-nbutils export quarterly_report.ipynb -f html,pdf --output-dir reports/q4/
+nbctl export quarterly_report.ipynb -f html,pdf --output-dir reports/q4/
 ```
 
 ---
@@ -75,7 +75,7 @@ nbutils export quarterly_report.ipynb -f html,pdf --output-dir reports/q4/
 Create output-only report (for non-technical audiences):
 
 ```bash
-nbutils export report.ipynb -f html --no-input
+nbctl export report.ipynb -f html --no-input
 ```
 
 **Result:** HTML with only outputs and markdown (no code).
@@ -87,7 +87,7 @@ nbutils export report.ipynb -f html --no-input
 Clean export without `In[1]:` / `Out[1]:`:
 
 ```bash
-nbutils export notebook.ipynb -f html --no-prompt
+nbctl export notebook.ipynb -f html --no-prompt
 ```
 
 ---
@@ -95,7 +95,7 @@ nbutils export notebook.ipynb -f html --no-prompt
 ### Combined Options
 
 ```bash
-nbutils export presentation.ipynb -f html --no-input --no-prompt
+nbctl export presentation.ipynb -f html --no-input --no-prompt
 ```
 
 Perfect for stakeholder presentations.
@@ -113,10 +113,10 @@ Automated report generation:
 # generate-reports.sh
 
 # 1. Run notebook to update outputs
-nbutils run analysis.ipynb --save-output ./executed/
+nbctl run analysis.ipynb --save-output ./executed/
 
 # 2. Export executed notebook
-nbutils export ./executed/analysis.ipynb -f html,pdf --output-dir ./reports/
+nbctl export ./executed/analysis.ipynb -f html,pdf --output-dir ./reports/
 
 # 3. Share reports
 echo "Reports generated in ./reports/"
@@ -137,7 +137,7 @@ mkdir -p "$report_dir"
 
 for nb in analysis/*.ipynb; do
     name=$(basename "$nb" .ipynb)
-    nbutils export "$nb" -f html,pdf --output-dir "$report_dir/"
+    nbctl export "$nb" -f html,pdf --output-dir "$report_dir/"
 done
 
 echo "Weekly reports generated in $report_dir"
@@ -156,7 +156,7 @@ Generate docs from notebooks:
 mkdir -p docs/tutorials
 
 for nb in tutorials/*.ipynb; do
-    nbutils export "$nb" -f md --output-dir docs/tutorials/
+    nbctl export "$nb" -f md --output-dir docs/tutorials/
 done
 
 echo "Documentation generated"
@@ -169,7 +169,7 @@ echo "Documentation generated"
 ### Create Slides
 
 ```bash
-nbutils export presentation.ipynb -f slides
+nbctl export presentation.ipynb -f slides
 ```
 
 **Result:** `presentation.html` (Reveal.js slides).
@@ -180,7 +180,7 @@ nbutils export presentation.ipynb -f slides
 
 ```bash
 # Create full presentation package
-nbutils export talk.ipynb -f slides,pdf --no-prompt
+nbctl export talk.ipynb -f slides,pdf --no-prompt
 ```
 
 ---
@@ -191,7 +191,7 @@ nbutils export talk.ipynb -f slides,pdf --no-prompt
 
 ```bash
 for nb in *.ipynb; do
-    nbutils export "$nb" -f html
+    nbctl export "$nb" -f html
 done
 ```
 
@@ -202,12 +202,12 @@ done
 ```bash
 # Export analysis notebooks to HTML
 for nb in analysis_*.ipynb; do
-    nbutils export "$nb" -f html --output-dir html/
+    nbctl export "$nb" -f html --output-dir html/
 done
 
 # Export model notebooks to Python
 for nb in model_*.ipynb; do
-    nbutils export "$nb" -f py --output-dir python/
+    nbctl export "$nb" -f py --output-dir python/
 done
 ```
 
@@ -224,7 +224,7 @@ nb="analysis.ipynb"
 html="analysis.html"
 
 if [ "$nb" -nt "$html" ]; then
-    nbutils export "$nb" -f html
+    nbctl export "$nb" -f html
     echo "Updated $html"
 else
     echo "$html is up to date"
@@ -237,7 +237,7 @@ fi
 
 ```bash
 # Export and customize
-nbutils export notebook.ipynb -f html
+nbctl export notebook.ipynb -f html
 
 # Add custom CSS
 cat custom-style.css >> notebook.html
@@ -256,7 +256,7 @@ archive_dir="exports/$date"
 
 mkdir -p "$archive_dir"
 
-nbutils export notebook.ipynb -f html,pdf,py --output-dir "$archive_dir/"
+nbctl export notebook.ipynb -f html,pdf,py --output-dir "$archive_dir/"
 
 echo "Archived to $archive_dir"
 ```
@@ -291,7 +291,7 @@ jobs:
         run: |
           mkdir -p exports
           for nb in *.ipynb; do
-            nbutils export "$nb" -f html,pdf --output-dir exports/
+            nbctl export "$nb" -f html,pdf --output-dir exports/
           done
       
       - name: Upload artifacts
@@ -309,28 +309,28 @@ jobs:
 
 ```bash
 # Test HTML export first (fastest)
-nbutils export notebook.ipynb -f html
+nbctl export notebook.ipynb -f html
 
 # If OK, export to PDF
-nbutils export notebook.ipynb -f pdf
+nbctl export notebook.ipynb -f pdf
 ```
 
 ### 2. Organize Outputs
 
 ```bash
 # Organize by format
-nbutils export notebook.ipynb -f html --output-dir html/
-nbutils export notebook.ipynb -f pdf --output-dir pdf/
-nbutils export notebook.ipynb -f py --output-dir python/
+nbctl export notebook.ipynb -f html --output-dir html/
+nbctl export notebook.ipynb -f pdf --output-dir pdf/
+nbctl export notebook.ipynb -f py --output-dir python/
 ```
 
 ### 3. Clean Before Export
 
 ```bash
 # Clean and run before export
-nbutils clean notebook.ipynb
-nbutils run notebook.ipynb
-nbutils export notebook.ipynb -f html,pdf
+nbctl clean notebook.ipynb
+nbctl run notebook.ipynb
+nbctl export notebook.ipynb -f html,pdf
 ```
 
 ---

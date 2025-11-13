@@ -1,4 +1,4 @@
-# nbutils format
+# nbctl format
 
 Auto-format code cells with black.
 
@@ -17,7 +17,7 @@ Use this command to:
 ## Usage
 
 ```bash
-nbutils format NOTEBOOK [OPTIONS]
+nbctl format NOTEBOOK [OPTIONS]
 ```
 
 ## Arguments
@@ -135,7 +135,7 @@ y = [item**2 for item in x]
 Black's default line length, chosen for optimal readability:
 
 ```bash
-nbutils format notebook.ipynb
+nbctl format notebook.ipynb
 ```
 
 ### Custom Line Length
@@ -144,13 +144,13 @@ Adjust based on your team's preferences or display constraints:
 
 ```bash
 # Shorter lines (for narrow displays)
-nbutils format notebook.ipynb --line-length 79
+nbctl format notebook.ipynb --line-length 79
 
 # Longer lines (for wide displays)
-nbutils format notebook.ipynb --line-length 100
+nbctl format notebook.ipynb --line-length 100
 
 # Very long lines (not recommended)
-nbutils format notebook.ipynb --line-length 120
+nbctl format notebook.ipynb --line-length 120
 ```
 
 **Recommendations:**
@@ -169,7 +169,7 @@ nbutils format notebook.ipynb --line-length 120
 Modifies the original notebook:
 
 ```bash
-nbutils format notebook.ipynb
+nbctl format notebook.ipynb
 # Modifies: notebook.ipynb
 ```
 
@@ -178,7 +178,7 @@ nbutils format notebook.ipynb
 Preserves original, saves formatted version elsewhere:
 
 ```bash
-nbutils format notebook.ipynb --output-dir ./formatted/
+nbctl format notebook.ipynb --output-dir ./formatted/
 # Original: notebook.ipynb (unchanged)
 # Created: formatted/notebook.ipynb (formatted)
 ```
@@ -272,8 +272,8 @@ my_list = [
 ### 1. Format Before Committing
 ```bash
 # Pre-commit workflow
-nbutils format notebook.ipynb
-nbutils lint notebook.ipynb
+nbctl format notebook.ipynb
+nbctl lint notebook.ipynb
 git add notebook.ipynb
 git commit -m "Add analysis notebook"
 ```
@@ -281,21 +281,21 @@ git commit -m "Add analysis notebook"
 ### 2. Team Standards
 ```bash
 # Use consistent line length across team
-nbutils format *.ipynb --line-length 88
+nbctl format *.ipynb --line-length 88
 ```
 
 ### 3. Format + Clean
 ```bash
 # Format and clean for git
-nbutils format notebook.ipynb
-nbutils clean notebook.ipynb
+nbctl format notebook.ipynb
+nbctl clean notebook.ipynb
 ```
 
 ### 4. Batch Formatting
 ```bash
 # Format all notebooks in project
 for nb in *.ipynb; do
-    nbutils format "$nb"
+    nbctl format "$nb"
 done
 ```
 
@@ -305,10 +305,10 @@ Check formatting in continuous integration:
 
 ```bash
 # Check if formatting is needed (black --check)
-black --check notebook.ipynb || echo "Run nbutils format"
+black --check notebook.ipynb || echo "Run nbctl format"
 
 # Or just format in CI
-nbutils format notebook.ipynb
+nbctl format notebook.ipynb
 git diff --exit-code || echo "Formatting changes needed"
 ```
 

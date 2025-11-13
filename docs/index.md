@@ -16,13 +16,13 @@ A comprehensive CLI toolkit for Jupyter notebooks that solves common pain points
 pip install nbutils
 
 # Clean notebooks for git
-nbutils clean notebook.ipynb
+nbctl clean notebook.ipynb
 
 # Get notebook insights
-nbutils info notebook.ipynb
+nbctl info notebook.ipynb
 
 # Scan for security issues
-nbutils security notebook.ipynb
+nbctl security notebook.ipynb
 ```
 
 ---
@@ -58,7 +58,7 @@ nbutils security notebook.ipynb
 
 ## Who Uses nbutils?
 
-nbutils is designed for anyone working with Jupyter notebooks:
+nbctl is designed for anyone working with Jupyter notebooks:
 
 - **Students**: Learning Python and data science, managing coursework notebooks
 - **Data Analysts**: Creating reports, analyzing data, sharing insights
@@ -74,22 +74,22 @@ nbutils is designed for anyone working with Jupyter notebooks:
 **Problem: Massive git diffs**
 Notebooks include outputs and metadata, creating huge diffs that obscure actual code changes.
 
-Solution: `nbutils clean` removes outputs before committing, reducing diff size by 90-95%.
+Solution: `nbctl clean` removes outputs before committing, reducing diff size by 90-95%.
 
 **Problem: Merge conflicts**
 Two people edit the same notebook, creating complex JSON conflicts.
 
-Solution: `nbutils resolve` intelligently merges notebooks with automatic conflict detection.
+Solution: `nbctl resolve` intelligently merges notebooks with automatic conflict detection.
 
 **Problem: Security risks**
 Easy to accidentally commit API keys, passwords, or sensitive data.
 
-Solution: `nbutils security` scans for hardcoded secrets and vulnerabilities.
+Solution: `nbctl security` scans for hardcoded secrets and vulnerabilities.
 
 **Problem: Notebook to production**
 Converting notebooks to production code is manual and time-consuming.
 
-Solution: `nbutils ml-split` automatically generates production Python pipelines.
+Solution: `nbctl ml-split` automatically generates production Python pipelines.
 
 ---
 
@@ -114,17 +114,17 @@ For detailed installation instructions, see the [Installation Guide](getting-sta
 
 ## Simple Example
 
-Here's how nbutils helps with a common workflow:
+Here's how nbctl helps with a common workflow:
 
 ```bash
 # Step 1: Work on your notebook in Jupyter
 # (make changes, run cells, generate outputs)
 
 # Step 2: Before committing to git
-nbutils clean analysis.ipynb  # Remove outputs
-nbutils format analysis.ipynb  # Format code
-nbutils lint analysis.ipynb    # Check quality
-nbutils security analysis.ipynb  # Scan for secrets
+nbctl clean analysis.ipynb  # Remove outputs
+nbctl format analysis.ipynb  # Format code
+nbctl lint analysis.ipynb    # Check quality
+nbctl security analysis.ipynb  # Scan for secrets
 
 # Step 3: Commit with confidence
 git add analysis.ipynb

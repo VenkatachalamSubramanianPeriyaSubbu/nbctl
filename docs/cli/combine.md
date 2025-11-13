@@ -1,4 +1,4 @@
-# nbutils combine
+# nbctl combine
 
 Concatenate or combine two notebooks.
 
@@ -16,7 +16,7 @@ Use this command to:
 ## Usage
 
 ```bash
-nbutils combine NOTEBOOK1 NOTEBOOK2 --output OUTPUT [OPTIONS]
+nbctl combine NOTEBOOK1 NOTEBOOK2 --output OUTPUT [OPTIONS]
 ```
 
 ## Arguments
@@ -174,7 +174,7 @@ Notebook metadata:
 Combine data loading and analysis:
 
 ```bash
-nbutils combine 01_load_data.ipynb 02_analyze.ipynb -o full_analysis.ipynb
+nbctl combine 01_load_data.ipynb 02_analyze.ipynb -o full_analysis.ipynb
 ```
 
 ---
@@ -185,8 +185,8 @@ Combine multiple analysis sections:
 
 ```bash
 # Combine intro + analysis + conclusion
-nbutils combine intro.ipynb analysis.ipynb -o temp.ipynb
-nbutils combine temp.ipynb conclusion.ipynb -o report.ipynb
+nbctl combine intro.ipynb analysis.ipynb -o temp.ipynb
+nbctl combine temp.ipynb conclusion.ipynb -o report.ipynb
 ```
 
 ---
@@ -196,7 +196,7 @@ nbutils combine temp.ipynb conclusion.ipynb -o report.ipynb
 Combine notebooks from different team members:
 
 ```bash
-nbutils combine alice_work.ipynb bob_work.ipynb -o team_analysis.ipynb
+nbctl combine alice_work.ipynb bob_work.ipynb -o team_analysis.ipynb
 ```
 
 ---
@@ -206,7 +206,7 @@ nbutils combine alice_work.ipynb bob_work.ipynb -o team_analysis.ipynb
 Combine multiple teaching notebooks:
 
 ```bash
-nbutils combine lesson1.ipynb lesson2.ipynb -o complete_tutorial.ipynb
+nbctl combine lesson1.ipynb lesson2.ipynb -o complete_tutorial.ipynb
 ```
 
 ## Comparison with resolve
@@ -236,16 +236,16 @@ To combine more than 2 notebooks:
 
 ```bash
 # Method 1: Chain commands
-nbutils combine nb1.ipynb nb2.ipynb -o temp1.ipynb
-nbutils combine temp1.ipynb nb3.ipynb -o temp2.ipynb
-nbutils combine temp2.ipynb nb4.ipynb -o final.ipynb
+nbctl combine nb1.ipynb nb2.ipynb -o temp1.ipynb
+nbctl combine temp1.ipynb nb3.ipynb -o temp2.ipynb
+nbctl combine temp2.ipynb nb4.ipynb -o final.ipynb
 
 # Method 2: Script it
 notebooks=("nb1.ipynb" "nb2.ipynb" "nb3.ipynb" "nb4.ipynb")
 output="combined.ipynb"
 cp "${notebooks[0]}" "$output"
 for ((i=1; i<${#notebooks[@]}; i++)); do
-    nbutils combine "$output" "${notebooks[$i]}" -o temp.ipynb
+    nbctl combine "$output" "${notebooks[$i]}" -o temp.ipynb
     mv temp.ipynb "$output"
 done
 ```
@@ -268,32 +268,32 @@ Add markdown headers between sections:
 
 ```bash
 # Clean notebooks first
-nbutils clean notebook1.ipynb
-nbutils clean notebook2.ipynb
+nbctl clean notebook1.ipynb
+nbctl clean notebook2.ipynb
 
 # Then combine
-nbutils combine notebook1.ipynb notebook2.ipynb -o combined.ipynb
+nbctl combine notebook1.ipynb notebook2.ipynb -o combined.ipynb
 ```
 
 ### 3. Check Before Combining
 
 ```bash
 # Review notebooks first
-nbutils info notebook1.ipynb
-nbutils info notebook2.ipynb
+nbctl info notebook1.ipynb
+nbctl info notebook2.ipynb
 
 # Then combine
-nbutils combine notebook1.ipynb notebook2.ipynb -o combined.ipynb
+nbctl combine notebook1.ipynb notebook2.ipynb -o combined.ipynb
 ```
 
 ### 4. Verify Output
 
 ```bash
 # Combine
-nbutils combine nb1.ipynb nb2.ipynb -o combined.ipynb
+nbctl combine nb1.ipynb nb2.ipynb -o combined.ipynb
 
 # Verify
-nbutils info combined.ipynb
+nbctl info combined.ipynb
 ```
 
 ## Limitations

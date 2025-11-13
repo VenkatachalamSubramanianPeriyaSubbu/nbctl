@@ -1,10 +1,10 @@
 # Welcome to nbutils
 
-Welcome to nbutils - The Swiss Army Knife for Jupyter Notebooks.
+Welcome to nbctl - The Swiss Army Knife for Jupyter Notebooks.
 
 ## What is nbutils?
 
-nbutils is a command-line toolkit that solves common problems when working with Jupyter notebooks. Whether you're a student learning Python, a researcher conducting analysis, or a data scientist building models, nbutils makes your workflow smoother.
+nbctl is a command-line toolkit that solves common problems when working with Jupyter notebooks. Whether you're a student learning Python, a researcher conducting analysis, or a data scientist building models, nbctl makes your workflow smoother.
 
 ## The Problem
 
@@ -27,7 +27,7 @@ Moving from notebook experiments to production code is time-consuming.
 
 ## The Solution
 
-nbutils provides 13 commands that address these challenges:
+nbctl provides 13 commands that address these challenges:
 
 **clean** - Strip outputs for clean git commits
 **diff** - Compare notebooks intelligently
@@ -43,7 +43,7 @@ nbutils provides 13 commands that address these challenges:
 **combine** - Merge multiple notebooks
 **git-setup** - Configure git integration
 
-## Who is nbutils for?
+## Who is nbctl for?
 
 **Students**
 Learn Python and data science without worrying about messy git commits. Keep your coursework organized.
@@ -72,9 +72,9 @@ Here's a typical workflow with nbutils:
 # Run cells, create visualizations, analyze data
 
 # Before committing:
-nbutils clean notebook.ipynb    # Remove outputs
-nbutils format notebook.ipynb   # Format code
-nbutils lint notebook.ipynb     # Check quality
+nbctl clean notebook.ipynb    # Remove outputs
+nbctl format notebook.ipynb   # Format code
+nbctl lint notebook.ipynb     # Check quality
 
 # Commit to git
 git add notebook.ipynb
@@ -106,7 +106,7 @@ Convert notebooks to Python code automatically.
 Ready to get started? Follow these steps:
 
 1. **[Install nbutils](installation.md)** - Get up and running in minutes
-2. **[Explore commands](../cli/clean.md)** - See what nbutils can do
+2. **[Explore commands](../cli/clean.md)** - See what nbctl can do
 3. **[Try examples](../examples/clean.md)** - Hands-on learning
 
 ## Need Help?
@@ -121,17 +121,17 @@ Check the [Help Guide](help.md) for:
 
 ## Simple First Steps
 
-Try these commands to see nbutils in action:
+Try these commands to see nbctl in action:
 
 ```bash
 # Get notebook information
-nbutils info your-notebook.ipynb
+nbctl info your-notebook.ipynb
 
 # Clean a notebook
-nbutils clean your-notebook.ipynb --dry-run
+nbctl clean your-notebook.ipynb --dry-run
 
 # Check for security issues
-nbutils security your-notebook.ipynb
+nbctl security your-notebook.ipynb
 ```
 
 ---

@@ -1,10 +1,10 @@
-# nbutils diff
+# nbctl diff
 
 Compare notebooks intelligently (ignores outputs and metadata).
 
 ## Description
 
-The `diff` command compares two Jupyter notebooks and shows you the differences in a meaningful way. Unlike `git diff` which shows JSON changes, nbutils diff focuses on actual code changes and ignores outputs, execution counts, and metadata.
+The `diff` command compares two Jupyter notebooks and shows you the differences in a meaningful way. Unlike `git diff` which shows JSON changes, nbctl diff focuses on actual code changes and ignores outputs, execution counts, and metadata.
 
 Use this command to:
 - Review changes between notebook versions
@@ -16,7 +16,7 @@ Use this command to:
 ## Usage
 
 ```bash
-nbutils diff NOTEBOOK1 NOTEBOOK2 [OPTIONS]
+nbctl diff NOTEBOOK1 NOTEBOOK2 [OPTIONS]
 ```
 
 ## Arguments
@@ -41,7 +41,7 @@ nbutils diff NOTEBOOK1 NOTEBOOK2 [OPTIONS]
 Human-readable table showing differences:
 
 ```bash
-nbutils diff old.ipynb new.ipynb
+nbctl diff old.ipynb new.ipynb
 ```
 
 Output:
@@ -72,7 +72,7 @@ Summary:
 Git-style unified diff showing line-by-line changes:
 
 ```bash
-nbutils diff old.ipynb new.ipynb --format unified
+nbctl diff old.ipynb new.ipynb --format unified
 ```
 
 Output:
@@ -108,7 +108,7 @@ Cell 5 (Code) - Deleted:
 Machine-readable JSON for automation:
 
 ```bash
-nbutils diff old.ipynb new.ipynb --format json
+nbctl diff old.ipynb new.ipynb --format json
 ```
 
 Output:
@@ -147,7 +147,7 @@ Output:
 Show only changes to code cells (ignore markdown):
 
 ```bash
-nbutils diff old.ipynb new.ipynb --code-only
+nbctl diff old.ipynb new.ipynb --code-only
 ```
 
 **Use case:** Focus on code changes for technical review.
@@ -159,7 +159,7 @@ nbutils diff old.ipynb new.ipynb --code-only
 Show summary statistics without detailed changes:
 
 ```bash
-nbutils diff old.ipynb new.ipynb --stats
+nbctl diff old.ipynb new.ipynb --stats
 ```
 
 Output:
@@ -222,10 +222,10 @@ Lines of Code:
 
 ```bash
 # Review changes before merging
-nbutils diff main_branch.ipynb feature_branch.ipynb
+nbctl diff main_branch.ipynb feature_branch.ipynb
 
 # Focus on code changes
-nbutils diff main.ipynb feature.ipynb --code-only
+nbctl diff main.ipynb feature.ipynb --code-only
 ```
 
 ### Git Integration
@@ -233,27 +233,27 @@ nbutils diff main.ipynb feature.ipynb --code-only
 ```bash
 # Compare with previous commit
 git show HEAD:notebook.ipynb > /tmp/old.ipynb
-nbutils diff /tmp/old.ipynb notebook.ipynb
+nbctl diff /tmp/old.ipynb notebook.ipynb
 ```
 
 ### Quick Check
 
 ```bash
 # Just see if there are differences
-nbutils diff nb1.ipynb nb2.ipynb --stats
+nbctl diff nb1.ipynb nb2.ipynb --stats
 ```
 
 ### Automation
 
 ```bash
 # Parse differences programmatically
-nbutils diff old.ipynb new.ipynb --format json > diff.json
+nbctl diff old.ipynb new.ipynb --format json > diff.json
 python process_diff.py diff.json
 ```
 
 ## Comparison with git diff
 
-| Feature | `git diff` | `nbutils diff` |
+| Feature | `git diff` | `nbctl diff` |
 |---------|------------|----------------|
 | Format | JSON changes | Source code changes |
 | Outputs | Included | Ignored |
@@ -287,14 +287,14 @@ When used as git diff driver (via `git-setup`):
 
 # In .git/config
 [diff "nbutils"]
-    command = nbutils diff
+    command = nbctl diff
 ```
 
-Then `git diff notebook.ipynb` uses nbutils automatically!
+Then `git diff notebook.ipynb` uses nbctl automatically!
 
 ## Related Commands
 
-- [`git-setup`](git-setup.md) - Configure git to use nbutils diff
+- [`git-setup`](git-setup.md) - Configure git to use nbctl diff
 - [`resolve`](resolve.md) - Merge notebooks with conflicts
 - [`combine`](combine.md) - Concatenate notebooks
 - [`clean`](clean.md) - Prepare notebooks for comparison

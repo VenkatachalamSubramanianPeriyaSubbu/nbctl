@@ -10,15 +10,15 @@ The fastest way to get help is using the built-in help system:
 
 ```bash
 # General help
-nbutils --help
+nbctl --help
 
 # Help for a specific command
-nbutils clean --help
-nbutils info --help
-nbutils security --help
+nbctl clean --help
+nbctl info --help
+nbctl security --help
 
 # Get version information
-nbutils --version
+nbctl --version
 ```
 
 Every command has detailed help with:
@@ -50,7 +50,7 @@ Search our [GitHub Issues](https://github.com/VenkatachalamSubramanianPeriyaSubb
 If it's a new bug, [open an issue](https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbutils/issues/new) with:
 
 **Required Information:**
-- nbutils version (`nbutils --version`)
+- nbctl version (`nbctl --version`)
 - Python version (`python --version`)
 - Operating system (macOS, Linux, Windows)
 - Command you ran
@@ -59,12 +59,12 @@ If it's a new bug, [open an issue](https://github.com/VenkatachalamSubramanianPe
 
 **Example:**
 ```markdown
-**nbutils version:** 0.1.0
+**nbctl version:** 0.1.0
 **Python version:** 3.9.7
 **OS:** macOS 12.3
 
 **Command:**
-nbutils clean notebook.ipynb
+nbctl clean notebook.ipynb
 
 **Error:**
 ValueError: Invalid notebook format
@@ -106,7 +106,7 @@ Many data scientists need to share analyses with stakeholders
 who prefer Word documents over PDFs or HTML.
 
 **Proposed Usage:**
-nbutils export notebook.ipynb -f docx
+nbctl export notebook.ipynb -f docx
 
 **Benefits:**
 - Easier sharing with non-technical stakeholders
@@ -133,7 +133,7 @@ A: See our [Installation Guide](installation.md)
 **Q: Which command should I use for X?**  
 A: Check the [CLI Reference](../cli/clean.md) for a complete list
 
-**Q: Can I use nbutils in CI/CD?**  
+**Q: Can I use nbctl in CI/CD?**  
 A: Yes! See the [Run command](../cli/run.md) and [Security command](../cli/security.md)
 
 **Q: How do I contribute?**  
@@ -248,7 +248,7 @@ pip install nbutils
 ls -la notebook.ipynb
 
 # Use output flag to write to a different location
-nbutils clean notebook.ipynb -o output.ipynb
+nbctl clean notebook.ipynb -o output.ipynb
 
 # Check if file is open in Jupyter
 # Close the notebook in Jupyter and try again

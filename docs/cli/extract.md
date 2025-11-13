@@ -1,4 +1,4 @@
-# nbutils extract
+# nbctl extract
 
 Extract outputs (images, graphs, data) from notebook cells.
 
@@ -16,7 +16,7 @@ Use this command to:
 ## Usage
 
 ```bash
-nbutils extract NOTEBOOK [OPTIONS]
+nbctl extract NOTEBOOK [OPTIONS]
 ```
 
 ## Arguments
@@ -146,22 +146,22 @@ Saved to: outputs/
 
 ### Extract All Plots
 ```bash
-nbutils extract analysis.ipynb --images
+nbctl extract analysis.ipynb --images
 ```
 
 ### Extract Data Tables
 ```bash
-nbutils extract results.ipynb --data
+nbctl extract results.ipynb --data
 ```
 
 ### Custom Output Location
 ```bash
-nbutils extract notebook.ipynb -o ./figures/
+nbctl extract notebook.ipynb -o ./figures/
 ```
 
 ### Extract Everything
 ```bash
-nbutils extract notebook.ipynb --all
+nbctl extract notebook.ipynb --all
 ```
 
 ## Related Commands

@@ -1,6 +1,6 @@
 # Installation
 
-Get nbutils up and running in minutes!
+Get nbctl up and running in minutes!
 
 ## Requirements
 
@@ -13,17 +13,17 @@ Get nbutils up and running in minutes!
 ### Using pip (Recommended)
 
 ```bash
-pip install nbutils
+pip install nbctl
 ```
 
 ### Verify Installation
 
 ```bash
 # Check version
-nbutils --version
+nbctl --version
 
 # Show help
-nbutils --help
+nbctl --help
 ```
 
 ---
@@ -36,10 +36,10 @@ For most users, installing from PyPI is the easiest option:
 
 ```bash
 # Basic installation
-pip install nbutils
+pip install nbctl
 
 # With development tools
-pip install nbutils[dev]
+pip install nbctl[dev]
 ```
 
 ---
@@ -82,7 +82,7 @@ source nbutils-env/bin/activate
 nbutils-env\Scripts\activate
 
 # Install nbutils
-pip install nbutils
+pip install nbctl
 
 # Deactivate when done
 deactivate
@@ -104,7 +104,7 @@ The command will be installed in your user directory.
 
 ## Dependencies
 
-nbutils automatically installs these dependencies:
+nbctl automatically installs these dependencies:
 
 ### Core Dependencies
 - **nbformat** (≥5.0.0) - Notebook file format
@@ -123,7 +123,7 @@ nbutils automatically installs these dependencies:
 To install with development dependencies:
 
 ```bash
-pip install nbutils[dev]
+pip install nbctl[dev]
 ```
 
 ---
@@ -163,7 +163,7 @@ For optimal notebook version control, set up git integration:
 ```bash
 # Run in your git repository
 cd your-repo
-nbutils git-setup
+nbctl git-setup
 ```
 
 This configures:
@@ -176,20 +176,20 @@ This configures:
 
 ### Verify Everything Works
 
-Test nbutils with a sample notebook:
+Test nbctl with a sample notebook:
 
 ```bash
 # Create a test notebook (if you have Jupyter)
 jupyter notebook
 
 # Or test with an existing notebook
-nbutils info your-notebook.ipynb
+nbctl info your-notebook.ipynb
 
 # Clean a notebook
-nbutils clean your-notebook.ipynb --dry-run
+nbctl clean your-notebook.ipynb --dry-run
 
 # Get statistics
-nbutils info your-notebook.ipynb
+nbctl info your-notebook.ipynb
 ```
 
 ---
@@ -203,7 +203,7 @@ nbutils info your-notebook.ipynb
 pip install --upgrade nbutils
 
 # Check new version
-nbutils --version
+nbctl --version
 ```
 
 ### Upgrade from Development Branch
@@ -227,7 +227,7 @@ pip uninstall nbutils
 To also remove dependencies (if not used by other packages):
 
 ```bash
-pip uninstall nbutils nbformat click rich nbconvert nbclient nbdime
+pip uninstall nbctl nbformat click rich nbconvert nbclient nbdime
 ```
 
 ---
@@ -274,7 +274,7 @@ pip uninstall nbutils nbformat click rich nbconvert nbclient nbdime
    ```bash
    python -m venv venv
    source venv/bin/activate
-   pip install nbutils
+   pip install nbctl
    ```
 
 2. **Use --user flag:**
@@ -284,7 +284,7 @@ pip uninstall nbutils nbformat click rich nbconvert nbclient nbdime
 
 3. **Use sudo** (not recommended):
    ```bash
-   sudo pip install nbutils
+   sudo pip install nbctl
    ```
 
 ---
@@ -307,7 +307,7 @@ pip uninstall nbutils nbformat click rich nbconvert nbclient nbdime
 
 3. **Use explicit Python:**
    ```bash
-   python3 -m pip install nbutils
+   python3 -m pip install nbctl
    python3 -m nbutils.cli --help
    ```
 
@@ -315,7 +315,7 @@ pip uninstall nbutils nbformat click rich nbconvert nbclient nbdime
 
 ### Installation Fails
 
-**Problem:** `pip install nbutils` fails with errors
+**Problem:** `pip install nbctl` fails with errors
 
 **Solutions:**
 
@@ -327,7 +327,7 @@ pip uninstall nbutils nbformat click rich nbconvert nbclient nbdime
 2. **Clear pip cache:**
    ```bash
    pip cache purge
-   pip install nbutils
+   pip install nbctl
    ```
 
 3. **Install from source:**
@@ -375,7 +375,7 @@ pip3 install nbutils
 - **Arch:**
   ```bash
   sudo pacman -S python-pip
-  pip install nbutils
+  pip install nbctl
   ```
 
 ---
@@ -388,10 +388,10 @@ pip3 install nbutils
 
 ```powershell
 # Install nbutils
-pip install nbutils
+pip install nbctl
 
 # If command not found, try:
-python -m pip install nbutils
+python -m pip install nbctl
 python -m nbutils.cli --help
 ```
 
@@ -405,10 +405,10 @@ For containerized environments:
 FROM python:3.9-slim
 
 # Install nbutils
-RUN pip install nbutils
+RUN pip install nbctl
 
 # Verify installation
-RUN nbutils --version
+RUN nbctl --version
 
 # Set working directory
 WORKDIR /notebooks
@@ -420,17 +420,17 @@ CMD ["nbutils", "--help"]
 Build and run:
 
 ```bash
-docker build -t nbutils .
-docker run -v $(pwd):/notebooks nbutils clean notebook.ipynb
+docker build -t nbctl .
+docker run -v $(pwd):/notebooks nbctl clean notebook.ipynb
 ```
 
 ---
 
 ## Next Steps
 
-Now that you have nbutils installed:
+Now that you have nbctl installed:
 
-1. **[Learn the basics](welcome.md)** - Understand what nbutils can do
+1. **[Learn the basics](welcome.md)** - Understand what nbctl can do
 2. **[Explore commands](../cli/clean.md)** - See all available commands
 3. **[Try examples](../examples/clean.md)** - Hands-on learning
 4. **[Configure git](../cli/git-setup.md)** - Set up version control

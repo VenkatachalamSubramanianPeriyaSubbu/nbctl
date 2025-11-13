@@ -7,31 +7,31 @@ Practical examples for comparing notebooks intelligently.
 ### Compare Two Notebooks
 
 ```bash
-nbutils diff old.ipynb new.ipynb
+nbctl diff old.ipynb new.ipynb
 ```
 
 ### Unified Format
 
 ```bash
-nbutils diff old.ipynb new.ipynb --format unified
+nbctl diff old.ipynb new.ipynb --format unified
 ```
 
 ### JSON Format
 
 ```bash
-nbutils diff old.ipynb new.ipynb --format json
+nbctl diff old.ipynb new.ipynb --format json
 ```
 
 ### Code Only
 
 ```bash
-nbutils diff old.ipynb new.ipynb --code-only
+nbctl diff old.ipynb new.ipynb --code-only
 ```
 
 ### Statistics Only
 
 ```bash
-nbutils diff old.ipynb new.ipynb --stats
+nbctl diff old.ipynb new.ipynb --stats
 ```
 
 ## Workflow Examples
@@ -47,7 +47,7 @@ git show feature:notebook.ipynb > feature_notebook.ipynb
 git show main:notebook.ipynb > main_notebook.ipynb
 
 # Compare
-nbutils diff main_notebook.ipynb feature_notebook.ipynb
+nbctl diff main_notebook.ipynb feature_notebook.ipynb
 
 # If OK, merge
 git merge feature
@@ -58,11 +58,11 @@ git merge feature
 ```bash
 # Before merging, see what changed
 git show origin/main:notebook.ipynb > main.ipynb
-nbutils diff main.ipynb notebook.ipynb --stats
+nbctl diff main.ipynb notebook.ipynb --stats
 
 # If significant changes, review carefully
 if [ $? -ne 0 ]; then
-    nbutils diff main.ipynb notebook.ipynb
+    nbctl diff main.ipynb notebook.ipynb
 fi
 ```
 
@@ -74,11 +74,11 @@ fi
 
 # Last commit
 git show HEAD~1:notebook.ipynb > prev.ipynb
-nbutils diff prev.ipynb notebook.ipynb
+nbctl diff prev.ipynb notebook.ipynb
 
 # Last week
 git show HEAD@{1.week.ago}:notebook.ipynb > last_week.ipynb
-nbutils diff last_week.ipynb notebook.ipynb
+nbctl diff last_week.ipynb notebook.ipynb
 ```
 
 ## Advanced Examples
@@ -94,7 +94,7 @@ echo "<html><body><h1>Notebook Changes</h1>" > diff-report.html
 for nb in *.ipynb; do
     git show HEAD~1:"$nb" > prev_"$nb" 2>/dev/null || continue
     echo "<h2>$nb</h2><pre>" >> diff-report.html
-    nbutils diff prev_"$nb" "$nb" >> diff-report.html 2>&1
+    nbctl diff prev_"$nb" "$nb" >> diff-report.html 2>&1
     echo "</pre>" >> diff-report.html
     rm prev_"$nb"
 done
@@ -107,7 +107,7 @@ echo "</body></html>" >> diff-report.html
 ```bash
 # Compare local with production version
 scp prod:/path/notebook.ipynb prod_notebook.ipynb
-nbutils diff prod_notebook.ipynb notebook.ipynb --code-only
+nbctl diff prod_notebook.ipynb notebook.ipynb --code-only
 ```
 
 ### Batch Comparison
@@ -120,7 +120,7 @@ for nb in dir1/*.ipynb; do
     name=$(basename "$nb")
     if [ -f "dir2/$name" ]; then
         echo "=== $name ==="
-        nbutils diff "$nb" "dir2/$name" --stats
+        nbctl diff "$nb" "dir2/$name" --stats
         echo
     fi
 done
@@ -133,11 +133,11 @@ done
 ```bash
 # After git-setup, use in git diff
 git diff notebook.ipynb
-# Automatically uses nbutils diff
+# Automatically uses nbctl diff
 
 # Or explicitly
 git diff --no-ext-diff notebook.ipynb  # Standard JSON diff
-git diff notebook.ipynb                # Clean nbutils diff
+git diff notebook.ipynb                # Clean nbctl diff
 ```
 
 ### Compare Branches
@@ -153,7 +153,7 @@ nb="analysis.ipynb"
 git show $branch1:$nb > ${branch1}_$nb
 git show $branch2:$nb > ${branch2}_$nb
 
-nbutils diff ${branch1}_$nb ${branch2}_$nb
+nbctl diff ${branch1}_$nb ${branch2}_$nb
 
 rm ${branch1}_$nb ${branch2}_$nb
 ```
@@ -172,7 +172,7 @@ git checkout pr-123
 for nb in *.ipynb; do
     git show main:$nb > main_$nb 2>/dev/null || continue
     echo "=== Changes in $nb ==="
-    nbutils diff main_$nb $nb --code-only
+    nbctl diff main_$nb $nb --code-only
     rm main_$nb
 done
 ```
@@ -198,7 +198,7 @@ jobs:
         run: |
           for nb in *.ipynb; do
             git show HEAD^:$nb > prev_$nb 2>/dev/null || continue
-            changes=$(nbutils diff prev_$nb $nb --stats | grep "Modified" | awk '{print $2}')
+            changes=$(nbctl diff prev_$nb $nb --stats | grep "Modified" | awk '{print $2}')
             if [ "$changes" -gt 10 ]; then
               echo "⚠ Large changes in $nb: $changes cells modified"
             fi
@@ -222,7 +222,7 @@ echo "=========================" >> "$report"
 for nb in *.ipynb; do
     git show HEAD~1:$nb > prev_$nb 2>/dev/null || continue
     echo -e "\n$nb:" >> "$report"
-    nbutils diff prev_$nb $nb --stats >> "$report"
+    nbctl diff prev_$nb $nb --stats >> "$report"
     rm prev_$nb
 done
 
@@ -238,8 +238,8 @@ echo "Report saved: $report"
 nb="analysis.ipynb"
 git show HEAD~1:$nb > prev.ipynb 2>/dev/null || exit
 
-prev_cells=$(nbutils info prev.ipynb | grep "Total cells" | awk '{print $3}')
-curr_cells=$(nbutils info $nb | grep "Total cells" | awk '{print $3}')
+prev_cells=$(nbctl info prev.ipynb | grep "Total cells" | awk '{print $3}')
+curr_cells=$(nbctl info $nb | grep "Total cells" | awk '{print $3}')
 diff=$((curr_cells - prev_cells))
 
 echo "$nb: $prev_cells → $curr_cells (${diff:+$diff})"
@@ -252,11 +252,11 @@ rm prev.ipynb
 
 ```bash
 # Quick check
-nbutils diff old.ipynb new.ipynb --stats
+nbctl diff old.ipynb new.ipynb --stats
 
 # If significant, detailed diff
 if [ $? -eq 0 ]; then
-    nbutils diff old.ipynb new.ipynb
+    nbctl diff old.ipynb new.ipynb
 fi
 ```
 
@@ -264,14 +264,14 @@ fi
 
 ```bash
 # Focus on code changes
-nbutils diff old.ipynb new.ipynb --code-only
+nbctl diff old.ipynb new.ipynb --code-only
 ```
 
 ### 3. Use JSON for Automation
 
 ```bash
 # Parse changes programmatically
-nbutils diff old.ipynb new.ipynb --format json > diff.json
+nbctl diff old.ipynb new.ipynb --format json > diff.json
 python process_diff.py diff.json
 ```
 

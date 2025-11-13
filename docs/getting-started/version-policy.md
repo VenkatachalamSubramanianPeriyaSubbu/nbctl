@@ -1,10 +1,10 @@
 # Version Policy
 
-Understanding nbutils versioning, compatibility, and update policies.
+Understanding nbctl versioning, compatibility, and update policies.
 
 ## Current Version
 
-**nbutils 0.1.0** - Initial release
+**nbctl 0.1.0** - Initial release
 
 - **Status:** Stable
 - **Python Support:** 3.8, 3.9, 3.10, 3.11, 3.12+
@@ -14,7 +14,7 @@ Understanding nbutils versioning, compatibility, and update policies.
 
 ## Semantic Versioning
 
-nbutils follows [Semantic Versioning 2.0.0](https://semver.org/) (SemVer):
+nbctl follows [Semantic Versioning 2.0.0](https://semver.org/) (SemVer):
 
 ### Version Format: MAJOR.MINOR.PATCH
 
@@ -71,7 +71,7 @@ nbutils follows [Semantic Versioning 2.0.0](https://semver.org/) (SemVer):
 
 ### Python Version Support
 
-| nbutils Version | Python Versions | Status |
+| nbctl Version | Python Versions | Status |
 |----------------|-----------------|---------|
 | 0.1.x | 3.8, 3.9, 3.10, 3.11, 3.12+ | Current |
 | Future 1.x | 3.9+ (drop 3.8) | Planned |
@@ -85,7 +85,7 @@ nbutils follows [Semantic Versioning 2.0.0](https://semver.org/) (SemVer):
 
 ### Dependency Compatibility
 
-nbutils depends on:
+nbctl depends on:
 
 | Package | Minimum Version | Current Version |
 |---------|----------------|-----------------|
@@ -179,7 +179,7 @@ v1.0.0: Feature X removed (major version)
 
 ```bash
 # Check current version
-nbutils --version
+nbctl --version
 
 # Update to latest version
 pip install --upgrade nbutils
@@ -294,7 +294,7 @@ pip install nbutils==0.2.0-rc.1
 
 ```bash
 # Check current version
-nbutils --version
+nbctl --version
 
 # Compare with PyPI
 pip index versions nbutils

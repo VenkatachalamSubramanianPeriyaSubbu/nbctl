@@ -11,7 +11,7 @@ Practical examples for configuring git for notebooks.
 git init
 
 # Configure for notebooks
-nbutils git-setup
+nbctl git-setup
 
 # Review configuration
 cat .gitattributes
@@ -25,7 +25,7 @@ cat .gitignore
 cd my-project
 
 # Run git-setup
-nbutils git-setup
+nbctl git-setup
 
 # Commit configuration
 git add .gitattributes .gitignore
@@ -38,7 +38,7 @@ git commit -m "Configure git for notebooks"
 
 ```bash
 # 1. Setup git
-nbutils git-setup
+nbctl git-setup
 
 # 2. Review files
 cat .gitattributes .gitignore
@@ -56,7 +56,7 @@ git push
 git pull
 
 # 2. Enable custom drivers
-nbutils git-setup
+nbctl git-setup
 
 # 3. Verify
 git config --list | grep nbutils
@@ -69,7 +69,7 @@ git config --list | grep nbutils
 ```bash
 # Check .gitattributes
 cat .gitattributes
-# Should show: *.ipynb diff=nbutils merge=nbutils
+# Should show: *.ipynb diff=nbctl merge=nbutils
 
 # Check git config
 git config --list | grep nbutils
@@ -86,7 +86,7 @@ git diff notebook.ipynb
 # Make changes to notebook
 # (edit in Jupyter)
 
-# Check diff (uses nbutils automatically)
+# Check diff (uses nbctl automatically)
 git diff notebook.ipynb
 
 # Should show:
@@ -114,7 +114,7 @@ git checkout main
 git add notebook.ipynb
 git commit -m "Main changes"
 
-# Merge (uses nbutils resolve automatically)
+# Merge (uses nbctl resolve automatically)
 git merge test-branch
 ```
 
@@ -134,7 +134,7 @@ cd my-analysis
 git init
 
 # Configure for notebooks
-nbutils git-setup
+nbctl git-setup
 
 # Create initial notebook
 # (create in Jupyter)
@@ -150,11 +150,11 @@ echo "Project setup complete"
 
 ```bash
 # 1. Setup git config
-nbutils git-setup
+nbctl git-setup
 
 # 2. Clean all existing notebooks
 for nb in *.ipynb; do
-    nbutils clean "$nb"
+    nbctl clean "$nb"
 done
 
 # 3. Commit cleaned notebooks
@@ -174,16 +174,16 @@ git commit -m "Clean notebooks for git"
 git branch backup-before-nbutils
 
 # 2. Setup nbutils
-nbutils git-setup
+nbctl git-setup
 
 # 3. Clean all notebooks
 for nb in **/*.ipynb; do
-    nbutils clean "$nb"
+    nbctl clean "$nb"
 done
 
 # 4. Commit
 git add .
-git commit -m "Migrate to nbutils for notebook management"
+git commit -m "Migrate to nbctl for notebook management"
 
 echo "Migration complete"
 echo "Backup branch: backup-before-nbutils"
@@ -197,7 +197,7 @@ After setup, add project-specific rules:
 
 ```bash
 # Run git-setup first
-nbutils git-setup
+nbctl git-setup
 
 # Add custom rules
 cat >> .gitignore << EOF
@@ -217,13 +217,13 @@ git commit -m "Add project-specific gitignore rules"
 
 ```bash
 # Setup for different notebook types
-nbutils git-setup
+nbctl git-setup
 
 # Add to .gitattributes
 cat >> .gitattributes << EOF
-*.ipynb diff=nbutils merge=nbutils
-notebooks/*.ipynb diff=nbutils merge=nbutils
-experiments/*.ipynb diff=nbutils merge=nbutils
+*.ipynb diff=nbctl merge=nbutils
+notebooks/*.ipynb diff=nbctl merge=nbutils
+experiments/*.ipynb diff=nbctl merge=nbutils
 EOF
 ```
 
@@ -236,7 +236,7 @@ EOF
 rm .gitattributes .gitignore
 
 # Run setup again
-nbutils git-setup
+nbctl git-setup
 
 # Verify
 git config --list | grep nbutils
@@ -246,7 +246,7 @@ git config --list | grep nbutils
 
 ```bash
 # Re-run setup
-nbutils git-setup
+nbctl git-setup
 
 # Force git to reread attributes
 git rm --cached -r .
@@ -263,7 +263,7 @@ git diff notebook.ipynb
 git config --local --list | grep nbutils
 
 # To make global (not recommended)
-# git config --global diff.nbutils.command 'nbutils diff'
+# git config --global diff.nbutils.command 'nbctl diff'
 ```
 
 ## CI/CD Integration
@@ -282,12 +282,12 @@ jobs:
       - name: Install nbutils
         run: pip install nbutils
       - name: Setup git
-        run: nbutils git-setup
+        run: nbctl git-setup
       - name: Verify configuration
         run: |
           test -f .gitattributes || exit 1
           test -f .gitignore || exit 1
-          git config --list | grep nbutils || exit 1
+          git config --list | grep nbctl || exit 1
 ```
 
 ## Tips & Best Practices
@@ -296,7 +296,7 @@ jobs:
 
 ```bash
 # Only need to run once
-nbutils git-setup
+nbctl git-setup
 
 # Team members also run it
 # (to enable custom drivers locally)
@@ -323,7 +323,7 @@ After cloning the repository:
 
 \`\`\`bash
 pip install nbutils
-nbutils git-setup
+nbctl git-setup
 \`\`\`
 
 This enables intelligent notebook diffs and merges.
