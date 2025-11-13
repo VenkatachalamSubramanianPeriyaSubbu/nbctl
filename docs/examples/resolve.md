@@ -272,8 +272,8 @@ jobs:
         with:
           fetch-depth: 0
       
-      - name: Install nbutils
-        run: pip install nbutils
+      - name: Install nbctl
+        run: pip install nbctl
       
       - name: Check for notebook conflicts
         run: |

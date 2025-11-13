@@ -79,8 +79,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Install nbutils
-        run: pip install nbutils
+      - name: Install nbctl
+        run: pip install nbctl
       - name: Scan notebooks
         run: |
           for nb in *.ipynb; do
@@ -234,7 +234,7 @@ fi
 security-scan:
   stage: test
   script:
-    - pip install nbutils
+    - pip install nbctl
     - |
       mkdir -p security-reports
       for nb in *.ipynb; do

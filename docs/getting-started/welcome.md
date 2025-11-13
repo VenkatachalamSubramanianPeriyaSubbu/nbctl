@@ -1,8 +1,8 @@
-# Welcome to nbutils
+# Welcome to nbctl
 
 Welcome to nbctl - The Swiss Army Knife for Jupyter Notebooks.
 
-## What is nbutils?
+## What is nbctl?
 
 nbctl is a command-line toolkit that solves common problems when working with Jupyter notebooks. Whether you're a student learning Python, a researcher conducting analysis, or a data scientist building models, nbctl makes your workflow smoother.
 
@@ -65,7 +65,7 @@ Move from prototype to production faster with automated pipeline generation.
 
 ## Quick Example
 
-Here's a typical workflow with nbutils:
+Here's a typical workflow with nbctl:
 
 ```bash
 # Work on your notebook in Jupyter
@@ -105,7 +105,7 @@ Convert notebooks to Python code automatically.
 
 Ready to get started? Follow these steps:
 
-1. **[Install nbutils](installation.md)** - Get up and running in minutes
+1. **[Install nbctl](installation.md)** - Get up and running in minutes
 2. **[Explore commands](../cli/clean.md)** - See what nbctl can do
 3. **[Try examples](../examples/clean.md)** - Hands-on learning
 

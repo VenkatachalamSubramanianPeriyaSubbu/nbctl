@@ -1,4 +1,4 @@
-# nbutils
+# nbctl
 
 **The Swiss Army Knife for Jupyter Notebooks**
 
@@ -12,8 +12,8 @@ A comprehensive CLI toolkit for Jupyter notebooks that solves common pain points
 ## Quick Start
 
 ```bash
-# Install nbutils
-pip install nbutils
+# Install nbctl
+pip install nbctl
 
 # Clean notebooks for git
 nbctl clean notebook.ipynb
@@ -56,7 +56,7 @@ nbctl security notebook.ipynb
 
 ---
 
-## Who Uses nbutils?
+## Who Uses nbctl?
 
 nbctl is designed for anyone working with Jupyter notebooks:
 
@@ -95,7 +95,7 @@ Solution: `nbctl ml-split` automatically generates production Python pipelines.
 
 ## Documentation Structure
 
-- **[Getting Started](getting-started/welcome.md)** - Learn about nbutils, installation, and basic concepts
+- **[Getting Started](getting-started/welcome.md)** - Learn about nbctl, installation, and basic concepts
 - **[CLI Documentation](cli/clean.md)** - Complete reference for all commands with descriptions and options
 - **[Examples](examples/clean.md)** - Practical examples and use cases for every command
 - **[About](about.md)** - Information about the author and how to contribute
@@ -105,7 +105,7 @@ Solution: `nbctl ml-split` automatically generates production Python pipelines.
 ## Installation
 
 ```bash
-pip install nbutils
+pip install nbctl
 ```
 
 For detailed installation instructions, see the [Installation Guide](getting-started/installation.md).
@@ -136,11 +136,11 @@ git commit -m "Add data analysis"
 ## Support
 
 - **Documentation**: You're reading it
-- **Issues**: [GitHub Issues](https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbutils/issues)
+- **Issues**: [GitHub Issues](https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbctl/issues)
 - **Email**: venkatachalam.sps@gmail.com
 
 ---
 
 ## License
 
-MIT License - see [LICENSE](https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbutils/blob/main/LICENSE) file for details.
+MIT License - see [LICENSE](https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbctl/blob/main/LICENSE) file for details.

@@ -129,5 +129,5 @@ Dependencies:
 ## See Also
 
 - [Examples](../examples/info.md) - Practical usage examples
-- [Getting Started](../getting-started/welcome.md) - Introduction to nbutils
+- [Getting Started](../getting-started/welcome.md) - Introduction to nbctl
 

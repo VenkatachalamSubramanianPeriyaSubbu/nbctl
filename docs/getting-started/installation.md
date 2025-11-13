@@ -50,8 +50,8 @@ For contributors or users who want the latest development version:
 
 ```bash
 # Clone the repository
-git clone https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbutils.git
-cd nbutils
+git clone https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbctl.git
+cd nbctl
 
 # Install in editable mode
 pip install -e .
@@ -73,15 +73,15 @@ Using a virtual environment keeps your system Python clean:
 
 ```bash
 # Create virtual environment
-python -m venv nbutils-env
+python -m venv nbctl-env
 
 # Activate on macOS/Linux
-source nbutils-env/bin/activate
+source nbctl-env/bin/activate
 
 # Activate on Windows
-nbutils-env\Scripts\activate
+nbctl-env\Scripts\activate
 
-# Install nbutils
+# Install nbctl
 pip install nbctl
 
 # Deactivate when done
@@ -95,7 +95,7 @@ deactivate
 If you don't have admin privileges:
 
 ```bash
-pip install --user nbutils
+pip install --user nbctl
 ```
 
 The command will be installed in your user directory.
@@ -169,8 +169,8 @@ nbctl git-setup
 This configures:
 - `.gitattributes` for notebook handling
 - `.gitignore` for Python projects
-- Custom diff driver using nbutils
-- Custom merge driver using nbutils
+- Custom diff driver using nbctl
+- Custom merge driver using nbctl
 
 ---
 
@@ -200,7 +200,7 @@ nbctl info your-notebook.ipynb
 
 ```bash
 # Upgrade from PyPI
-pip install --upgrade nbutils
+pip install --upgrade nbctl
 
 # Check new version
 nbctl --version
@@ -209,7 +209,7 @@ nbctl --version
 ### Upgrade from Development Branch
 
 ```bash
-cd nbutils
+cd nbctl
 git pull origin main
 pip install -e .
 ```
@@ -218,10 +218,10 @@ pip install -e .
 
 ## Uninstalling
 
-If you need to uninstall nbutils:
+If you need to uninstall nbctl:
 
 ```bash
-pip uninstall nbutils
+pip uninstall nbctl
 ```
 
 To also remove dependencies (if not used by other packages):
@@ -236,13 +236,13 @@ pip uninstall nbctl nbformat click rich nbconvert nbclient nbdime
 
 ### Command Not Found
 
-**Problem:** `nbutils: command not found` after installation
+**Problem:** `nbctl: command not found` after installation
 
 **Solutions:**
 
 1. **Check if installed:**
    ```bash
-   pip list | grep nbutils
+   pip list | grep nbctl
    ```
 
 2. **Check Python path:**
@@ -253,7 +253,7 @@ pip uninstall nbctl nbformat click rich nbconvert nbclient nbdime
 
 3. **Run with python -m:**
    ```bash
-   python -m nbutils.cli --help
+   python -m nbctl.cli --help
    ```
 
 4. **Add to PATH (macOS/Linux):**
@@ -279,7 +279,7 @@ pip uninstall nbctl nbformat click rich nbconvert nbclient nbdime
 
 2. **Use --user flag:**
    ```bash
-   pip install --user nbutils
+   pip install --user nbctl
    ```
 
 3. **Use sudo** (not recommended):
@@ -291,13 +291,13 @@ pip uninstall nbctl nbformat click rich nbconvert nbclient nbdime
 
 ### Import Errors
 
-**Problem:** `ModuleNotFoundError` when running nbutils
+**Problem:** `ModuleNotFoundError` when running nbctl
 
 **Solutions:**
 
 1. **Reinstall dependencies:**
    ```bash
-   pip install --force-reinstall nbutils
+   pip install --force-reinstall nbctl
    ```
 
 2. **Check Python version:**
@@ -308,7 +308,7 @@ pip uninstall nbctl nbformat click rich nbconvert nbclient nbdime
 3. **Use explicit Python:**
    ```bash
    python3 -m pip install nbctl
-   python3 -m nbutils.cli --help
+   python3 -m nbctl.cli --help
    ```
 
 ---
@@ -332,8 +332,8 @@ pip uninstall nbctl nbformat click rich nbconvert nbclient nbdime
 
 3. **Install from source:**
    ```bash
-   git clone https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbutils.git
-   cd nbutils
+   git clone https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbctl.git
+   cd nbctl
    pip install -e .
    ```
 
@@ -351,8 +351,8 @@ pip uninstall nbctl nbformat click rich nbconvert nbclient nbdime
 # Install Python via Homebrew
 brew install python3
 
-# Install nbutils
-pip3 install nbutils
+# Install nbctl
+pip3 install nbctl
 ```
 
 ---
@@ -363,13 +363,13 @@ pip3 install nbutils
   ```bash
   sudo apt-get update
   sudo apt-get install python3-pip
-  pip3 install nbutils
+  pip3 install nbctl
   ```
 
 - **Fedora/CentOS:**
   ```bash
   sudo dnf install python3-pip
-  pip3 install nbutils
+  pip3 install nbctl
   ```
 
 - **Arch:**
@@ -387,12 +387,12 @@ pip3 install nbutils
 - **Use Command Prompt or PowerShell**
 
 ```powershell
-# Install nbutils
+# Install nbctl
 pip install nbctl
 
 # If command not found, try:
 python -m pip install nbctl
-python -m nbutils.cli --help
+python -m nbctl.cli --help
 ```
 
 ---
@@ -404,7 +404,7 @@ For containerized environments:
 ```dockerfile
 FROM python:3.9-slim
 
-# Install nbutils
+# Install nbctl
 RUN pip install nbctl
 
 # Verify installation
@@ -414,7 +414,7 @@ RUN nbctl --version
 WORKDIR /notebooks
 
 # Default command
-CMD ["nbutils", "--help"]
+CMD ["nbctl", "--help"]
 ```
 
 Build and run:
@@ -442,10 +442,10 @@ Now that you have nbctl installed:
 Need help with installation?
 
 - Check the [Help Guide](help.md)
-- [Open an issue](https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbutils/issues)
-- Search [existing issues](https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbutils/issues?q=is%3Aissue)
+- [Open an issue](https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbctl/issues)
+- Search [existing issues](https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbctl/issues?q=is%3Aissue)
 
 ---
 
-**Installation complete! Ready to use nbutils? Check out the [examples](../examples/clean.md)!**
+**Installation complete! Ready to use nbctl? Check out the [examples](../examples/clean.md)!**
 

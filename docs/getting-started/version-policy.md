@@ -182,10 +182,10 @@ v1.0.0: Feature X removed (major version)
 nbctl --version
 
 # Update to latest version
-pip install --upgrade nbutils
+pip install --upgrade nbctl
 
 # Update to specific version
-pip install nbutils==0.2.0
+pip install nbctl==0.2.0
 ```
 
 ---
@@ -196,7 +196,7 @@ pip install nbutils==0.2.0
 **Update immediately** - Bug fixes and improvements
 
 ```bash
-pip install --upgrade nbutils
+pip install --upgrade nbctl
 ```
 
 **Risk:** Minimal  
@@ -210,7 +210,7 @@ pip install --upgrade nbutils
 
 ```bash
 # Review release notes first
-pip install --upgrade nbutils
+pip install --upgrade nbctl
 ```
 
 **Risk:** Low  
@@ -225,7 +225,7 @@ pip install --upgrade nbutils
 ```bash
 # Read upgrade guide first
 # Test in non-production environment
-pip install --upgrade nbutils
+pip install --upgrade nbctl
 ```
 
 **Risk:** Medium  
@@ -261,7 +261,7 @@ When v1.0.0 is released:
 - Not for production use
 
 ```bash
-pip install nbutils==0.2.0-alpha.1
+pip install nbctl==0.2.0-alpha.1
 ```
 
 ---
@@ -272,7 +272,7 @@ pip install nbutils==0.2.0-alpha.1
 - Use with caution
 
 ```bash
-pip install nbutils==0.2.0-beta.1
+pip install nbctl==0.2.0-beta.1
 ```
 
 ---
@@ -283,7 +283,7 @@ pip install nbutils==0.2.0-beta.1
 - Safe for testing environments
 
 ```bash
-pip install nbutils==0.2.0-rc.1
+pip install nbctl==0.2.0-rc.1
 ```
 
 ---
@@ -297,17 +297,17 @@ pip install nbutils==0.2.0-rc.1
 nbctl --version
 
 # Compare with PyPI
-pip index versions nbutils
+pip index versions nbctl
 
 # Show outdated packages
-pip list --outdated | grep nbutils
+pip list --outdated | grep nbctl
 ```
 
 ### Programmatically
 
 ```python
-import nbutils
-print(nbutils.__version__)
+import nbctl
+print(nbctl.__version__)
 ```
 
 ---
@@ -316,8 +316,8 @@ print(nbutils.__version__)
 
 ### Where to Find
 
-- **GitHub Releases:** [github.com/VenkatachalamSubramanianPeriyaSubbu/nbutils/releases](https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbutils/releases)
-- **PyPI:** [pypi.org/project/nbutils/#history](https://pypi.org/project/nbutils/#history)
+- **GitHub Releases:** [github.com/VenkatachalamSubramanianPeriyaSubbu/nbctl/releases](https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbctl/releases)
+- **PyPI:** [pypi.org/project/nbctl/#history](https://pypi.org/project/nbctl/#history)
 - **CHANGELOG:** `CHANGELOG.md` in repository
 
 ### What's Included
@@ -338,10 +338,10 @@ Pin to specific version in `requirements.txt`:
 
 ```txt
 # Pin exact version
-nbutils==0.1.0
+nbctl==0.1.0
 
 # Or allow patch updates
-nbutils>=0.1.0,<0.2.0
+nbctl>=0.1.0,<0.2.0
 ```
 
 ### For Development
@@ -350,7 +350,7 @@ Allow minor updates in `requirements.txt`:
 
 ```txt
 # Allow minor and patch updates
-nbutils>=0.1.0,<1.0.0
+nbctl>=0.1.0,<1.0.0
 ```
 
 ---
@@ -386,8 +386,8 @@ Commands:
 
 ## Questions?
 
-- **About versions:** Check [GitHub Releases](https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbutils/releases)
-- **About compatibility:** [Open an issue](https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbutils/issues)
+- **About versions:** Check [GitHub Releases](https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbctl/releases)
+- **About compatibility:** [Open an issue](https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbctl/issues)
 - **About updates:** See [Installation Guide](installation.md)
 
 ---

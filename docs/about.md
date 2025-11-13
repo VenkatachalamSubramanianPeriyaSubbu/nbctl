@@ -31,10 +31,10 @@ Portfolio and professional information available at:
 
 ---
 
-## About nbutils
+## About nbctl
 
 nbctl is a comprehensive CLI toolkit for Jupyter notebooks, designed to solve common challenges in version control, collaboration, code quality, and workflow automation.
 
-**Repository**: [github.com/VenkatachalamSubramanianPeriyaSubbu/nbutils](https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbutils)
+**Repository**: [github.com/VenkatachalamSubramanianPeriyaSubbu/nbctl](https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbctl)
 
 **License**: MIT

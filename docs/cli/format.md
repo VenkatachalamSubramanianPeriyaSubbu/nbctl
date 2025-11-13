@@ -335,5 +335,5 @@ git diff --exit-code || echo "Formatting changes needed"
 
 - [Examples](../examples/format.md) - Practical usage examples
 - [Black documentation](https://black.readthedocs.io/) - Learn more about black
-- [Getting Started](../getting-started/welcome.md) - Introduction to nbutils
+- [Getting Started](../getting-started/welcome.md) - Introduction to nbctl
 

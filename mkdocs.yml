@@ -3,7 +3,7 @@ site_description: The Swiss Army Knife for Jupyter Notebooks - A comprehensive C
 site_url: https://venkatachalamsubramanianperiyasubbu.github.io/nbutils/
 
 repo_name: nbctl
-repo_url: https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbutils
+repo_url: https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbctl
 edit_uri: edit/main/docs/
 
 theme:
@@ -78,7 +78,7 @@ extra:
     provider: mike
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbutils
+      link: https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbctl
     - icon: fontawesome/brands/python
       link: https://pypi.org/project/nbctl
   

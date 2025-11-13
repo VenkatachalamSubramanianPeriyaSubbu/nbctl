@@ -173,5 +173,5 @@ nbctl extract notebook.ipynb --all
 ## See Also
 
 - [Examples](../examples/extract.md) - Practical usage examples
-- [Getting Started](../getting-started/welcome.md) - Introduction to nbutils
+- [Getting Started](../getting-started/welcome.md) - Introduction to nbctl
 

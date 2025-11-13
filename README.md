@@ -32,8 +32,8 @@ pip install nbctl
 Or install from source:
 
 ```bash
-git clone https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbutils.git
-cd nbutils
+git clone https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbctl.git
+cd nbctl
 pip install -e .
 ```
 

@@ -141,5 +141,5 @@ Removes `In[1]:` and `Out[1]:` prompts.
 ## See Also
 
 - [Examples](../examples/export.md) - Practical usage examples
-- [Getting Started](../getting-started/welcome.md) - Introduction to nbutils
+- [Getting Started](../getting-started/welcome.md) - Introduction to nbctl
 

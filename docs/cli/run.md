@@ -276,5 +276,5 @@ nbctl run nb1.ipynb nb2.ipynb nb3.ipynb --allow-errors
 ## See Also
 
 - [Examples](../examples/run.md) - Practical usage examples
-- [Getting Started](../getting-started/welcome.md) - Introduction to nbutils
+- [Getting Started](../getting-started/welcome.md) - Introduction to nbctl
 

@@ -1,6 +1,6 @@
-# Getting Help with nbutils
+# Getting Help with nbctl
 
-Need help with nbutils? You're in the right place! Here's how to get assistance.
+Need help with nbctl? You're in the right place! Here's how to get assistance.
 
 ## Documentation
 
@@ -44,10 +44,10 @@ You're reading it! Our documentation covers:
 If you encounter a bug or unexpected behavior:
 
 ### 1. Check Existing Issues
-Search our [GitHub Issues](https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbutils/issues) to see if it's already reported.
+Search our [GitHub Issues](https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbctl/issues) to see if it's already reported.
 
 ### 2. Create a New Issue
-If it's a new bug, [open an issue](https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbutils/issues/new) with:
+If it's a new bug, [open an issue](https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbctl/issues/new) with:
 
 **Required Information:**
 - nbctl version (`nbctl --version`)
@@ -86,10 +86,10 @@ If possible, provide:
 Have an idea for a new feature or improvement?
 
 ### 1. Check the Roadmap
-Review our [project README](https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbutils#roadmap) to see planned features.
+Review our [project README](https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbctl#roadmap) to see planned features.
 
 ### 2. Submit a Feature Request
-[Open an issue](https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbutils/issues/new) with the label "enhancement":
+[Open an issue](https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbctl/issues/new) with the label "enhancement":
 
 **Include:**
 - Clear description of the feature
@@ -119,15 +119,15 @@ nbctl export notebook.ipynb -f docx
 
 ### General Questions
 
-For general questions about nbutils:
+For general questions about nbctl:
 
 1. **Check the docs** - Most questions are answered in the [CLI Reference](../cli/clean.md) or [Examples](../examples/clean.md)
 2. **GitHub Discussions** - Start a discussion in our GitHub repository
-3. **Stack Overflow** - Tag questions with `nbutils` and `jupyter-notebook`
+3. **Stack Overflow** - Tag questions with `nbctl` and `jupyter-notebook`
 
 ### Common Questions
 
-**Q: How do I install nbutils?**  
+**Q: How do I install nbctl?**  
 A: See our [Installation Guide](installation.md)
 
 **Q: Which command should I use for X?**  
@@ -143,7 +143,7 @@ A: See the [Contributing](#contributing) section below
 
 ## Contributing
 
-Want to contribute to nbutils? We'd love your help!
+Want to contribute to nbctl? We'd love your help!
 
 ### Ways to Contribute
 
@@ -158,8 +158,8 @@ Want to contribute to nbutils? We'd love your help!
 
 ```bash
 # 1. Fork and clone the repository
-git clone https://github.com/YOUR_USERNAME/nbutils.git
-cd nbutils
+git clone https://github.com/YOUR_USERNAME/nbctl.git
+cd nbctl
 
 # 2. Create a virtual environment
 python -m venv venv
@@ -177,7 +177,7 @@ pytest tests/ -v
 pytest tests/ -v
 
 # 7. Format code
-black nbutils/ tests/
+black nbctl/ tests/
 
 # 8. Submit a pull request
 ```
@@ -198,7 +198,7 @@ black nbutils/ tests/
 
 #### Installation Problems
 
-**Issue:** `pip install nbutils` fails
+**Issue:** `pip install nbctl` fails
 
 **Solutions:**
 ```bash
@@ -206,34 +206,34 @@ black nbutils/ tests/
 pip install --upgrade pip
 
 # Install with user flag
-pip install --user nbutils
+pip install --user nbctl
 
 # Use virtual environment
 python -m venv venv
 source venv/bin/activate
-pip install nbutils
+pip install nbctl
 ```
 
 ---
 
 #### Command Not Found
 
-**Issue:** `nbutils: command not found`
+**Issue:** `nbctl: command not found`
 
 **Solutions:**
 ```bash
 # Check if installed
-pip list | grep nbutils
+pip list | grep nbctl
 
 # Check Python path
 echo $PATH
 
 # Try running with python -m
-python -m nbutils.cli --help
+python -m nbctl.cli --help
 
 # Reinstall
-pip uninstall nbutils
-pip install nbutils
+pip uninstall nbctl
+pip install nbctl
 ```
 
 ---
@@ -265,9 +265,9 @@ nbctl clean notebook.ipynb -o output.ipynb
 # Reinstall dependencies
 pip install -r requirements.txt
 
-# Or reinstall nbutils
-pip uninstall nbutils
-pip install nbutils
+# Or reinstall nbctl
+pip uninstall nbctl
+pip install nbctl
 ```
 
 ---
@@ -301,8 +301,8 @@ sudo apt-get install texlive-xetex texlive-fonts-recommended texlive-plain-gener
 
 ### Project Links
 
-- **Repository:** [github.com/VenkatachalamSubramanianPeriyaSubbu/nbutils](https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbutils)
-- **Issues:** [github.com/VenkatachalamSubramanianPeriyaSubbu/nbutils/issues](https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbutils/issues)
+- **Repository:** [github.com/VenkatachalamSubramanianPeriyaSubbu/nbctl](https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbctl)
+- **Issues:** [github.com/VenkatachalamSubramanianPeriyaSubbu/nbctl/issues](https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbctl/issues)
 - **Documentation:** You're reading it!
 
 ---
@@ -317,7 +317,7 @@ sudo apt-get install texlive-xetex texlive-fonts-recommended texlive-plain-gener
 
 ### Share Your Experience
 
-- Write blog posts about nbutils
+- Write blog posts about nbctl
 - Share on social media
 - Present at meetups or conferences
 - Create tutorials and examples
@@ -329,8 +329,8 @@ sudo apt-get install texlive-xetex texlive-fonts-recommended texlive-plain-gener
 - [Installation Guide](installation.md)
 - [CLI Reference](../cli/clean.md)
 - [Examples](../examples/clean.md)
-- [GitHub Issues](https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbutils/issues)
-- [GitHub Repository](https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbutils)
+- [GitHub Issues](https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbctl/issues)
+- [GitHub Repository](https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbctl)
 
 ---
 

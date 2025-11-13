@@ -41,10 +41,10 @@ dev = [
 nbctl = "nbutils.cli:cli"
 
 [project.urls]
-Homepage = "https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbutils"
-Documentation = "https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbutils#readme"
-Repository = "https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbutils"
-Issues = "https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbutils/issues"
+Homepage = "https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbctl"
+Documentation = "https://venkatachalamsubramanianperiyasubbu.github.io/nbutils/"
+Repository = "https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbctl"
+Issues = "https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbctl/issues"
 
 [tool.setuptools.packages.find]
 where = ["."]

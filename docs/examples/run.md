@@ -119,7 +119,7 @@ jobs:
         uses: actions/setup-python@v2
       - name: Install dependencies
         run: |
-          pip install nbutils
+          pip install nbctl
           pip install -r requirements.txt
       - name: Run test notebooks
         run: |
@@ -131,7 +131,7 @@ jobs:
 ```yaml
 test-notebooks:
   script:
-    - pip install nbutils
+    - pip install nbctl
     - nbctl run tests/*.ipynb --allow-errors
   artifacts:
     paths:

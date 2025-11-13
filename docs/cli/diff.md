@@ -283,10 +283,10 @@ When used as git diff driver (via `git-setup`):
 
 ```bash
 # In .gitattributes
-*.ipynb diff=nbutils
+*.ipynb diff=nbctl
 
 # In .git/config
-[diff "nbutils"]
+[diff "nbctl"]
     command = nbctl diff
 ```
 
@@ -302,5 +302,5 @@ Then `git diff notebook.ipynb` uses nbctl automatically!
 ## See Also
 
 - [Examples](../examples/diff.md) - Practical usage examples
-- [Getting Started](../getting-started/welcome.md) - Introduction to nbutils
+- [Getting Started](../getting-started/welcome.md) - Introduction to nbctl
 

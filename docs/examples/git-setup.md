@@ -59,7 +59,7 @@ git pull
 nbctl git-setup
 
 # 3. Verify
-git config --list | grep nbutils
+git config --list | grep nbctl
 ```
 
 ## Verification
@@ -69,10 +69,10 @@ git config --list | grep nbutils
 ```bash
 # Check .gitattributes
 cat .gitattributes
-# Should show: *.ipynb diff=nbctl merge=nbutils
+# Should show: *.ipynb diff=nbctl merge=nbctl
 
 # Check git config
-git config --list | grep nbutils
+git config --list | grep nbctl
 # Should show diff and merge drivers
 
 # Test diff
@@ -168,12 +168,12 @@ git commit -m "Clean notebooks for git"
 
 ```bash
 #!/bin/bash
-# migrate-to-nbutils.sh
+# migrate-to-nbctl.sh
 
 # 1. Backup
-git branch backup-before-nbutils
+git branch backup-before-nbctl
 
-# 2. Setup nbutils
+# 2. Setup nbctl
 nbctl git-setup
 
 # 3. Clean all notebooks
@@ -186,7 +186,7 @@ git add .
 git commit -m "Migrate to nbctl for notebook management"
 
 echo "Migration complete"
-echo "Backup branch: backup-before-nbutils"
+echo "Backup branch: backup-before-nbctl"
 ```
 
 ## Advanced Configuration
@@ -221,9 +221,9 @@ nbctl git-setup
 
 # Add to .gitattributes
 cat >> .gitattributes << EOF
-*.ipynb diff=nbctl merge=nbutils
-notebooks/*.ipynb diff=nbctl merge=nbutils
-experiments/*.ipynb diff=nbctl merge=nbutils
+*.ipynb diff=nbctl merge=nbctl
+notebooks/*.ipynb diff=nbctl merge=nbctl
+experiments/*.ipynb diff=nbctl merge=nbctl
 EOF
 ```
 
@@ -239,7 +239,7 @@ rm .gitattributes .gitignore
 nbctl git-setup
 
 # Verify
-git config --list | grep nbutils
+git config --list | grep nbctl
 ```
 
 ### Fix Diff Not Working
@@ -260,10 +260,10 @@ git diff notebook.ipynb
 
 ```bash
 # Current setup is per-repository
-git config --local --list | grep nbutils
+git config --local --list | grep nbctl
 
 # To make global (not recommended)
-# git config --global diff.nbutils.command 'nbctl diff'
+# git config --global diff.nbctl.command 'nbctl diff'
 ```
 
 ## CI/CD Integration
@@ -279,8 +279,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Install nbutils
-        run: pip install nbutils
+      - name: Install nbctl
+        run: pip install nbctl
       - name: Setup git
         run: nbctl git-setup
       - name: Verify configuration
@@ -322,7 +322,7 @@ Create `SETUP.md`:
 After cloning the repository:
 
 \`\`\`bash
-pip install nbutils
+pip install nbctl
 nbctl git-setup
 \`\`\`
 

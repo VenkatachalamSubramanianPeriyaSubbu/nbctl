@@ -89,8 +89,8 @@ jobs:
       - uses: actions/checkout@v2
       - name: Setup Python
         uses: actions/setup-python@v2
-      - name: Install nbutils
-        run: pip install nbutils
+      - name: Install nbctl
+        run: pip install nbctl
       - name: Check formatting
         run: |
           for nb in *.ipynb; do
@@ -186,7 +186,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Format notebooks
         run: |
-          pip install nbutils
+          pip install nbctl
           for nb in *.ipynb; do
             nbctl format "$nb"
           done

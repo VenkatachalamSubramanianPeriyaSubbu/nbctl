@@ -124,4 +124,4 @@ git commit -m "Update analysis"
 ## See Also
 
 [Examples](../examples/clean.md) - Practical usage examples
-[Getting Started](../getting-started/welcome.md) - Introduction to nbutils
+[Getting Started](../getting-started/welcome.md) - Introduction to nbctl

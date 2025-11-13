@@ -252,5 +252,5 @@ While modules can access context:
 ## See Also
 
 - [Examples](../examples/ml-split.md) - Practical usage examples
-- [Getting Started](../getting-started/welcome.md) - Introduction to nbutils
+- [Getting Started](../getting-started/welcome.md) - Introduction to nbctl
 

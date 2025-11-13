@@ -36,8 +36,8 @@ None. Uses sensible defaults for all configurations.
 Created/updated with notebook-specific rules:
 
 ```
-*.ipynb diff=nbutils
-*.ipynb merge=nbutils
+*.ipynb diff=nbctl
+*.ipynb merge=nbctl
 ```
 
 This tells git to use nbctl for diffing and merging notebooks.
@@ -101,7 +101,7 @@ Thumbs.db
 Registers nbctl as the diff driver for notebooks:
 
 ```bash
-git config diff.nbutils.command 'nbctl diff'
+git config diff.nbctl.command 'nbctl diff'
 ```
 
 **Result:** When you run `git diff notebook.ipynb`, git uses nbctl diff which:
@@ -116,7 +116,7 @@ git config diff.nbutils.command 'nbctl diff'
 Registers nbctl as the merge driver for notebooks:
 
 ```bash
-git config merge.nbutils.driver 'nbctl resolve %O %A %B -o %A'
+git config merge.nbctl.driver 'nbctl resolve %O %A %B -o %A'
 ```
 
 **Result:** When notebooks have merge conflicts, git uses nbctl resolve which:
@@ -258,7 +258,7 @@ Add custom rules for other file types:
 vim .gitattributes
 
 # Add custom rules
-*.ipynb diff=nbctl merge=nbutils
+*.ipynb diff=nbctl merge=nbctl
 *.csv diff=csv
 *.json diff=json
 ```
@@ -273,8 +273,8 @@ cat .gitattributes
 
 Expected content:
 ```
-*.ipynb diff=nbutils
-*.ipynb merge=nbutils
+*.ipynb diff=nbctl
+*.ipynb merge=nbctl
 ```
 
 ### Check .gitignore
@@ -288,13 +288,13 @@ Should include Python and Jupyter patterns.
 ### Check Git Config
 
 ```bash
-git config --list | grep nbutils
+git config --list | grep nbctl
 ```
 
 Expected output:
 ```
-diff.nbutils.command=nbctl diff
-merge.nbutils.driver=nbctl resolve %O %A %B -o %A
+diff.nbctl.command=nbctl diff
+merge.nbctl.driver=nbctl resolve %O %A %B -o %A
 ```
 
 ## Team Setup
@@ -332,7 +332,7 @@ nbctl git-setup
 **Solution:**
 ```bash
 # Verify diff driver is configured
-git config --list | grep diff.nbutils
+git config --list | grep diff.nbctl
 
 # Re-run setup
 nbctl git-setup
@@ -348,7 +348,7 @@ git diff notebook.ipynb
 **Solution:**
 ```bash
 # Verify merge driver is configured
-git config --list | grep merge.nbutils
+git config --list | grep merge.nbctl
 
 # Re-run setup
 nbctl git-setup
@@ -392,5 +392,5 @@ git reset --hard
 ## See Also
 
 - [Examples](../examples/git-setup.md) - Practical usage examples
-- [Getting Started](../getting-started/welcome.md) - Introduction to nbutils
+- [Getting Started](../getting-started/welcome.md) - Introduction to nbctl
 

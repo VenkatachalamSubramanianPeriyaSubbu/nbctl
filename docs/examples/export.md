@@ -284,7 +284,7 @@ jobs:
         
       - name: Install dependencies
         run: |
-          pip install nbutils
+          pip install nbctl
           sudo apt-get install texlive-xetex
       
       - name: Export notebooks

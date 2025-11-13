@@ -271,8 +271,8 @@ jobs:
         with:
           python-version: '3.9'
       
-      - name: Install nbutils
-        run: pip install nbutils
+      - name: Install nbctl
+        run: pip install nbctl
       
       - name: Clean notebooks
         run: |

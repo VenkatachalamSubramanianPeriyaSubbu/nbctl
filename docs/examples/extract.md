@@ -310,8 +310,8 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v2
         
-      - name: Install nbutils
-        run: pip install nbutils
+      - name: Install nbctl
+        run: pip install nbctl
       
       - name: Extract outputs
         run: |

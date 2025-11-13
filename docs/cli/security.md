@@ -498,8 +498,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Install nbutils
-        run: pip install nbutils
+      - name: Install nbctl
+        run: pip install nbctl
       - name: Scan notebooks
         run: |
           for nb in *.ipynb; do
@@ -576,5 +576,5 @@ nbctl security notebook.ipynb --severity high --verbose
 - [Examples](../examples/security.md) - Practical usage examples
 - [OWASP Top 10](https://owasp.org/www-project-top-ten/) - Web security risks
 - [CWE](https://cwe.mitre.org/) - Common Weakness Enumeration
-- [Getting Started](../getting-started/welcome.md) - Introduction to nbutils
+- [Getting Started](../getting-started/welcome.md) - Introduction to nbctl
 

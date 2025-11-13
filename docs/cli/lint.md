@@ -252,5 +252,5 @@ nbctl lint notebook.ipynb --max-cell-length 75 || exit 1
 ## See Also
 
 - [Examples](../examples/lint.md) - Practical usage examples
-- [Getting Started](../getting-started/welcome.md) - Introduction to nbutils
+- [Getting Started](../getting-started/welcome.md) - Introduction to nbctl
 

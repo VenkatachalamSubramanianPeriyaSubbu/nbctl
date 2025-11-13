@@ -280,7 +280,7 @@ git show :1:notebook.ipynb > base.ipynb      # Common ancestor
 git show :2:notebook.ipynb > ours.ipynb      # Your version
 git show :3:notebook.ipynb > theirs.ipynb    # Their version
 
-# 2. Resolve with nbutils
+# 2. Resolve with nbctl
 nbctl resolve base.ipynb ours.ipynb theirs.ipynb -o notebook.ipynb
 
 # 3. If conflicts, manually resolve in notebook.ipynb
@@ -406,5 +406,5 @@ nbctl run merged.ipynb
 
 - [Examples](../examples/resolve.md) - Practical usage examples
 - [nbdime documentation](https://nbdime.readthedocs.io/) - Learn about nbdime
-- [Getting Started](../getting-started/welcome.md) - Introduction to nbutils
+- [Getting Started](../getting-started/welcome.md) - Introduction to nbctl
 

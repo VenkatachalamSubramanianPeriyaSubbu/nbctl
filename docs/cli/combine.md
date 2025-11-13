@@ -316,5 +316,5 @@ For intelligent merging with conflict detection, use [`resolve`](resolve.md).
 ## See Also
 
 - [Examples](../examples/combine.md) - Practical usage examples
-- [Getting Started](../getting-started/welcome.md) - Introduction to nbutils
+- [Getting Started](../getting-started/welcome.md) - Introduction to nbctl
 
