@@ -42,7 +42,7 @@ nbctl = "nbutils.cli:cli"
 
 [project.urls]
 Homepage = "https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbctl"
-Documentation = "https://venkatachalamsubramanianperiyasubbu.github.io/nbutils/"
+Documentation = "https://venkatachalamsubramanianperiyasubbu.github.io/nbctl/"
 Repository = "https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbctl"
 Issues = "https://github.com/VenkatachalamSubramanianPeriyaSubbu/nbctl/issues"
 
